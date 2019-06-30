@@ -10,7 +10,7 @@ export default class InputField extends React.Component {
         <div>
           <input
             type="text"
-            placeholder={this.props.name}
+            placeholder={" "}
             onChange={this.OnEnter.bind(this)}
           />
         </div>
