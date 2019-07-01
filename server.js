@@ -14,6 +14,8 @@ if (process.env.NODE_ENV === "production") {
 
 // require("./routes/api-routes")(app);
 // require("./routes/html-routes")(app);
+//auth routes
+app.use("/auth", require("./routes/auth-routes"));
 
 db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
