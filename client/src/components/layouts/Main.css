@@ -1,0 +1,4 @@
+.hero-image {
+  background-image: radial-gradient(rgb(235, 233, 233), gray);
+  height: 100vh;
+}
