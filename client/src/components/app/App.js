@@ -1,14 +1,22 @@
-import React from "react";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import MainPage from "../layouts/MainPage";
+import Login from "../layouts/Login";
+import Signup from "../layouts/Signup";
+import Navbar from "../layouts/Navbar";
+
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <div>
-        <h1>Parking Lot Manager</h1>
-      </div>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Navbar />
+        <Route exact path="/" component={MainPage} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+      </Router>
+    );
+  }
 }
-
 export default App;
