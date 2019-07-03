@@ -1,4 +1,9 @@
 .hero-image {
-  background-image: radial-gradient(rgb(235, 233, 233), gray);
+  background-image: radial-gradient(rgb(235, 233, 233), rgb(207, 206, 206));
   height: 100vh;
+}
+
+ul li {
+  text-decoration: none;
+  text-decoration-style: none;
 }
