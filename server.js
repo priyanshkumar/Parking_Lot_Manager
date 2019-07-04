@@ -1,5 +1,6 @@
 const express = require("express");
 const db = require("./models");
+const passport = require("./config/passportConfig");
 
 const PORT = process.env.PORT || 3001;
 
