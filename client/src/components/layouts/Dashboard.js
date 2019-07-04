@@ -64,7 +64,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div className="hero-image d-flex justify-content-center align-items-center">
+        <div className="full-spread d-flex justify-content-center align-items-center">
           <div className="container">
             {/* Top form begins here */}
             <div className="">
