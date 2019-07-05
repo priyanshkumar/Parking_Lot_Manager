@@ -8,11 +8,11 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+// }
 
-// require("./routes/api-routes")(app);
+require("./routes/api-routes")(app);
 // require("./routes/html-routes")(app);
 
 db.sequelize.sync({ force: false }).then(() => {
