@@ -5,10 +5,9 @@ import Login from "../layouts/Login";
 import Signup from "../layouts/Signup";
 import Dashboard from "../layouts/Dashboard";
 import Navbar from "../layouts/Navbar";
-import FormInput from "../Forms/forminput1";
-import Header from "../Forms/header";
 
 import "./App.css";
+import ParkingApplication from "../Forms/ParkingApplication";
 
 class App extends Component {
   render() {
@@ -19,6 +18,7 @@ class App extends Component {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/form" component={ParkingApplication} />
       </Router>
     );
   }
