@@ -4,29 +4,18 @@ export default class FormInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      address: "",
-      phone: "",
-      fax: "",
-      cell: "",
+      companyname: "",
       owner_name: "",
-      ownwer_phone: "",
-      driver_name: "",
-      driver_phone: "",
-      truck_name: "",
-      truck_phone: "",
-      company_truckname: "",
-      company_truckphone: "",
-      company_chequename: "",
-      company_chequephone: "",
-      equipmentname: "",
-      equipmentmake: "",
-      Model: "",
-      Year: "",
-      License_plate: "",
-      Color: "",
-      UnitNo: "",
-      Other: ""
+      companyID: "",
+      streetNumber: "",
+      streetName: "",
+      city: "",
+      province: "",
+      zipcode: "",
+      country: "",
+      faxNumber: "",
+      cellNumber: "",
+      workPhone: ""
     };
   }
   handleinputchange(name, value) {
@@ -37,163 +26,113 @@ export default class FormInput extends React.Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <div className="col-md-4">
-            <InputField
-              name="Name"
-              takeinput={this.handleinputchange.bind(this, "name")}
-            />
+        <form>
+          <br />
+          <br />
+          <div class="form-group row">
+            <label for="Name" class="col-sm-2 col-form-label">
+              Company Name
+            </label>
+            <div class="col-sm-2">
+              <div className="col-md-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "companyname")}
+                />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <InputField
-              name="Adress"
-              takeinput={this.handleinputchange.bind(this, "adress")}
-            />
+          <div class="form-group row">
+            <label for="OwnerName" class="col-sm-2 col-form-label">
+              Owner Name
+            </label>
+            <div class="col-sm-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "owner_name")}
+              />
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <InputField
-              name="Phone"
-              takeinput={this.handleinputchange.bind(this, "phone")}
-            />
+          <div class="form-group row">
+            <label for="CompanyID" class="col-sm-2 col-form-label">
+              Company ID
+            </label>
+            <div class="col-sm-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "companyId")}
+              />
+            </div>
           </div>
-          <div className="col-md-4">
-            <InputField
-              name="Fax"
-              takeinput={this.handleinputchange.bind(this, "fax")}
-            />
+          <div class="form-group row">
+            <label for="address" class="col-sm-2 col-form-label">
+              Street Number
+            </label>
+            <div class="col-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "streetNumber")}
+              />
+            </div>
+            <label for="address">Street Name</label>
+            <div class="col-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "streetName")}
+              />
+            </div>
+            <label for="address">City</label>
+            <div class="col-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "city")}
+              />
+            </div>
           </div>
-          <div className="col-md-4">
-            <InputField
-              name="Cell"
-              takeinput={this.handleinputchange.bind(this, "cell")}
-            />
+          <div class="form-group row">
+            <label for="address" class="col-sm-2 col-form-label">
+              Province
+            </label>
+            <div class="col-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "province")}
+              />
+            </div>
+            <label for="address">Zip code </label>
+            <div class="col-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "zipcode")}
+              />
+            </div>
+            <label for="address">Country</label>
+            <div class="col-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "country")}
+              />
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <InputField
-              name="OwnerName"
-              takeinput={this.handleinputchange.bind(this, "owner_name")}
-            />
+          <div class="form-group row">
+            <label for="phone" class="col-sm-2 col-form-label">
+              Fax Number
+            </label>
+            <div class="col-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "faxNumber")}
+              />
+            </div>
+            <label for="phone">Cell Number</label>
+            <div class="col-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "cellNumber")}
+              />
+            </div>
+            <label for="phone">Work phone</label>
+            <div class="col-2">
+              <InputField
+                takeinput={this.handleinputchange.bind(this, "workPhone")}
+              />
+            </div>
           </div>
-          <div className="col-md-6">
-            <InputField
-              name="OwnerPhone"
-              takeinput={this.handleinputchange.bind(this, "owner_phone")}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <InputField
-              name="DriverName"
-              takeinput={this.handleinputchange.bind(this, "driver_name")}
-            />
-          </div>
-          <div className="col-md-6">
-            <InputField
-              name="DriverPhone"
-              takeinput={this.handleinputchange.bind(this, "driver_phone")}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <InputField
-              name="Company Name(truck)"
-              takeinput={this.handleinputchange.bind(this, "company_truckname")}
-            />
-          </div>
-          <div className="col-md-6">
-            <InputField
-              name="Company Phone(truck)"
-              takeinput={this.handleinputchange.bind(
-                this,
-                "company_truckphone"
-              )}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <InputField
-              name="Company Name(cheque)"
-              takeinput={this.handleinputchange.bind(
-                this,
-                "company_chequename"
-              )}
-            />
-          </div>
-          <div className="col-md-6">
-            <InputField
-              name="Company Phone(cheque)"
-              takeinput={this.handleinputchange.bind(
-                this,
-                "company_chequephone"
-              )}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <InputField
-              name="Type of Equipment Name"
-              takeinput={this.handleinputchange.bind(this, "equipmentname")}
-            />
-          </div>
-          <div className="col-md-6">
-            <InputField
-              name="Type of Equipment Make"
-              takeinput={this.handleinputchange.bind(this, "equipmentmake")}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <InputField
-              name="Model"
-              takeinput={this.handleinputchange.bind(this, "Model")}
-            />
-          </div>
-          <div className="col-md-6">
-            <InputField
-              name="Year"
-              takeinput={this.handleinputchange.bind(this, "Year")}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <InputField
-              name="License Plate"
-              takeinput={this.handleinputchange.bind(this, "License_plate")}
-            />
-          </div>
-          <div className="col-md-6">
-            <InputField
-              name="Color"
-              takeinput={this.handleinputchange.bind(this, "Color")}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <InputField
-              name="Unit#"
-              takeinput={this.handleinputchange.bind(this, "UnitNo")}
-            />
-          </div>
-          <div className="col-md-6">
-            <InputField
-              name="Other"
-              takeinput={this.handleinputchange.bind(this, "Other")}
-            />
-          </div>
-        </div>
+          <br />
+          <br />
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
       </div>
     );
   }
