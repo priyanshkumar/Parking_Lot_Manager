@@ -8,6 +8,7 @@ import Navbar from "../layouts/Navbar";
 
 import "./App.css";
 import ParkingApplication from "../Forms/ParkingApplication";
+import Terms from "../Forms/terms";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/form" component={ParkingApplication} />
+        <Route exact path="/terms" component={Terms} />
       </Router>
     );
   }
