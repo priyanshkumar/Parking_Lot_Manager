@@ -1,0 +1,11 @@
+.hero-image {
+  background-image: url("truckmain.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.maintext {
+  background-color: rgba(rgb(131, 131, 131), 0.5) !important;
+}
