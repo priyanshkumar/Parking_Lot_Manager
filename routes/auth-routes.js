@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 
+//redirect is not logged on otherwise send to dashboard
+
 router.get("/logout", (req, res) => {
   //handled by passport
 });
