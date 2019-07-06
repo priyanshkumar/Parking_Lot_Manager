@@ -2,10 +2,6 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 
-router.get("/login", (req, res) => {
-  res.render("login");
-});
-
 router.get("/logout", (req, res) => {
   //handled by passport
 });
@@ -13,16 +9,14 @@ router.get("/logout", (req, res) => {
 router.get(
   "/google",
   passport.authenticate("google", {
-    scope: ["profile"]
+    scope: ["profile", "email"]
   })
 );
 
-router.get(
-  "http://localhost:3001/google/redirect",
-  passport.authenticate("google"),
-  (req, res) => {
-    console.log("at callback screen");
-  }
-);
+router.get("/redirect", passport.authenticate("google"), (req, res) => {
+  /* res.send(req.user); */
+  res.redirect("http://localhost:3000/dashboard");
+  console.log(req.user.dataValues);
+});
 
 module.exports = router;

@@ -6,9 +6,7 @@ function MainPage() {
     <div>
       <div className="full-spread d-flex justify-content-center align-items-center">
         <h1>Log in</h1>
-        <div>
-          <a href="http://localhost:3001/auth/google">Google</a>
-        </div>
+        <a href="http://localhost:3001/auth/google">Google</a>
       </div>
     </div>
   );
