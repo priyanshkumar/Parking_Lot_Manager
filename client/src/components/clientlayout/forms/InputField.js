@@ -9,9 +9,10 @@ export default class InputField extends React.Component {
         <div>{this.props.name}</div>
         <div>
           <input
-            type="text"
+            type={this.props.text ? this.props.text : "text"}
             placeholder={" "}
             onChange={this.OnEnter.bind(this)}
+            className="form-control"
           />
         </div>
       </div>

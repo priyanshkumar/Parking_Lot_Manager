@@ -1,5 +1,7 @@
 import React from "react";
 import InputField from "./InputField";
+import "./Form.css";
+
 export default class FormInput extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +31,7 @@ export default class FormInput extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="formApplication">
         <form>
           <br />
           <br />
@@ -38,11 +40,9 @@ export default class FormInput extends React.Component {
               Company Name
             </label>
             <div className="col-sm-2">
-              <div className="col-md-2">
                 <InputField
                   takeinput={this.handleinputchange.bind(this, "companyname")}
                 />
-              </div>
             </div>
           </div>
           <div className="form-group row">
