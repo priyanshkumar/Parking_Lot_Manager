@@ -1,13 +1,13 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const keys = require("./keys");
 
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "341267096007-6c3glni5c2jqm74evh212ol42vnh2arq.apps.googleusercontent.com",
-      clientSecret: "Vsx2iKcR-1K8feLp5q2juILz",
-      callbackURL: "auth/google/callback"
+      callbackURL: "http://localhost:3000/dashboard",
+      clientID: keys.google.clientID,
+      clientSecret: keys.google.clientSecret
     },
     (accessToken, refreshToken, profile, done) => {
       //send user profile info to db

@@ -1,11 +1,10 @@
 const express = require("express");
 const db = require("./models");
-const passport = require("./config/passportConfig");
+const passportConfig = require("./config/passportConfig");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -16,7 +15,8 @@ if (process.env.NODE_ENV === "production") {
 // require("./routes/api-routes")(app);
 // require("./routes/html-routes")(app);
 //auth routes
-app.use("/auth", require("./routes/auth-routes"));
+const authRoutes = require("./routes/auth-routes");
+app.use("/auth/", authRoutes);
 
 db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
