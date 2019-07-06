@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Spot1 from "./Spot1";
-import Spot2 from "./Spot2";
-import Spot3 from "./Spot3";
+import Spot1 from "../zone/Spot1";
+import Spot2 from "../zone/Spot2";
+import Spot3 from "../zone/Spot3";
 
 class Dashboard extends Component {
   state = {
