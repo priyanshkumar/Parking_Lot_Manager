@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import MainPage from "../layouts/MainPage";
-import Login from "../layouts/Login";
-import Signup from "../layouts/Signup";
-import Dashboard from "../layouts/Dashboard";
-import Navbar from "../layouts/Navbar";
+import MainPage from "../clientlayout/mainpage/MainPage";
+import Login from "../clientlayout/login/Login";
+import Signup from "../clientlayout/signup/Signup";
+import Dashboard from "../clientlayout/dashboard/Dashboard";
+import Navbar from "../clientlayout/navbar/Navbar";
 
 import "./App.css";
-import ParkingApplication from "../Forms/ParkingApplication";
+import ParkingApplication from "../clientlayout/forms/ParkingApplication";
 
 class App extends Component {
   render() {
