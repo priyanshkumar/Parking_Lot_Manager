@@ -6,7 +6,12 @@ import Navbar from "../navbar/Navbar";
 function MainPage() {
   return (
     <div>
-      <div className="hero-image d-flex justify-content-center align-items-center" />
+      <div className="hero-image d-flex flex-column justify-content-start align-items-start">
+        <div className="content p-5">          
+        <h1>Welcome</h1>
+        <h4>Parking Lot Manager</h4>
+        </div>
+      </div>
       <Navbar />
       <div className="container maintext border rounded p-4 my-5">
         <h1 className="text-center display-3 ">Parking Lot Manager</h1>
