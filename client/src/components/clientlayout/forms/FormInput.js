@@ -1,12 +1,12 @@
 import React from "react";
 import InputField from "./InputField";
-import Axios from "axios";
+import axios from "axios";
 export default class FormInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      companyname: "",
-      owner_name: "",
+      companyName: "",
+      companyPointOfContact: "",
       companyId: "",
       streetNumber: "",
       streetName: "",
@@ -15,8 +15,8 @@ export default class FormInput extends React.Component {
       zipcode: "",
       country: "",
       faxNumber: "",
-      cellNumber: "",
-      workPhone: ""
+      cellPhoneNumber: "",
+      workPhoneNumber: ""
     };
   }
 
@@ -27,7 +27,14 @@ export default class FormInput extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    axios
+      .post("/api/createCustomer", this.state)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   render() {
     return (
@@ -40,7 +47,7 @@ export default class FormInput extends React.Component {
             <div className="col-sm-2">
               <div className="col-md-2">
                 <InputField
-                  takeinput={this.handleinputchange.bind(this, "companyname")}
+                  takeinput={this.handleinputchange.bind(this, "companyName")}
                 />
               </div>
             </div>
@@ -51,7 +58,10 @@ export default class FormInput extends React.Component {
             </label>
             <div className="col-sm-2">
               <InputField
-                takeinput={this.handleinputchange.bind(this, "owner_name")}
+                takeinput={this.handleinputchange.bind(
+                  this,
+                  "companyPointOfContact"
+                )}
               />
             </div>
           </div>
@@ -61,7 +71,7 @@ export default class FormInput extends React.Component {
             </label>
             <div className="col-sm-2">
               <InputField
-                takeinput={this.handleinputchange.bind(this, "companyId")}
+                takeinput={this.handleinputchange.bind(this, "companyID")}
               />
             </div>
           </div>
@@ -121,13 +131,13 @@ export default class FormInput extends React.Component {
             <label htmlFor="phone">Cell Number</label>
             <div className="col-2">
               <InputField
-                takeinput={this.handleinputchange.bind(this, "cellNumber")}
+                takeinput={this.handleinputchange.bind(this, "cellPhoneNumber")}
               />
             </div>
             <label htmlFor="phone">Work phone</label>
             <div className="col-2">
               <InputField
-                takeinput={this.handleinputchange.bind(this, "workPhone")}
+                takeinput={this.handleinputchange.bind(this, "workPhoneNumber")}
               />
             </div>
           </div>
