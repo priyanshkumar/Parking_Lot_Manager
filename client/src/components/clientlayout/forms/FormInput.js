@@ -1,12 +1,13 @@
 import React from "react";
 import InputField from "./InputField";
+import Axios from "axios";
 export default class FormInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       companyname: "",
       owner_name: "",
-      companyID: "",
+      companyId: "",
       streetNumber: "",
       streetName: "",
       city: "",
@@ -18,6 +19,7 @@ export default class FormInput extends React.Component {
       workPhone: ""
     };
   }
+
   handleinputchange(name, value) {
     var toSet = {};
     toSet[name] = value;
@@ -31,8 +33,6 @@ export default class FormInput extends React.Component {
     return (
       <div>
         <form>
-          <br />
-          <br />
           <div className="form-group row">
             <label htmlFor="Name" className="col-sm-2 col-form-label">
               Company Name
