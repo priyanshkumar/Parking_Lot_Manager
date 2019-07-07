@@ -106,7 +106,7 @@ class Dashboard extends Component {
               <div className="d-flex flex-wrap justify-content-between col-4">
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   data-toggle="modal"
                   data-target="#spot1"
                 >
@@ -116,7 +116,7 @@ class Dashboard extends Component {
               <div className="d-flex flex-wrap justify-content-between col-4">
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   data-toggle="modal"
                   data-target="#spot2"
                 >
@@ -126,7 +126,7 @@ class Dashboard extends Component {
               <div className="d-flex flex-wrap justify-content-between col-4">
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   data-toggle="modal"
                   data-target="#spot3"
                 >
