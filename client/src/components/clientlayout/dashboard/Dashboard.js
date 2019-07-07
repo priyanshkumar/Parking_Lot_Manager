@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Spot1 from "../zone/Spot1";
 import Spot2 from "../zone/Spot2";
 import Spot3 from "../zone/Spot3";
+import Navbar from "../navbar/Navbar";
 
 class Dashboard extends Component {
   state = {
@@ -64,6 +65,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
+        <Navbar/>
         <div className="full-spread d-flex justify-content-center align-items-center">
           <div className="container">
             {/* Top form begins here */}
