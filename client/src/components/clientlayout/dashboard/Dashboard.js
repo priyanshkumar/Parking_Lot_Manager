@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import Spot1 from "../zone/Spot1";
-import Spot2 from "../zone/Spot2";
-import Spot3 from "../zone/Spot3";
 import Navbar from "../navbar/Navbar";
+import Modal from "./zone/Modal";
 
 class Dashboard extends Component {
   state = {
@@ -65,7 +63,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
+        <Navbar />
         <div className="full-spread d-flex justify-content-center align-items-center">
           <div className="container">
             {/* Top form begins here */}
@@ -99,21 +97,41 @@ class Dashboard extends Component {
               </div>
             </div>
             {/* Spots arrangement */}
+
+            <Modal spot={this.state.Spots1} id={"spot1"} />
+            <Modal spot={this.state.Spots2} id={"spot2"} />
+            <Modal spot={this.state.Spots3} id={"spot3"} />
+
             <div className="row border border-light bg-light rounded p-3 mb-5">
               <div className="d-flex flex-wrap justify-content-between col-4">
-                {this.state.Spots1.map(spot => (
-                  <Spot1 key={spot.id} spot={spot.spot} />
-                ))}
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#spot1"
+                >
+                  Spot 1
+                </button>
               </div>
               <div className="d-flex flex-wrap justify-content-between col-4">
-                {this.state.Spots2.map(spot => (
-                  <Spot2 key={spot.id} spot={spot.spot} />
-                ))}
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#spot2"
+                >
+                  Spot 2
+                </button>
               </div>
               <div className="d-flex flex-wrap justify-content-between col-4">
-                {this.state.Spots3.map(spot => (
-                  <Spot3 key={spot.id} spot={spot.spot} />
-                ))}
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#spot3"
+                >
+                  Spot 3
+                </button>
               </div>
             </div>
           </div>

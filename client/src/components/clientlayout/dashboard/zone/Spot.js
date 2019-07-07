@@ -1,6 +1,6 @@
 import React from "react";
 
-function Spot1(props) {
+function Spot(props) {
   return (
     <div className="d-flex">
       <button className="btn btn-primary p-2 m-2">{props.spot}</button>
@@ -8,4 +8,4 @@ function Spot1(props) {
   );
 }
 
-export default Spot1;
+export default Spot;
