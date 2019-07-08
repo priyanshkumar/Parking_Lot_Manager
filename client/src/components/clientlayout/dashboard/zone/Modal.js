@@ -28,7 +28,12 @@ function Modal({ spot, id }) {
           </div>
           <div className="modal-body display-flex">
             {spot.map(spot => (
-              <Spot key={spot.id} spot={spot.spot} />
+              <Spot
+                key={spot.id}
+                spot={spot.spot}
+                color={spot.isAllocated ? "secondary" : "primary"}
+                status={spot.isAllocated && "disabled"}
+              />
             ))}
           </div>
           <div className="modal-footer">
