@@ -2,13 +2,14 @@ import React from "react";
 import InputField from "./InputField";
 import "./Form.css";
 
+import axios from "axios";
 export default class FormInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      companyname: "",
-      owner_name: "",
-      companyID: "",
+      companyName: "",
+      companyPointOfContact: "",
+      companyId: "",
       streetNumber: "",
       streetName: "",
       city: "",
@@ -16,8 +17,8 @@ export default class FormInput extends React.Component {
       zipcode: "",
       country: "",
       faxNumber: "",
-      cellNumber: "",
-      workPhone: ""
+      cellPhoneNumber: "",
+      workPhoneNumber: ""
     };
   }
   handleinputchange = (name, value) => {
@@ -28,6 +29,14 @@ export default class FormInput extends React.Component {
   handleSubmit = event => {
     // event.preventDefault();
     console.log(this.state);
+    axios
+      .post("/api/createCustomer", this.state)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   render() {
     return (
@@ -42,7 +51,7 @@ export default class FormInput extends React.Component {
             <div className="col-sm-10">
               <InputField
                 takeinput={value =>
-                  this.handleinputchange("companyname", value)
+                  this.handleinputchange("companyName", value)
                 }
                 required={true}
               />
@@ -54,7 +63,9 @@ export default class FormInput extends React.Component {
             </label>
             <div className="col-sm-10">
               <InputField
-                takeinput={value => this.handleinputchange("owner_name", value)}
+                takeinput={value =>
+                  this.handleinputchange("companyPointOfContact", value)
+                }
                 required={true}
               />
             </div>
@@ -65,7 +76,7 @@ export default class FormInput extends React.Component {
             </label>
             <div className="col-sm-10">
               <InputField
-                takeinput={value => this.handleinputchange("companyId", value)}
+                takeinput={value => this.handleinputchange("companyID", value)}
                 type="number"
                 required={true}
               />
@@ -107,17 +118,17 @@ export default class FormInput extends React.Component {
                   this.handleinputchange("province", event.target.value)
                 }
               >
-                <option>Choose...</option>
-                <option>Ontario</option>
-                <option>Manitoba</option>
-                <option>Quebec</option>
-                <option>Alberta</option>
-                <option>British columbia</option>
-                <option>New Brunswick</option>
-                <option>Newfoundland and Labrador</option>
-                <option>Nova Scotia</option>
-                <option>Saskatchewan</option>
-                <option>Prince Edward Island</option>
+                <option value="">Choose...</option>
+                <option value="ON">Ontario</option>
+                <option value="MB">Manitoba</option>
+                <option value="QC">Quebec</option>
+                <option value="AB">Alberta</option>
+                <option value="BC">British columbia</option>
+                <option value="NB">New Brunswick</option>
+                <option value="NL">Newfoundland and Labrador</option>
+                <option value="NS">Nova Scotia</option>
+                <option value="SK">Saskatchewan</option>
+                <option value="PE">Prince Edward Island</option>
               </select>
             </div>
 
@@ -152,7 +163,9 @@ export default class FormInput extends React.Component {
             <label htmlFor="cell">Cell Number</label>
             <div className="col-2">
               <InputField
-                takeinput={value => this.handleinputchange("cellNumber", value)}
+                takeinput={value =>
+                  this.handleinputchange("cellPhoneNumber", value)
+                }
                 type="number"
                 required={true}
               />
@@ -160,7 +173,9 @@ export default class FormInput extends React.Component {
             <label htmlFor="work-no">Work phone</label>
             <div className="col-2">
               <InputField
-                takeinput={value => this.handleinputchange("workPhone", value)}
+                takeinput={value =>
+                  this.handleinputchange("workPhoneNumber", value)
+                }
                 type="number"
               />
             </div>
