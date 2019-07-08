@@ -39,19 +39,21 @@ export default class FormInput extends React.Component {
   render() {
     return (
       <div>
-        <form>
-          <div className="form-group row">
-            <label htmlFor="Name" className="col-sm-2 col-form-label">
-              Company Name
-            </label>
-            <div className="col-sm-2">
-              <div className="col-md-2">
+        <div className="container">
+          <form>
+            <br />
+            <br />
+
+            <div className="form-group row">
+              <label htmlFor="Name" className="col-md-2 col-form-label">
+                Company Name
+              </label>
+              <div className="col-md-10">
                 <InputField
                   takeinput={this.handleinputchange.bind(this, "companyName")}
                 />
               </div>
             </div>
-          </div>
           <div className="form-group row">
             <label htmlFor="OwnerName" className="col-sm-2 col-form-label">
               Owner Name
@@ -112,21 +114,37 @@ export default class FormInput extends React.Component {
                 takeinput={this.handleinputchange.bind(this, "zipcode")}
               />
             </div>
-            <label htmlFor="address">Country</label>
-            <div className="col-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "country")}
-              />
+            <div className="form-group row">
+              <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
+                Company ID
+              </label>
+              <div className="col-sm-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "companyId")}
+                />
+              </div>
             </div>
-          </div>
-          <div className="form-group row">
-            <label htmlFor="phone" className="col-sm-2 col-form-label">
-              Fax Number
-            </label>
-            <div className="col-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "faxNumber")}
-              />
+            <div className="form-group row">
+              <label htmlFor="address" className="col-sm-2 col-form-label">
+                Street Number
+              </label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "streetNumber")}
+                />
+              </div>
+              <label htmlFor="address">Street Name</label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "streetName")}
+                />
+              </div>
+              <label htmlFor="address">City</label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "city")}
+                />
+              </div>
             </div>
             <label htmlFor="phone">Cell Number</label>
             <div className="col-2">
@@ -140,17 +158,17 @@ export default class FormInput extends React.Component {
                 takeinput={this.handleinputchange.bind(this, "workPhoneNumber")}
               />
             </div>
-          </div>
-          <br />
-          <br />
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={this.handleSubmit.bind(this)}
-          >
-            Submit
-          </button>
-        </form>
+            <br />
+            <br />
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={this.handleSubmit.bind(this)}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
