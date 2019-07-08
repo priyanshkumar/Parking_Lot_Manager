@@ -2,10 +2,13 @@ import React from "react";
 import "./Login.css";
 import "bootstrap-social";
 
+import Navbar from "../navbar/Navbar";
+
 function MainPage() {
   return (
     <div>
-      <div className="full-spread d-flex justify-content-center align-items-center">
+      <Navbar />
+      <div className="d-flex justify-content-center align-items-center">
         <h1>Log in</h1>
 
         <a

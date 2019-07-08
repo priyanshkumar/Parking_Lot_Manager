@@ -1,12 +1,13 @@
 import React from "react";
 import InputField from "./InputField";
+import axios from "axios";
 export default class FormInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      companyname: "",
-      owner_name: "",
-      companyID: "",
+      companyName: "",
+      companyPointOfContact: "",
+      companyId: "",
       streetNumber: "",
       streetName: "",
       city: "",
@@ -14,10 +15,11 @@ export default class FormInput extends React.Component {
       zipcode: "",
       country: "",
       faxNumber: "",
-      cellNumber: "",
-      workPhone: ""
+      cellPhoneNumber: "",
+      workPhoneNumber: ""
     };
   }
+
   handleinputchange(name, value) {
     var toSet = {};
     toSet[name] = value;
@@ -25,122 +27,149 @@ export default class FormInput extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    axios
+      .post("/api/createCustomer", this.state)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   render() {
     return (
       <div>
-        <form>
-          <br />
-          <br />
-          <div className="form-group row">
-            <label htmlFor="Name" className="col-sm-2 col-form-label">
-              Company Name
-            </label>
-            <div className="col-sm-2">
-              <div className="col-md-2">
+        <div className="container">
+          <form>
+            <br />
+            <br />
+
+            <div className="form-group row">
+              <label htmlFor="Name" className="col-md-2 col-form-label">
+                Company Name
+              </label>
+              <div className="col-md-10">
                 <InputField
-                  takeinput={this.handleinputchange.bind(this, "companyname")}
+                  takeinput={this.handleinputchange.bind(this, "companyName")}
                 />
               </div>
             </div>
-          </div>
-          <div className="form-group row">
-            <label htmlFor="OwnerName" className="col-sm-2 col-form-label">
-              Owner Name
-            </label>
-            <div className="col-sm-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "owner_name")}
-              />
+            <div className="form-group row">
+              <label htmlFor="OwnerName" className="col-sm-2 col-form-label">
+                Owner Name
+              </label>
+              <div className="col-sm-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(
+                    this,
+                    "companyPointOfContact"
+                  )}
+                />
+              </div>
             </div>
-          </div>
-          <div className="form-group row">
-            <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
-              Company ID
-            </label>
-            <div className="col-sm-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "companyId")}
-              />
+            <div className="form-group row">
+              <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
+                Company ID
+              </label>
+              <div className="col-sm-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "companyID")}
+                />
+              </div>
             </div>
-          </div>
-          <div className="form-group row">
-            <label htmlFor="address" className="col-sm-2 col-form-label">
-              Street Number
-            </label>
-            <div className="col-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "streetNumber")}
-              />
+            <div className="form-group row">
+              <label htmlFor="address" className="col-sm-2 col-form-label">
+                Street Number
+              </label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "streetNumber")}
+                />
+              </div>
+              <label htmlFor="address">Street Name</label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "streetName")}
+                />
+              </div>
+              <label htmlFor="address">City</label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "city")}
+                />
+              </div>
             </div>
-            <label htmlFor="address">Street Name</label>
-            <div className="col-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "streetName")}
-              />
+            <div className="form-group row">
+              <label htmlFor="address" className="col-sm-2 col-form-label">
+                Province
+              </label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "province")}
+                />
+              </div>
+              <label htmlFor="address">Zip code </label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "zipcode")}
+                />
+              </div>
             </div>
-            <label htmlFor="address">City</label>
-            <div className="col-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "city")}
-              />
+            <div className="form-group row">
+              <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
+                Company ID
+              </label>
+              <div className="col-sm-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "companyId")}
+                />
+              </div>
             </div>
-          </div>
-          <div className="form-group row">
-            <label htmlFor="address" className="col-sm-2 col-form-label">
-              Province
-            </label>
-            <div className="col-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "province")}
-              />
-            </div>
-            <label htmlFor="address">Zip code </label>
-            <div className="col-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "zipcode")}
-              />
-            </div>
-            <label htmlFor="address">Country</label>
-            <div className="col-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "country")}
-              />
-            </div>
-          </div>
-          <div className="form-group row">
-            <label htmlFor="phone" className="col-sm-2 col-form-label">
-              Fax Number
-            </label>
-            <div className="col-2">
-              <InputField
-                takeinput={this.handleinputchange.bind(this, "faxNumber")}
-              />
+            <div className="form-group row">
+              <label htmlFor="address" className="col-sm-2 col-form-label">
+                Street Number
+              </label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "streetNumber")}
+                />
+              </div>
+              <label htmlFor="address">Street Name</label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "streetName")}
+                />
+              </div>
+              <label htmlFor="address">City</label>
+              <div className="col-2">
+                <InputField
+                  takeinput={this.handleinputchange.bind(this, "city")}
+                />
+              </div>
             </div>
             <label htmlFor="phone">Cell Number</label>
             <div className="col-2">
               <InputField
-                takeinput={this.handleinputchange.bind(this, "cellNumber")}
+                takeinput={this.handleinputchange.bind(this, "cellPhoneNumber")}
               />
             </div>
             <label htmlFor="phone">Work phone</label>
             <div className="col-2">
               <InputField
-                takeinput={this.handleinputchange.bind(this, "workPhone")}
+                takeinput={this.handleinputchange.bind(this, "workPhoneNumber")}
               />
             </div>
-          </div>
-          <br />
-          <br />
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={this.handleSubmit.bind(this)}
-          >
-            Submit
-          </button>
-        </form>
+            <br />
+            <br />
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={this.handleSubmit.bind(this)}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
