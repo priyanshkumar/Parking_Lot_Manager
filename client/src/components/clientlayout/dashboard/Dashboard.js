@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Zone from "../zone/Zone";
+import Navbar from "../navbar/Navbar";
+import Modal from "./zone/Modal";
+
 
 class Dashboard extends Component {
   state = {
@@ -63,6 +65,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
+        <Navbar />
         <div className="full-spread d-flex justify-content-center align-items-center">
           <div className="container">
             {/* Top form begins here */}
@@ -96,36 +99,42 @@ class Dashboard extends Component {
               </div>
             </div>
             {/* Spots arrangement */}
+
+            <Modal spot={this.state.Spots1} id={"spot1"} />
+            <Modal spot={this.state.Spots2} id={"spot2"} />
+            <Modal spot={this.state.Spots3} id={"spot3"} />
+
             <div className="row border border-light bg-light rounded p-3 mb-5">
-              <div className="d-flex flex-wrap col-lg-4 col-sm-12 mb-5">
-                {this.state.Spots1.map(spot => (
-                  <Zone
-                    key={spot.id}
-                    spot={spot.spot}
-                    color={spot.isAllocated ? "secondary" : "primary"}
-                    status={spot.isAllocated ? "disabled" : null}
-                  />
-                ))}
+
+              <div className="d-flex flex-wrap justify-content-between col-4">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#spot1"
+                >
+                  Spot 1
+                </button>
               </div>
-              <div className="d-flex flex-wrap col-lg-4 col-sm-12 mb-5">
-                {this.state.Spots2.map(spot => (
-                  <Zone
-                    key={spot.id}
-                    spot={spot.spot}
-                    color={spot.isAllocated ? "secondary" : "success"}
-                    status={spot.isAllocated ? "disabled" : null}
-                  />
-                ))}
+              <div className="d-flex flex-wrap justify-content-between col-4">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#spot2"
+                >
+                  Spot 2
+                </button>
               </div>
-              <div className="d-flex flex-wrap col-lg-4 col-sm-12 mb-5">
-                {this.state.Spots3.map(spot => (
-                  <Zone
-                    key={spot.id}
-                    spot={spot.spot}
-                    color={spot.isAllocated ? "secondary disabled" : "danger"}
-                    status={spot.isAllocated ? "disabled" : null}
-                  />
-                ))}
+              <div className="d-flex flex-wrap justify-content-between col-4">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#spot3"
+                >
+                  Spot 3
+                </button>
               </div>
             </div>
           </div>

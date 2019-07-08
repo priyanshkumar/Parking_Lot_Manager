@@ -1,42 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import logo from "./logo.png";
+import "./navbar.css";
 
 function Navbar() {
   return (
-    <nav className="navbar fixed-top navbar-dark bg-dark mb-5">
-      <div className="container">
-        <div className="">
+    <nav className="navbar sticky-top d-flex justify-content-around px-5">
+      <div className="logo">
+        <a href="/">
           <img src={logo} alt="" />
-        </div>
-        <div className="">
-          <ul className="navbar-nav text-light d-flex flex-row">
-            <div className="dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-              >
-                <i className="fas fa-user" />
-              </button>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <Link className="dropdown-item" to="/">
-                  Home
-                </Link>
-                <Link className="dropdown-item" to="/login">
-                  Log in
-                </Link>
-                <Link className="dropdown-item" to="/signup">
-                  Sign up
-                </Link>
-              </div>
-            </div>
-          </ul>
-        </div>
+        </a>
+      </div>
+      <div className="links">
+        <ul className="d-flex align-items-center justify-content-center p-0 m-0">
+          <li className="px-3">Login</li>
+          <li className="px-3">Login</li>
+          <li className="px-3">
+            <a href="/login">Login</a>
+          </li>
+          <li className="px-3">
+            <a href="/signup" className="btn btn-outline-primary button">
+              Get Started
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   );

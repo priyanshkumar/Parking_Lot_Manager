@@ -50,5 +50,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  Customer.associate = models => {
+    Customer.hasMany(models.ParkingSpot);
+  };
+
   return Customer;
 };
