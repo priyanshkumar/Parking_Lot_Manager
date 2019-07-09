@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "../navbar/Navbar";
-import Modal from "./zone/Modal";
+import Modal from "./zoneCard/zone/Modal";
 import Selected from "./selected/Selected";
 import ZoneCard from "./zoneCard/ZoneCard";
 
@@ -101,26 +101,28 @@ class Dashboard extends Component {
         <Navbar />
         <div className="mt-5 container">
           {/* Top form begins here */}
-          <div className="px-5">
-            <div className="row">
-              <div className="col-12">
-                <h1>Selected</h1>
+          {this.state.Selected && (
+            <div className="px-5">
+              <div className="row">
+                <div className="col-12">
+                  <h1>Selected</h1>
+                </div>
+              </div>
+              <hr />
+              <div className="row mb-2">
+                <div className="col">
+                  {this.state.Selected.map(select => (
+                    <Selected id={select.id} spot={select.spot} />
+                  ))}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <button className="btn btn-primary">CHECKOUT</button>
+                </div>
               </div>
             </div>
-            <hr />
-            <div className="row mb-2">
-              <div className="col">
-                {this.state.Selected.map(select => (
-                  <Selected id={select.id} spot={select.spot} />
-                ))}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col">
-                <button className="btn btn-primary">CHECKOUT</button>
-              </div>
-            </div>
-          </div>
+          )}
 
           {/* Spots arrangement */}
 
