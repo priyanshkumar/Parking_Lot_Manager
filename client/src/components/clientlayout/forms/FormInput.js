@@ -1,5 +1,7 @@
 import React from "react";
 import InputField from "./InputField";
+import "./Form.css";
+
 import axios from "axios";
 export default class FormInput extends React.Component {
   constructor(props) {
@@ -19,14 +21,14 @@ export default class FormInput extends React.Component {
       workPhoneNumber: ""
     };
   }
-
-  handleinputchange(name, value) {
+  handleinputchange = (name, value) => {
     var toSet = {};
     toSet[name] = value;
     this.setState(toSet);
-  }
-  handleSubmit(event) {
-    event.preventDefault();
+  };
+  handleSubmit = event => {
+    // event.preventDefault();
+    console.log(this.state);
     axios
       .post("/api/createCustomer", this.state)
       .then(response => {
@@ -35,141 +37,158 @@ export default class FormInput extends React.Component {
       .catch(err => {
         console.log(err);
       });
-  }
+  };
   render() {
     return (
-      <div>
-        <div className="container">
-          <form>
-            <br />
-            <br />
+      <div className="formApplication">
+        <form>
+          <br />
+          <br />
+          <div className="form-group row">
+            <label htmlFor="Name" className="col-sm-2 col-form-label">
+              Company Name
+            </label>
+            <div className="col-sm-10">
+              <InputField
+                takeinput={value =>
+                  this.handleinputchange("companyName", value)
+                }
+                required={true}
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <label htmlFor="OwnerName" className="col-sm-2 col-form-label">
+              Owner Name
+            </label>
+            <div className="col-sm-10">
+              <InputField
+                takeinput={value =>
+                  this.handleinputchange("companyPointOfContact", value)
+                }
+                required={true}
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
+              Company ID
+            </label>
+            <div className="col-sm-10">
+              <InputField
+                takeinput={value => this.handleinputchange("companyID", value)}
+                type="number"
+                required={true}
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <label htmlFor="street-no" className="col-sm-2 col-form-label">
+              Street Number
+            </label>
+            <div className="col-2">
+              <InputField
+                takeinput={value =>
+                  this.handleinputchange("streetNumber", value)
+                }
+                required={true}
+              />
+            </div>
+            <label htmlFor="street-name">Street Name</label>
+            <div className="col-2">
+              <InputField
+                takeinput={value => this.handleinputchange("streetName", value)}
+                required={true}
+              />
+            </div>
+            <label htmlFor="city">City</label>
+            <div className="col-2">
+              <InputField
+                takeinput={value => this.handleinputchange("city", value)}
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <label htmlFor="province" className="col-sm-2 col-form-label">
+              Province
+            </label>
+            <div className="col-2">
+              <select
+                onChange={event =>
+                  this.handleinputchange("province", event.target.value)
+                }
+              >
+                <option value="">Choose...</option>
+                <option value="ON">Ontario</option>
+                <option value="MB">Manitoba</option>
+                <option value="QC">Quebec</option>
+                <option value="AB">Alberta</option>
+                <option value="BC">British columbia</option>
+                <option value="NB">New Brunswick</option>
+                <option value="NL">Newfoundland and Labrador</option>
+                <option value="NS">Nova Scotia</option>
+                <option value="SK">Saskatchewan</option>
+                <option value="PE">Prince Edward Island</option>
+              </select>
+            </div>
 
-            <div className="form-group row">
-              <label htmlFor="Name" className="col-md-2 col-form-label">
-                Company Name
-              </label>
-              <div className="col-md-10">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "companyName")}
-                />
-              </div>
-            </div>
-            <div className="form-group row">
-              <label htmlFor="OwnerName" className="col-sm-2 col-form-label">
-                Owner Name
-              </label>
-              <div className="col-sm-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(
-                    this,
-                    "companyPointOfContact"
-                  )}
-                />
-              </div>
-            </div>
-            <div className="form-group row">
-              <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
-                Company ID
-              </label>
-              <div className="col-sm-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "companyID")}
-                />
-              </div>
-            </div>
-            <div className="form-group row">
-              <label htmlFor="address" className="col-sm-2 col-form-label">
-                Street Number
-              </label>
-              <div className="col-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "streetNumber")}
-                />
-              </div>
-              <label htmlFor="address">Street Name</label>
-              <div className="col-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "streetName")}
-                />
-              </div>
-              <label htmlFor="address">City</label>
-              <div className="col-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "city")}
-                />
-              </div>
-            </div>
-            <div className="form-group row">
-              <label htmlFor="address" className="col-sm-2 col-form-label">
-                Province
-              </label>
-              <div className="col-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "province")}
-                />
-              </div>
-              <label htmlFor="address">Zip code </label>
-              <div className="col-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "zipcode")}
-                />
-              </div>
-            </div>
-            <div className="form-group row">
-              <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
-                Company ID
-              </label>
-              <div className="col-sm-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "companyId")}
-                />
-              </div>
-            </div>
-            <div className="form-group row">
-              <label htmlFor="address" className="col-sm-2 col-form-label">
-                Street Number
-              </label>
-              <div className="col-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "streetNumber")}
-                />
-              </div>
-              <label htmlFor="address">Street Name</label>
-              <div className="col-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "streetName")}
-                />
-              </div>
-              <label htmlFor="address">City</label>
-              <div className="col-2">
-                <InputField
-                  takeinput={this.handleinputchange.bind(this, "city")}
-                />
-              </div>
-            </div>
-            <label htmlFor="phone">Cell Number</label>
+            <label htmlFor="zip">Zip code</label>
             <div className="col-2">
               <InputField
-                takeinput={this.handleinputchange.bind(this, "cellPhoneNumber")}
+                takeinput={value => this.handleinputchange("zipcode", value)}
               />
             </div>
-            <label htmlFor="phone">Work phone</label>
+
+            <label htmlFor="country">Country</label>
+            <div className="col-2">
+              <select
+                onChange={event =>
+                  this.handleinputchange("country", event.target.value)
+                }
+              >
+                <option>Canada</option>
+              </select>
+            </div>
+          </div>
+          <div className="form-group row">
+            <label htmlFor="fax" className="col-sm-2 col-form-label">
+              Fax Number
+            </label>
             <div className="col-2">
               <InputField
-                takeinput={this.handleinputchange.bind(this, "workPhoneNumber")}
+                takeinput={value => this.handleinputchange("faxNumber", value)}
+                type="number"
               />
             </div>
-            <br />
-            <br />
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={this.handleSubmit.bind(this)}
-            >
-              Submit
-            </button>
-          </form>
-        </div>
+            <label htmlFor="cell">Cell Number</label>
+            <div className="col-2">
+              <InputField
+                takeinput={value =>
+                  this.handleinputchange("cellPhoneNumber", value)
+                }
+                type="number"
+                required={true}
+              />
+            </div>
+            <label htmlFor="work-no">Work phone</label>
+            <div className="col-2">
+              <InputField
+                takeinput={value =>
+                  this.handleinputchange("workPhoneNumber", value)
+                }
+                type="number"
+              />
+            </div>
+          </div>
+          <br />
+          <br />
+          <input
+            type="submit"
+            className="btn btn-primary"
+            onClick={this.handleSubmit}
+            value="Submit"
+          />
+        </form>
       </div>
     );
   }

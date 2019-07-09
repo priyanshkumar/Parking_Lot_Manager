@@ -1,17 +1,19 @@
 import React from "react";
 export default class InputField extends React.Component {
-  OnEnter(event) {
+  OnEnter = event => {
     this.props.takeinput(event.target.value);
-  }
+  };
   render() {
     return (
       <div>
         <div>{this.props.name}</div>
         <div>
           <input
-            type="text"
+            type={this.props.type ? this.props.type : "text"}
             placeholder={" "}
-            onChange={this.OnEnter.bind(this)}
+            onChange={this.OnEnter}
+            className="form-control"
+            required={this.props.required}
           />
         </div>
       </div>
