@@ -54,5 +54,13 @@ module.exports = (sequelize, DataTypes) => {
     Customer.hasMany(models.ParkingSpot);
   };
 
+  Customer.associate = models => {
+    Customer.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return Customer;
 };
