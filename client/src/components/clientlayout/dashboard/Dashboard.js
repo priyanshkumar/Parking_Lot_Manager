@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Navbar from "../navbar/Navbar";
 import Modal from "./zone/Modal";
-
+import Selected from "./selected/Selected";
+import ZoneCard from "./zoneCard/ZoneCard";
 
 class Dashboard extends Component {
   state = {
@@ -59,84 +60,87 @@ class Dashboard extends Component {
       { id: "14", spot: "S14", isAllocated: false },
       { id: "15", spot: "S15", isAllocated: false },
       { id: "16", spot: "S16", isAllocated: false }
+    ],
+    Selected: [
+      {
+        id: "1",
+        spot: "S10"
+      }
     ]
   };
 
+  zones = [
+    {
+      title: "Parking A",
+      price: "200$",
+      subTitle: "Cars Only",
+      content:
+        "With supporting text below as a natural lead-in to additional content.",
+      buttonID: "#spot1"
+    },
+    {
+      title: "Parking B",
+      price: "400$",
+      subTitle: "Trucks Only",
+      content:
+        "With supporting text below as a natural lead-in to additional content.",
+      buttonID: "#spot2"
+    },
+    {
+      title: "Parking c",
+      price: "500$",
+      subTitle: "Trailors Only",
+      content:
+        "With supporting text below as a natural lead-in to additional content.",
+      buttonID: "#spot3"
+    }
+  ];
   render() {
     return (
       <div>
         <Navbar />
-        <div className="full-spread d-flex justify-content-center align-items-center">
-          <div className="container">
-            {/* Top form begins here */}
-            <div className="">
-              <div className="d-flex justify-content-center row border border-light p-5 mb-5 w-100 bg-light rounded">
-                <form action="">
-                  <div className="form-group text-center font-weight-bold">
-                    <label htmlFor="name">PARKING SPOTS SELECTED</label>
-                    <input
-                      className="form-control d-inline"
-                      type="text"
-                      id="selectedSpots"
-                      placeholder=""
-                    />
-                  </div>
-                  <div className="d-flex justify-content-center">
-                    <button
-                      className="btn btn-warning d-inline mx-2"
-                      type="submit"
-                    >
-                      CLEAR SELECTION
-                    </button>
-                    <button
-                      className="btn btn-success d-inline mx-2"
-                      type="submit"
-                    >
-                      BOOK MY SPOTS
-                    </button>
-                  </div>
-                </form>
+        <div className="mt-5 container">
+          {/* Top form begins here */}
+          <div className="px-5">
+            <div className="row">
+              <div className="col-12">
+                <h1>Selected</h1>
               </div>
             </div>
-            {/* Spots arrangement */}
-
-            <Modal spot={this.state.Spots1} id={"spot1"} />
-            <Modal spot={this.state.Spots2} id={"spot2"} />
-            <Modal spot={this.state.Spots3} id={"spot3"} />
-
-            <div className="row border border-light bg-light rounded p-3 mb-5">
-
-              <div className="d-flex flex-wrap justify-content-between col-4">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  data-toggle="modal"
-                  data-target="#spot1"
-                >
-                  Spot 1
-                </button>
-              </div>
-              <div className="d-flex flex-wrap justify-content-between col-4">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  data-toggle="modal"
-                  data-target="#spot2"
-                >
-                  Spot 2
-                </button>
-              </div>
-              <div className="d-flex flex-wrap justify-content-between col-4">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  data-toggle="modal"
-                  data-target="#spot3"
-                >
-                  Spot 3
-                </button>
+            <hr />
+            <div className="row mb-2">
+              <div className="col">
+                {this.state.Selected.map(select => (
+                  <Selected id={select.id} spot={select.spot} />
+                ))}
               </div>
             </div>
+            <div className="row">
+              <div className="col">
+                <button className="btn btn-primary">CHECKOUT</button>
+              </div>
+            </div>
+          </div>
+
+          {/* Spots arrangement */}
+
+          {/* <button
+                type="button"
+                className="btn btn-primary"
+                data-toggle="modal"
+                data-target="#spot1"
+              >
+                Spot 1
+              </button> */}
+
+          <Modal spot={this.state.Spots1} id={"spot1"} />
+          <Modal spot={this.state.Spots2} id={"spot2"} />
+          <Modal spot={this.state.Spots3} id={"spot3"} />
+
+          <div className="row my-5">
+            {this.zones.map(zone => (
+              <ZoneCard data={zone} />
+            ))}
           </div>
         </div>
       </div>

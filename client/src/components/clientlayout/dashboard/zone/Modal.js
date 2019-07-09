@@ -27,7 +27,7 @@ function Modal({ spot, id }) {
             </button>
           </div>
           <div className="modal-body display-flex">
-            {spot.map(spot => (
+            {spot.map(spot => ( 
               <Spot
                 key={spot.id}
                 spot={spot.spot}
