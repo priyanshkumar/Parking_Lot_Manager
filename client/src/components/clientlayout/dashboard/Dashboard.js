@@ -6,12 +6,10 @@ import ZoneCard from "./zoneCard/ZoneCard";
 
 class Dashboard extends Component {
   state = {
-    Selected: [
-      {
-        spot: "S10"
-      }
-    ]
+    Selected: [],
+    tmpSelected: []
   };
+
   zonesSpot = {
     Spots1: [
       { id: "1", spot: "P1", isAllocated: false, isPending: false },
@@ -88,7 +86,7 @@ class Dashboard extends Component {
       buttonID: "#Spots2"
     },
     {
-      title: "Parking c",
+      title: "Parking C",
       price: "500$",
       subTitle: "Trailors Only",
       content:
@@ -113,18 +111,17 @@ class Dashboard extends Component {
     } else if (zone === "Spots3") {
       this.filterCall(this.zonesSpot.Spots3, spot);
     }
-
-    this.setState({
-      Selected: this.state.Selected.concat({ spot })
-    });
+    this.setState({ tmpSelected: this.state.tmpSelected.concat({ spot }) });
   };
+
   render() {
     return (
       <div>
         <Navbar />
         <div className="mt-5 container">
+          
           {/* Top form begins here */}
-          {this.state.Selected && (
+          {this.state.Selected[0] && (
             <div className="px-5">
               <div className="row">
                 <div className="col-12">
@@ -148,7 +145,6 @@ class Dashboard extends Component {
           )}
 
           {/* Spots arrangement */}
-
           <Modal
             spot={this.zonesSpot.Spots1}
             id={"Spots1"}
