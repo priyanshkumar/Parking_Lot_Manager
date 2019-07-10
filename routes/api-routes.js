@@ -12,14 +12,10 @@ module.exports = app => {
       });
   });
 
-  app.get("/api/getProfile/:profileId", (req, res) => {
-    db.User.findOne({ where: { profileId: req.params.profileId } }).then(
-      userResults => {
-        db.Customer.findOne({ where: { userId: userResults.id } }).then(
-          profileResults => {
-            res.json(profileResults);
-          }
-        );
+  app.get("/api/getProfile/:userId", (req, res) => {
+    db.Customer.findOne({ where: { userId: req.params.userId } }).then(
+      profileResults => {
+        res.json(profileResults);
       }
     );
   });
