@@ -2,7 +2,6 @@ const db = require("../models");
 
 module.exports = app => {
   app.post("/api/createProfile", (req, res) => {
-    console.log("Inside Create Customer post method");
     db.Customer.create(req.body)
       .then(results => {
         res.json(results);
@@ -23,7 +22,6 @@ module.exports = app => {
   });
 
   app.get("/api/getParkingSpots", (req, res) => {
-    console.log("Inside get route for parking spots");
     db.ParkingSpot.findAll({})
       .then(parkingSpots => {
         res.status(200).json(parkingSpots);
