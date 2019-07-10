@@ -44,7 +44,7 @@ class Dashboard extends Component {
       { id: "16", spot: "R16", isAllocated: false }
     ],
     Spots3: [
-      { id: "1", spot: "S1", isAllocated: false },
+      { id: "1", spot: "S1", isAllocated: false, isPending: false },
       { id: "2", spot: "S2", isAllocated: false },
       { id: "3", spot: "S3", isAllocated: false },
       { id: "4", spot: "S4", isAllocated: true },
@@ -63,7 +63,6 @@ class Dashboard extends Component {
     ],
     Selected: [
       {
-        id: "1",
         spot: "S10"
       }
     ]
@@ -95,6 +94,18 @@ class Dashboard extends Component {
       buttonID: "#spot3"
     }
   ];
+
+  spotClick = (spot, zone) => {
+    if (zone === "Spots1") {
+      var newArr = zone.filter((ele, index) => {
+        return ele.spot == spot;
+      });
+      this.setState({});
+    }
+    this.setState({
+      Selected: this.state.Selected.concat({ spot })
+    });
+  };
   render() {
     return (
       <div>
@@ -112,7 +123,7 @@ class Dashboard extends Component {
               <div className="row mb-2">
                 <div className="col">
                   {this.state.Selected.map(select => (
-                    <Selected id={select.id} spot={select.spot} />
+                    <Selected spot={select.spot} key={select.spot} />
                   ))}
                 </div>
               </div>
@@ -126,22 +137,25 @@ class Dashboard extends Component {
 
           {/* Spots arrangement */}
 
-          {/* <button
-                type="button"
-                className="btn btn-primary"
-                data-toggle="modal"
-                data-target="#spot1"
-              >
-                Spot 1
-              </button> */}
-
-          <Modal spot={this.state.Spots1} id={"spot1"} />
-          <Modal spot={this.state.Spots2} id={"spot2"} />
-          <Modal spot={this.state.Spots3} id={"spot3"} />
+          <Modal
+            spot={this.state.Spots1}
+            id={"Spots1"}
+            spotClick={this.spotClick}
+          />
+          <Modal
+            spot={this.state.Spots2}
+            id={"Spots2"}
+            spotClick={this.spotClick}
+          />
+          <Modal
+            spot={this.state.Spots3}
+            id={"Spots3"}
+            spotClick={this.spotClick}
+          />
 
           <div className="row my-5">
             {this.zones.map(zone => (
-              <ZoneCard data={zone} />
+              <ZoneCard data={zone} key={zone.title} />
             ))}
           </div>
         </div>
