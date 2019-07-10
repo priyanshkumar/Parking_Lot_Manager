@@ -10,5 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  User.associate = models => {
+    User.hasOne(models.Customer);
+  };
+
   return User;
 };

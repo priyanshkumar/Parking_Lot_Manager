@@ -1,7 +1,7 @@
 const db = require("../models");
 
 module.exports = app => {
-  app.post("/api/createCustomer", (req, res) => {
+  app.post("/api/createProfile", (req, res) => {
     console.log("Inside Create Customer post method");
     db.Customer.create(req.body)
       .then(results => {
@@ -10,6 +10,14 @@ module.exports = app => {
       .catch(error => {
         res.status(500).json(error);
       });
+  });
+
+  app.get("/api/getProfile/:userId", (req, res) => {
+    db.Customer.findOne({ where: { userId: req.params.userId } }).then(
+      profileResults => {
+        res.json(profileResults);
+      }
+    );
   });
 
   app.get("/api/getParkingSpots", (req, res) => {
