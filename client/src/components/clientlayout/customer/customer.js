@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./customer.css";
 export default class Customer extends React.Component {
   constructor(props) {
     super(props);
@@ -47,13 +48,13 @@ export default class Customer extends React.Component {
               </td>
             </tr>
             <tr>
-              <th>City , ZipCode</th>
+              <th>City, ZipCode</th>
               <td>
                 {this.state.customerData.city},{this.state.customerData.zipcode}
               </td>
             </tr>
             <tr>
-              <th>Province,Country</th>
+              <th>Province, Country</th>
               <td>
                 {this.state.customerData.province},
                 {this.state.customerData.country}
