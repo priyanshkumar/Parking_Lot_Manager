@@ -1,12 +1,12 @@
 import React from "react";
 import Spot from "./Spot";
 
-function Modal({ spot, id }) {
+function Modal({ spot, id, spotClick }) {
   return (
     <div
       className="modal fade"
       id={id}
-      tabindex="-1"
+      tabIndex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -27,19 +27,22 @@ function Modal({ spot, id }) {
             </button>
           </div>
           <div className="modal-body display-flex">
-            {spot.map(spot => ( 
+            {spot.map(spot => (
               <Spot
                 key={spot.id}
+                id={spot.id}
+                zoneid={id}
                 spot={spot.spot}
                 color={spot.isAllocated ? "secondary" : "primary"}
                 status={spot.isAllocated && "disabled"}
+                spotClick={spotClick}
               />
             ))}
           </div>
           <div className="modal-footer">
             <button
               type="button"
-              classNameName="btn btn-secondary"
+              className="btn btn-secondary"
               data-dismiss="modal"
             >
               Close
