@@ -6,65 +6,67 @@ import ZoneCard from "./zoneCard/ZoneCard";
 
 class Dashboard extends Component {
   state = {
-    Spots1: [
-      { id: "1", spot: "P1", isAllocated: false },
-      { id: "2", spot: "P2", isAllocated: false },
-      { id: "3", spot: "P3", isAllocated: false },
-      { id: "4", spot: "P4", isAllocated: false },
-      { id: "5", spot: "P5", isAllocated: false },
-      { id: "6", spot: "P6", isAllocated: false },
-      { id: "7", spot: "P7", isAllocated: false },
-      { id: "8", spot: "P8", isAllocated: false },
-      { id: "9", spot: "P9", isAllocated: true },
-      { id: "10", spot: "P10", isAllocated: true },
-      { id: "11", spot: "P11", isAllocated: false },
-      { id: "12", spot: "P12", isAllocated: false },
-      { id: "13", spot: "P13", isAllocated: true },
-      { id: "14", spot: "P14", isAllocated: false },
-      { id: "15", spot: "P15", isAllocated: false },
-      { id: "16", spot: "P16", isAllocated: false }
-    ],
-
-    Spots2: [
-      { id: "1", spot: "R1", isAllocated: false },
-      { id: "2", spot: "R2", isAllocated: false },
-      { id: "3", spot: "R3", isAllocated: false },
-      { id: "4", spot: "R4", isAllocated: false },
-      { id: "5", spot: "R5", isAllocated: false },
-      { id: "6", spot: "R6", isAllocated: true },
-      { id: "7", spot: "R7", isAllocated: true },
-      { id: "8", spot: "R8", isAllocated: true },
-      { id: "9", spot: "R9", isAllocated: true },
-      { id: "10", spot: "R10", isAllocated: false },
-      { id: "11", spot: "R11", isAllocated: false },
-      { id: "12", spot: "R12", isAllocated: false },
-      { id: "13", spot: "R13", isAllocated: true },
-      { id: "14", spot: "R14", isAllocated: false },
-      { id: "15", spot: "R15", isAllocated: false },
-      { id: "16", spot: "R16", isAllocated: false }
-    ],
-    Spots3: [
-      { id: "1", spot: "S1", isAllocated: false, isPending: false },
-      { id: "2", spot: "S2", isAllocated: false },
-      { id: "3", spot: "S3", isAllocated: false },
-      { id: "4", spot: "S4", isAllocated: true },
-      { id: "5", spot: "S5", isAllocated: true },
-      { id: "6", spot: "S6", isAllocated: true },
-      { id: "7", spot: "S7", isAllocated: false },
-      { id: "8", spot: "S8", isAllocated: false },
-      { id: "9", spot: "S9", isAllocated: false },
-      { id: "10", spot: "S10", isAllocated: false },
-      { id: "11", spot: "S11", isAllocated: false },
-      { id: "12", spot: "S12", isAllocated: true },
-      { id: "13", spot: "S13", isAllocated: true },
-      { id: "14", spot: "S14", isAllocated: false },
-      { id: "15", spot: "S15", isAllocated: false },
-      { id: "16", spot: "S16", isAllocated: false }
-    ],
     Selected: [
       {
         spot: "S10"
       }
+    ]
+  };
+  zonesSpot = {
+    Spots1: [
+      { id: "1", spot: "P1", isAllocated: false, isPending: false },
+      { id: "2", spot: "P2", isAllocated: false, isPending: false },
+      { id: "3", spot: "P3", isAllocated: false, isPending: false },
+      { id: "4", spot: "P4", isAllocated: false, isPending: false },
+      { id: "5", spot: "P5", isAllocated: false, isPending: false },
+      { id: "6", spot: "P6", isAllocated: false, isPending: false },
+      { id: "7", spot: "P7", isAllocated: false, isPending: false },
+      { id: "8", spot: "P8", isAllocated: false, isPending: false },
+      { id: "9", spot: "P9", isAllocated: true, isPending: false },
+      { id: "10", spot: "P10", isAllocated: true, isPending: false },
+      { id: "11", spot: "P11", isAllocated: false, isPending: false },
+      { id: "12", spot: "P12", isAllocated: false, isPending: false },
+      { id: "13", spot: "P13", isAllocated: true, isPending: false },
+      { id: "14", spot: "P14", isAllocated: false, isPending: false },
+      { id: "15", spot: "P15", isAllocated: false, isPending: false },
+      { id: "16", spot: "P16", isAllocated: false, isPending: false }
+    ],
+
+    Spots2: [
+      { id: "1", spot: "R1", isAllocated: false, isPending: false },
+      { id: "2", spot: "R2", isAllocated: false, isPending: false },
+      { id: "3", spot: "R3", isAllocated: false, isPending: false },
+      { id: "4", spot: "R4", isAllocated: false, isPending: false },
+      { id: "5", spot: "R5", isAllocated: false, isPending: false },
+      { id: "6", spot: "R6", isAllocated: true, isPending: false },
+      { id: "7", spot: "R7", isAllocated: true, isPending: false },
+      { id: "8", spot: "R8", isAllocated: true, isPending: false },
+      { id: "9", spot: "R9", isAllocated: true, isPending: false },
+      { id: "10", spot: "R10", isAllocated: false, isPending: false },
+      { id: "11", spot: "R11", isAllocated: false, isPending: false },
+      { id: "12", spot: "R12", isAllocated: false, isPending: false },
+      { id: "13", spot: "R13", isAllocated: true, isPending: false },
+      { id: "14", spot: "R14", isAllocated: false, isPending: false },
+      { id: "15", spot: "R15", isAllocated: false, isPending: false },
+      { id: "16", spot: "R16", isAllocated: false, isPending: false }
+    ],
+    Spots3: [
+      { id: "1", spot: "S1", isAllocated: false, isPending: false },
+      { id: "2", spot: "S2", isAllocated: false, isPending: false },
+      { id: "3", spot: "S3", isAllocated: false, isPending: false },
+      { id: "4", spot: "S4", isAllocated: true, isPending: false },
+      { id: "5", spot: "S5", isAllocated: true, isPending: false },
+      { id: "6", spot: "S6", isAllocated: true, isPending: false },
+      { id: "7", spot: "S7", isAllocated: false, isPending: false },
+      { id: "8", spot: "S8", isAllocated: false, isPending: false },
+      { id: "9", spot: "S9", isAllocated: false, isPending: false },
+      { id: "10", spot: "S10", isAllocated: false, isPending: false },
+      { id: "11", spot: "S11", isAllocated: false, isPending: false },
+      { id: "12", spot: "S12", isAllocated: true, isPending: false },
+      { id: "13", spot: "S13", isAllocated: true, isPending: false },
+      { id: "14", spot: "S14", isAllocated: false, isPending: false },
+      { id: "15", spot: "S15", isAllocated: false, isPending: false },
+      { id: "16", spot: "S16", isAllocated: false, isPending: false }
     ]
   };
 
@@ -75,7 +77,7 @@ class Dashboard extends Component {
       subTitle: "Cars Only",
       content:
         "With supporting text below as a natural lead-in to additional content.",
-      buttonID: "#spot1"
+      buttonID: "#Spots1"
     },
     {
       title: "Parking B",
@@ -83,7 +85,7 @@ class Dashboard extends Component {
       subTitle: "Trucks Only",
       content:
         "With supporting text below as a natural lead-in to additional content.",
-      buttonID: "#spot2"
+      buttonID: "#Spots2"
     },
     {
       title: "Parking c",
@@ -91,17 +93,27 @@ class Dashboard extends Component {
       subTitle: "Trailors Only",
       content:
         "With supporting text below as a natural lead-in to additional content.",
-      buttonID: "#spot3"
+      buttonID: "#Spots3"
     }
   ];
 
+  filterCall = (zoneCall, spot) => {
+    let index = zoneCall.findIndex(ele => {
+      return ele.spot === spot;
+    });
+    zoneCall[index].isPending = true;
+    console.log(zoneCall[index]);
+  };
+
   spotClick = (spot, zone) => {
     if (zone === "Spots1") {
-      var newArr = zone.filter((ele, index) => {
-        return ele.spot == spot;
-      });
-      this.setState({});
+      this.filterCall(this.zonesSpot.Spots1, spot);
+    } else if (zone === "Spots2") {
+      this.filterCall(this.zonesSpot.Spots2, spot);
+    } else if (zone === "Spots3") {
+      this.filterCall(this.zonesSpot.Spots3, spot);
     }
+
     this.setState({
       Selected: this.state.Selected.concat({ spot })
     });
@@ -121,7 +133,7 @@ class Dashboard extends Component {
               </div>
               <hr />
               <div className="row mb-2">
-                <div className="col">
+                <div className="col-12 d-flex">
                   {this.state.Selected.map(select => (
                     <Selected spot={select.spot} key={select.spot} />
                   ))}
@@ -138,17 +150,17 @@ class Dashboard extends Component {
           {/* Spots arrangement */}
 
           <Modal
-            spot={this.state.Spots1}
+            spot={this.zonesSpot.Spots1}
             id={"Spots1"}
             spotClick={this.spotClick}
           />
           <Modal
-            spot={this.state.Spots2}
+            spot={this.zonesSpot.Spots2}
             id={"Spots2"}
             spotClick={this.spotClick}
           />
           <Modal
-            spot={this.state.Spots3}
+            spot={this.zonesSpot.Spots3}
             id={"Spots3"}
             spotClick={this.spotClick}
           />

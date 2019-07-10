@@ -33,8 +33,17 @@ function Modal({ spot, id, spotClick }) {
                 id={spot.id}
                 zoneid={id}
                 spot={spot.spot}
-                color={spot.isAllocated ? "secondary" : "primary"}
-                status={spot.isAllocated && "disabled"}
+                color={
+                  spot.isAllocated
+                    ? "secondary"
+                    : spot.isPending
+                    ? "success"
+                    : "primary"
+                }
+                status={
+                  (spot.isAllocated && "disabled") ||
+                  (spot.isPending && "disabled")
+                }
                 spotClick={spotClick}
               />
             ))}
