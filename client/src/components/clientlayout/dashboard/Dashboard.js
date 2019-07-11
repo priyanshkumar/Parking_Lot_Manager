@@ -95,23 +95,53 @@ class Dashboard extends Component {
     }
   ];
 
-  filterCall = (zoneCall, spot) => {
+  filterCall = (zoneCall, spot, update) => {
     let index = zoneCall.findIndex(ele => {
       return ele.spot === spot;
     });
-    zoneCall[index].isPending = true;
-    console.log(zoneCall[index]);
+    zoneCall[index].isPending = update;
+    // console.log(zoneCall[index]);
   };
 
   spotClick = (spot, zone) => {
     if (zone === "Spots1") {
-      this.filterCall(this.zonesSpot.Spots1, spot);
+      this.filterCall(this.zonesSpot.Spots1, spot, true);
     } else if (zone === "Spots2") {
-      this.filterCall(this.zonesSpot.Spots2, spot);
+      this.filterCall(this.zonesSpot.Spots2, spot, true);
     } else if (zone === "Spots3") {
-      this.filterCall(this.zonesSpot.Spots3, spot);
+      this.filterCall(this.zonesSpot.Spots3, spot, true);
     }
     this.setState({ tmpSelected: this.state.tmpSelected.concat({ spot }) });
+  };
+
+  selectModalClick = () => {
+    this.state.tmpSelected.map(spot => {
+      console.log(spot);
+      this.setState({
+        Selected: this.state.Selected.concat(spot)
+      });
+      return "done";
+    });
+
+    this.setState({
+      tmpSelected: []
+    });
+  };
+
+  closeModalClick = zone => {
+    this.state.tmpSelected.map(spot => {
+      if (zone === "Spots1") {
+        this.filterCall(this.zonesSpot.Spots1, spot.spot, false);
+      } else if (zone === "Spots2") {
+        this.filterCall(this.zonesSpot.Spots2, spot.spot, false);
+      } else if (zone === "Spots3") {
+        this.filterCall(this.zonesSpot.Spots3, spot.spot, false);
+      }
+      return "done";
+    });
+    this.setState({
+      tmpSelected: []
+    });
   };
 
   render() {
@@ -119,7 +149,6 @@ class Dashboard extends Component {
       <div>
         <Navbar />
         <div className="mt-5 container">
-          
           {/* Top form begins here */}
           {this.state.Selected[0] && (
             <div className="px-5">
@@ -149,16 +178,22 @@ class Dashboard extends Component {
             spot={this.zonesSpot.Spots1}
             id={"Spots1"}
             spotClick={this.spotClick}
+            selectModal={this.selectModalClick}
+            closeModal={this.closeModalClick}
           />
           <Modal
             spot={this.zonesSpot.Spots2}
             id={"Spots2"}
             spotClick={this.spotClick}
+            selectModal={this.selectModalClick}
+            closeModal={this.closeModalClick}
           />
           <Modal
             spot={this.zonesSpot.Spots3}
             id={"Spots3"}
             spotClick={this.spotClick}
+            selectModal={this.selectModalClick}
+            closeModal={this.closeModalClick}
           />
 
           <div className="row my-5">

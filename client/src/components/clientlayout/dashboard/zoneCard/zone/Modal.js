@@ -1,7 +1,7 @@
 import React from "react";
 import Spot from "./Spot";
 
-function Modal({ spot, id, spotClick }) {
+function Modal({ spot, id, spotClick, selectModal, closeModal }) {
   return (
     <div
       className="modal fade"
@@ -55,10 +55,20 @@ function Modal({ spot, id, spotClick }) {
               type="button"
               className="btn btn-secondary"
               data-dismiss="modal"
+              onClick={() => {
+                closeModal(id);
+              }}
             >
               Close
             </button>
-            <button type="button" className="btn btn-primary">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => {
+                selectModal();
+              }}
+              data-dismiss="modal"
+            >
               Save changes
             </button>
           </div>
