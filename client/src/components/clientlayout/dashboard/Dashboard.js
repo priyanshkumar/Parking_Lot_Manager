@@ -115,12 +115,8 @@ class Dashboard extends Component {
   };
 
   selectModalClick = () => {
-    this.state.tmpSelected.map(spot => {
-      console.log(spot);
-      this.setState({
-        Selected: this.state.Selected.concat(spot)
-      });
-      return "done";
+    this.setState({
+      Selected: this.state.Selected.concat(this.state.tmpSelected)
     });
 
     this.setState({
