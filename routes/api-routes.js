@@ -27,6 +27,7 @@ module.exports = app => {
         res.status(200).json(parkingSpots);
       })
       .catch(error => {
+        console.log(error);
         res.status(500).json(error);
       });
   });

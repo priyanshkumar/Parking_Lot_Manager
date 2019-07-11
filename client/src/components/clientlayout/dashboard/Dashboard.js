@@ -3,12 +3,24 @@ import Navbar from "../navbar/Navbar";
 import Modal from "./zoneCard/zone/Modal";
 import Selected from "./selected/Selected";
 import ZoneCard from "./zoneCard/ZoneCard";
+import axios from "axios";
 
 class Dashboard extends Component {
   state = {
     Selected: [],
     tmpSelected: []
   };
+
+  componentDidMount() {
+    axios
+      .get("/api/getParkingSpots")
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   zonesSpot = {
     Spots1: [
