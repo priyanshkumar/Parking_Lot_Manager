@@ -4,9 +4,11 @@ import MainPage from "../clientlayout/mainpage/MainPage";
 import Login from "../clientlayout/login/Login";
 import Signup from "../clientlayout/signup/Signup";
 import Dashboard from "../clientlayout/dashboard/Dashboard";
+import Terms from "../clientlayout/terms/Terms";
 
 import "./App.css";
 import ParkingApplication from "../clientlayout/forms/ParkingApplication";
+import Customer from "../clientlayout/customer/customer";
 
 class App extends Component {
   render() {
@@ -17,6 +19,8 @@ class App extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/form" component={ParkingApplication} />
+        <Route exact path="/customer" component={Customer} />
+        <Route exact path="/terms" component={Terms} />
       </Router>
     );
   }
