@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       default: false
     },
+    isPendingApproval: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false
+    },
     spotPrice: {
       type: DataTypes.DOUBLE,
       allowNull: false
