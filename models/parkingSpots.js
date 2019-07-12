@@ -20,11 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   ParkingSpot.associate = models => {
-    ParkingSpot.belongsTo(models.Customer, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    ParkingSpot.belongsTo(models.Customer);
   };
 
   return ParkingSpot;
