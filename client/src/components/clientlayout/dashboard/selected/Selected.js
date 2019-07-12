@@ -1,9 +1,9 @@
 import React from "react";
 
-function Selected({ id }) {
+function Selected({ spot }) {
   return (
     <div>
-      <button className="btn btn-primary">{id}</button>
+      <button className="mx-2 btn btn-primary">{spot}</button>
     </div>
   );
 }
