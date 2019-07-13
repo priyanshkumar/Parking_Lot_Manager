@@ -51,7 +51,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Customer.associate = models => {
-    Customer.hasMany(models.ParkingSpot);
+    Customer.hasMany(models.ParkingSpot, {
+      foreignKey: "CustomerId"
+    });
   };
 
   Customer.associate = models => {
