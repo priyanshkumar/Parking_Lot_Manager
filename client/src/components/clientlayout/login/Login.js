@@ -1,7 +1,6 @@
 import React from "react";
 import "./Login.css";
 import "bootstrap-social";
-
 import Navbar from "../navbar/Navbar";
 
 class MainPage extends React.Component {
@@ -13,9 +12,16 @@ class MainPage extends React.Component {
           <div className="btn-group-vertical">
             <a
               className="btn btn-block btn-social btn-google"
-              href="/auth/google/"
+              href="http://localhost:3001/auth/google"
             >
               <span className="fab fa-google" /> Sign in with Google
+            </a>
+
+            <a
+              className="btn btn-block btn-social btn-github"
+              href="http://localhost:3001/auth/github"
+            >
+              <span className="fab fa-github" /> Sign in with Github
             </a>
           </div>
         </div>
