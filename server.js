@@ -31,7 +31,7 @@ require("./routes/api-routes")(app);
 const authRoutes = require("./routes/auth-routes");
 app.use("/auth/", authRoutes);
 
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: false, alter: true }).then(() => {
   app.listen(PORT, () => {
     console.log("App listening on PORT " + PORT);
   });

@@ -25,7 +25,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   ParkingSpot.associate = models => {
-    ParkingSpot.belongsTo(models.Customer);
+    ParkingSpot.belongsTo(models.Customer, {
+      foreignKey: "CustomerId"
+    });
   };
 
   return ParkingSpot;
