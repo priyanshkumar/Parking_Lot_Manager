@@ -1,7 +1,6 @@
 import React from "react";
 import "./Login.css";
 import "bootstrap-social";
-import axios from "axios";
 import Navbar from "../navbar/Navbar";
 
 class MainPage extends React.Component {
@@ -16,6 +15,13 @@ class MainPage extends React.Component {
               href="http://localhost:3001/auth/google"
             >
               <span className="fab fa-google" /> Sign in with Google
+            </a>
+
+            <a
+              className="btn btn-block btn-social btn-github"
+              href="http://localhost:3001/auth/github"
+            >
+              <span className="fab fa-github" /> Sign in with Github
             </a>
           </div>
         </div>

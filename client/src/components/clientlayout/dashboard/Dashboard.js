@@ -8,10 +8,12 @@ import axios from "axios";
 class Dashboard extends Component {
   state = {
     Selected: [],
-    tmpSelected: []
+    tmpSelected: [],
+    user: {}
   };
 
   componentDidMount() {
+    //this.setState.user = res.user;
     axios
       .get("/api/getParkingSpots")
       .then(result => {
