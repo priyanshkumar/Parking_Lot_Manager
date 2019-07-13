@@ -4,6 +4,7 @@ import Modal from "./zoneCard/zone/Modal";
 import Selected from "./selected/Selected";
 import ZoneCard from "./zoneCard/ZoneCard";
 import axios from "axios";
+import Parkingmap from "./parking-lot-map.jpg";
 
 class Dashboard extends Component {
   state = {
@@ -43,10 +44,26 @@ class Dashboard extends Component {
       content:
         "With supporting text below as a natural lead-in to additional content.",
       buttonID: "#C"
+    },
+    {
+      title: "Parking D",
+      price: "500$",
+      subTitle: "Trucks with Trailors",
+      content:
+        "With supporting text below as a natural lead-in to additional content.",
+      buttonID: "#D"
+    },
+    {
+      title: "Parking E",
+      price: "500$",
+      subTitle: "Others",
+      content:
+        "With supporting text below as a natural lead-in to additional content.",
+      buttonID: "#E"
     }
   ];
 
-  populetZone = array => {
+  populateZone = array => {
     array.data.map(obj => {
       // console.log(obj.spotZone);
       obj.isSpotAllocated = false;
@@ -73,7 +90,7 @@ class Dashboard extends Component {
       .get("/api/getParkingSpots")
       .then(result => {
         console.log(result.data);
-        this.populetZone(result);
+        this.populateZone(result);
       })
       .catch(err => {
         console.log(err);
@@ -139,6 +156,10 @@ class Dashboard extends Component {
     return (
       <div>
         <Navbar />
+        <div className="container d-flex justify-content-center">
+          <img className="w-75 mt-5" src={Parkingmap} alt="" />
+        </div>
+
         <div className="mt-5 container">
           {/* Top form begins here */}
           {this.state.Selected[0] && (
