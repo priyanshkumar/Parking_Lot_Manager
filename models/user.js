@@ -7,6 +7,14 @@ module.exports = (sequelize, DataTypes) => {
     displayName: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      default: false
+    },
+    emailId: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 

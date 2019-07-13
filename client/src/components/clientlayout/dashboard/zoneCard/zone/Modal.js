@@ -34,7 +34,7 @@ function Modal({ spot, id, spotClick, selectModal, closeModal }) {
                 key={spot.id}
                 id={spot.id}
                 zoneid={id}
-                spot={spot.spot}
+                spot={spot}
                 color={
                   spot.isAllocated
                     ? "secondary"
@@ -43,7 +43,7 @@ function Modal({ spot, id, spotClick, selectModal, closeModal }) {
                     : "primary"
                 }
                 status={
-                  (spot.isAllocated && "disabled") ||
+                  (spot.isSpotAllocated && "disabled") ||
                   (spot.isPending && "disabled")
                 }
                 spotClick={spotClick}
