@@ -18,7 +18,7 @@ router.post("/createProfile", (req, res) => {
     });
 });
 
-app.get("/api/getProfile/:userId", (req, res) => {
+router.get("/api/getProfile/:userId", (req, res) => {
   db.Customer.findOne({
     where: { UserId: req.params.userId },
     include: [db.ParkingSpot]
@@ -32,7 +32,7 @@ app.get("/api/getProfile/:userId", (req, res) => {
     });
 });
 
-app.get("/api/getParkingSpots", (req, res) => {
+router.get("/api/getParkingSpots", (req, res) => {
   db.ParkingSpot.findAll({
     include: [db.Customer]
   })
@@ -44,3 +44,5 @@ app.get("/api/getParkingSpots", (req, res) => {
       res.status(500).json(error);
     });
 });
+
+module.exports = router;
