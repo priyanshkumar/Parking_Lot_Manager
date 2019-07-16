@@ -1,17 +1,19 @@
 import React from "react";
 import Spot from "./Spot";
 
-function Modal({ spot, id }) {
+function Modal({ spot, id, spotClick, selectModal, closeModal }) {
   return (
     <div
       className="modal fade"
       id={id}
-      tabindex="-1"
+      tabIndex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
+      data-backdrop="static"
+      data-keyboard="false"
     >
-      <div className="modal-dialog" role="document">
+      <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
@@ -27,24 +29,46 @@ function Modal({ spot, id }) {
             </button>
           </div>
           <div className="modal-body display-flex">
-            {spot.map(spot => ( 
+            {spot.map(spot => (
               <Spot
                 key={spot.id}
-                spot={spot.spot}
-                color={spot.isAllocated ? "secondary" : "primary"}
-                status={spot.isAllocated && "disabled"}
+                id={spot.id}
+                zoneid={id}
+                spot={spot}
+                color={
+                  spot.isAllocated
+                    ? "secondary"
+                    : spot.isPending
+                    ? "success"
+                    : "primary"
+                }
+                status={
+                  (spot.isSpotAllocated && "disabled") ||
+                  (spot.isPending && "disabled")
+                }
+                spotClick={spotClick}
               />
             ))}
           </div>
           <div className="modal-footer">
             <button
               type="button"
-              classNameName="btn btn-secondary"
+              className="btn btn-secondary"
               data-dismiss="modal"
+              onClick={() => {
+                closeModal(id);
+              }}
             >
               Close
             </button>
-            <button type="button" className="btn btn-primary">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => {
+                selectModal();
+              }}
+              data-dismiss="modal"
+            >
               Save changes
             </button>
           </div>

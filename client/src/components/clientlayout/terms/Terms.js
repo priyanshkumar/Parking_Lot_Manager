@@ -88,6 +88,7 @@ export default class Terms extends React.Component {
             Province of Ontario
           </p>
         </div>
+
         <div className="form-check" id="termsCheck">
           <input
             className="form-check-input"
@@ -108,7 +109,7 @@ export default class Terms extends React.Component {
           onClick={this.props.handleSubmit}
           disabled={this.state.accepted === false}
           value="Submit"
-        />
+
       </div>
     );
   }

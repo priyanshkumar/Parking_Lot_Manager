@@ -2,6 +2,8 @@ import React from "react";
 import InputField from "./InputField";
 import Terms from "../terms/Terms";
 import "./Form.css";
+import Terms from "../terms/Terms";
+
 import axios from "axios";
 
 export default class FormInput extends React.Component {
@@ -19,9 +21,13 @@ export default class FormInput extends React.Component {
       country: "",
       faxNumber: "",
       cellPhoneNumber: "",
-      workPhoneNumber: ""
+      workPhoneNumber: "",
+      //added to check form submission
+      checkSubmit: true,
+      isChecked: false
     };
   }
+
   handleinputchange = (name, value) => {
     var toSet = {};
     toSet[name] = value;
@@ -30,14 +36,30 @@ export default class FormInput extends React.Component {
   handleSubmit = event => {
     // event.preventDefault();
     console.log(this.state);
-    axios
-      .post("/api/createProfile", this.state)
-      .then(response => {
+    axios.post("/api/createProfile", this.state).then(response => {
         console.log(response);
       })
       .catch(err => {
         console.log(err);
       });
+  };
+
+
+  agreementCheckbox = event => {
+    //to check state of agreement checkbox
+    //and adjust submit button
+
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
+    this.setState({ isChecked: value });
+
+    if (!this.state.isChecked) {
+      this.setState({ checkSubmit: false });
+    } else {
+      this.setState({ checkSubmit: true });
+    }
   };
 
   render() {
@@ -184,6 +206,23 @@ export default class FormInput extends React.Component {
           </div>
           <br />
           <br />
+
+          <Terms />
+          <input
+            type="checkbox"
+            name="isChecked"
+            checked={this.state.isChecked}
+            onChange={this.agreementCheckbox}
+          />
+          <label>I accept the terms and agreements</label>
+          <input
+            type="submit"
+            className="btn btn-primary"
+            onClick={this.handleSubmit}
+            value="Submit"
+            disabled={this.state.checkSubmit}
+          />
+
         </form>
         <Terms handleSubmit={this.handleSubmit} />
       </div>

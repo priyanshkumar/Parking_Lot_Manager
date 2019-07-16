@@ -1,10 +1,18 @@
 module.exports = (sequelize, DataTypes) => {
-  var User = sequelize.define("User", {
+  let User = sequelize.define("User", {
     profileID: {
       type: DataTypes.STRING,
       allowNull: false
     },
     displayName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      default: false
+    },
+    emailId: {
       type: DataTypes.STRING,
       allowNull: false
     }

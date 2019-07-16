@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var ParkingSpot = sequelize.define("ParkingSpot", {
+  let ParkingSpot = sequelize.define("ParkingSpot", {
     spotName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       default: false
     },
+    isPendingApproval: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false
+    },
     spotPrice: {
       type: DataTypes.DOUBLE,
       allowNull: false
@@ -20,11 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   ParkingSpot.associate = models => {
-    ParkingSpot.belongsTo(models.Customer, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    ParkingSpot.belongsTo(models.Customer);
   };
 
   return ParkingSpot;

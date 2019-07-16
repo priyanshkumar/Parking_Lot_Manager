@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Customer = sequelize.define("Customer", {
+  let Customer = sequelize.define("Customer", {
     companyName: {
       type: DataTypes.STRING,
       allowNull: false
