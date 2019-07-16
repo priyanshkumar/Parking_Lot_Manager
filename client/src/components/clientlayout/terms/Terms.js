@@ -1,7 +1,15 @@
 import React from "react";
 import "./terms.css";
+import axios from "axios";
 
 export default class Terms extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      accepted: false
+    };
+  }
+
   render() {
     return (
       <div>
@@ -101,6 +109,28 @@ export default class Terms extends React.Component {
             </li>
           </ol>
         </div>
+
+        <div className="form-check" id="termsCheck">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="termsCheckBox"
+            onChange={e => {
+              this.setState({ accepted: e.target.checked });
+            }}
+          />
+          <label className="form-check-label" htmlFor="termsCheckBox">
+            Accept Terms and Conditions
+          </label>
+        </div>
+        <br />
+        <input
+          type="submit"
+          className="btn btn-primary"
+          onClick={this.props.handleSubmit}
+          disabled={this.state.accepted === false}
+          value="Submit"
+        />
       </div>
     );
   }
