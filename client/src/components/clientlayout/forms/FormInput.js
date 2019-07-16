@@ -4,6 +4,7 @@ import "./Form.css";
 import Terms from "../terms/Terms";
 
 import axios from "axios";
+
 export default class FormInput extends React.Component {
   constructor(props) {
     super(props);
@@ -31,11 +32,13 @@ export default class FormInput extends React.Component {
     toSet[name] = value;
     this.setState(toSet);
   };
+
   handleSubmit = event => {
     // event.preventDefault();
+    console.log();
     console.log(this.state);
     axios
-      .post("http://localhost:3001/api/createCustomer", this.state)
+      .post("http://localhost:3001/api/createProfile", this.state)
       .then(response => {
         console.log(response);
       })
@@ -63,7 +66,7 @@ export default class FormInput extends React.Component {
 
   render() {
     return (
-      <div className="formApplication">
+      <div className="formApplication container">
         <form>
           <br />
           <br />

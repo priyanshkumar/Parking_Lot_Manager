@@ -4,14 +4,20 @@ const router = require("express").Router();
 router.post("/createProfile", (req, res) => {
   db.User.create({
     profileID: req.user.id,
-    displayName: req.user.displayName
-  }).then(newuser => {
-    console.log(newuser);
-  });
-
-  db.Customer.create(req.body)
-    .then(results => {
+    displayName: req.user.displayName,
+    emailId: req.user.email
+  })
+    .then(newuser => {
+      console.log(newuser);
       res.json(results);
+      db.Customer.create(req.body)
+        .then(results => {
+          res.json(results);
+        })
+        .catch(error => {
+          res.status(500).json(error);
+        });
+      res.redirect("http://localhost:3000/dashboard");
     })
     .catch(error => {
       res.status(500).json(error);
