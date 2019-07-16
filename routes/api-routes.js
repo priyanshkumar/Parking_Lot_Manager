@@ -14,10 +14,20 @@ module.exports = app => {
   app.get("/api/getProfile/:userId", (req, res) => {
     db.Customer.findOne({
       where: { UserId: req.params.userId },
-      include: [db.ParkingSpot]
+      raw: true
     })
       .then(profileResults => {
-        res.status(200).json(profileResults);
+        db.ParkingSpot.findAll({
+          where: { CustomerId: profileResults.id },
+          raw: true
+        })
+          .then(parkingSpots => {
+            profileResults.parkingSpots = parkingSpots;
+            res.status(200).json(profileResults);
+          })
+          .catch(error => {
+            res.status(500).json(error);
+          });
       })
       .catch(error => {
         console.log(error);

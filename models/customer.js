@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Customer = sequelize.define("Customer", {
+  let Customer = sequelize.define("Customer", {
     companyName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -51,9 +51,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Customer.associate = models => {
-    Customer.hasMany(models.ParkingSpot, {
-      foreignKey: "CustomerId"
-    });
+    Customer.hasMany(models.ParkingSpot);
   };
 
   Customer.associate = models => {
