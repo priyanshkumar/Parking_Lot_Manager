@@ -20,6 +20,16 @@ module.exports = app => {
     );
   });
 
+  app.post("/api/updateProfile/:userId", (req, res) => {
+    db.Customer.findOne({ where: { userId: req.params.userId } })
+      .then(profile => {
+        return profile.update(req.body);
+      })
+      .then(() => {
+        res.json({ success: 1 });
+      });
+  });
+
   app.get("/api/getParkingSpots", (req, res) => {
     console.log("Inside get route for parking spots");
     db.ParkingSpot.findAll({})
