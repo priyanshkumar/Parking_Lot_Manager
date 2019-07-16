@@ -50,7 +50,8 @@ router.get("/api/getProfile/:userId", (req, res) => {
 
 router.get("/api/getParkingSpots", (req, res) => {
   db.ParkingSpot.findAll({
-    include: [db.Customer]
+    include: [db.Customer],
+    raw: true
   })
     .then(parkingSpots => {
       res.status(200).json(parkingSpots);
