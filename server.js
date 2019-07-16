@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes);
 
-db.sequelize.sync({ force: false, alter: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log("App listening on PORT " + PORT);
   });
