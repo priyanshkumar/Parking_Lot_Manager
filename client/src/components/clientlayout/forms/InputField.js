@@ -11,6 +11,7 @@ export default class InputField extends React.Component {
           <input
             type={this.props.type ? this.props.type : "text"}
             placeholder={" "}
+            defaultValue={this.props.value ? this.props.value : ""}
             onChange={this.OnEnter}
             className="form-control"
             required={this.props.required}
