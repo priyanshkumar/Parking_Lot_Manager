@@ -80,12 +80,6 @@ export default class Terms extends React.Component {
             Province of Ontario
           </p>
         </div>
-        <input
-          type="submit"
-          className="btn btn-primary"
-          onClick={this.handleSubmit}
-          value="Accept"
-        />
       </div>
     );
   }

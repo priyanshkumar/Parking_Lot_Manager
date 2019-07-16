@@ -9,7 +9,8 @@ import Parkingmap from "./parking-lot-map.jpg";
 class Dashboard extends Component {
   state = {
     Selected: [],
-    tmpSelected: []
+    tmpSelected: [],
+    user: {}
   };
 
   zonesSpot = {

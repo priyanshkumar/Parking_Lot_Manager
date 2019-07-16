@@ -3,6 +3,7 @@ const db = require("./models");
 const passportConfig = require("./config/passportConfig");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const routes = require("./routes");
 
 const PORT = process.env.PORT || 3001;
 
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(
   cookieSession({
     maxAge: 900000,
-    keys: ["somesecret"]
+    keys: [process.env.cookie_keys]
   })
 );
 
@@ -25,11 +26,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-require("./routes/api-routes")(app);
-// require("./routes/html-routes")(app);
-//auth routes
-const authRoutes = require("./routes/auth-routes");
-app.use("/auth/", authRoutes);
+app.use(routes);
 
 db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
