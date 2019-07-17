@@ -2,8 +2,6 @@ import React from "react";
 import InputField from "./InputField";
 import Terms from "../terms/Terms";
 import "./Form.css";
-import Terms from "../terms/Terms";
-
 import axios from "axios";
 
 export default class FormInput extends React.Component {
@@ -33,17 +31,20 @@ export default class FormInput extends React.Component {
     toSet[name] = value;
     this.setState(toSet);
   };
+
   handleSubmit = event => {
     // event.preventDefault();
+    console.log();
     console.log(this.state);
-    axios.post("/api/createProfile", this.state).then(response => {
+    axios
+      .post("http://localhost:3001/api/createProfile", this.state)
+      .then(response => {
         console.log(response);
       })
       .catch(err => {
         console.log(err);
       });
   };
-
 
   agreementCheckbox = event => {
     //to check state of agreement checkbox
@@ -64,7 +65,7 @@ export default class FormInput extends React.Component {
 
   render() {
     return (
-      <div className="formApplication">
+      <div className="formApplication container">
         <form>
           <br />
           <br />
@@ -206,23 +207,6 @@ export default class FormInput extends React.Component {
           </div>
           <br />
           <br />
-
-          <Terms />
-          <input
-            type="checkbox"
-            name="isChecked"
-            checked={this.state.isChecked}
-            onChange={this.agreementCheckbox}
-          />
-          <label>I accept the terms and agreements</label>
-          <input
-            type="submit"
-            className="btn btn-primary"
-            onClick={this.handleSubmit}
-            value="Submit"
-            disabled={this.state.checkSubmit}
-          />
-
         </form>
         <Terms handleSubmit={this.handleSubmit} />
       </div>
