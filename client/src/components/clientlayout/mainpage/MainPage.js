@@ -6,23 +6,19 @@ import Navbar from "../navbar/Navbar";
 function MainPage() {
   return (
     <div>
-      <div className="hero-image d-flex flex-column justify-content-start align-items-start">
-        <div className="content p-5">          
-        <h1>Welcome</h1>
-        <h4>Parking Lot Manager</h4>
-        </div>
-      </div>
       <Navbar />
-      <div className="container maintext border rounded p-4 my-5">
-        <h1 className="text-center display-3 ">Parking Lot Manager</h1>
-        <p className="text-center">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-          accusantium explicabo expedita numquam provident doloribus ipsum!
-          Doloribus, est deserunt? Dolore voluptatibus a perferendis facere
-          repellat magnam, deserunt sapiente, quaerat voluptates maiores optio
-          aut repellendus aliquid, cupiditate voluptas soluta obcaecati
-          pariatur?
-        </p>
+      <div className="hero-image d-flex flex-column justify-content-start align-items-start">
+        <div className="content w-25 p-5 text-center">
+          <h2>Welcome</h2>
+          <p className="text-white bg-dark p-3 maintext rounded">
+            Our parking lot manages over 600 spots in a convenient location in
+            Brampton. If you park regularly at the same location, our discounted
+            monthly parking rates may be right for you.
+            <a href="/signup" className="btn btn-success button btn-block mt-2">
+              Get Started
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

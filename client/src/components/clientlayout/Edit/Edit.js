@@ -1,71 +1,45 @@
 import React from "react";
-import InputField from "./InputField";
-import Terms from "../terms/Terms";
-import "./Form.css";
+import InputField from "../forms/InputField";
 import axios from "axios";
 
-export default class FormInput extends React.Component {
+export default class Edit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      companyName: "",
-      companyPointOfContact: "",
-      companyID: "",
-      streetNumber: "",
-      streetName: "",
-      city: "",
-      province: "",
-      zipcode: "",
-      country: "",
-      faxNumber: "",
-      cellPhoneNumber: "",
-      workPhoneNumber: "",
-      //added to check form submission
-      checkSubmit: true,
-      isChecked: false
+      companyName: props.customerData.companyName || "",
+      companyPointOfContact: props.customerData.companyPointOfContact || "",
+      companyID: props.customerData.companyID || "",
+      streetNumber: props.customerData.streetNumber || "",
+      streetName: props.customerData.streetName || "",
+      city: props.customerData.city || "",
+      province: props.customerData.province || "",
+      zipcode: props.customerData.zipcode || "",
+      country: props.customerData.country || "",
+      faxNumber: props.customerData.faxNumber || "",
+      cellPhoneNumber: props.customerData.cellPhoneNumber || "",
+      workPhoneNumber: props.customerData.workPhoneNumber || ""
     };
   }
-
   handleinputchange = (name, value) => {
     var toSet = {};
     toSet[name] = value;
     this.setState(toSet);
   };
-
   handleSubmit = event => {
     // event.preventDefault();
-    console.log();
     console.log(this.state);
-    axios
-      .post("http://localhost:3001/api/createProfile", this.state)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // axios
+    //   .post("/api/updateProfile/" + this.props.userId, this.state)
+    //   .then(response => {
+    //     console.log(response);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   };
-
-  agreementCheckbox = event => {
-    //to check state of agreement checkbox
-    //and adjust submit button
-
-    const value =
-      event.target.type === "checkbox"
-        ? event.target.checked
-        : event.target.value;
-    this.setState({ isChecked: value });
-
-    if (!this.state.isChecked) {
-      this.setState({ checkSubmit: false });
-    } else {
-      this.setState({ checkSubmit: true });
-    }
-  };
-
   render() {
     return (
-      <div className="formApplication container">
+      <div className="formApplication">
         <form>
           <br />
           <br />
@@ -79,6 +53,7 @@ export default class FormInput extends React.Component {
                   this.handleinputchange("companyName", value)
                 }
                 required={true}
+                value={this.state.companyName}
               />
             </div>
           </div>
@@ -92,6 +67,7 @@ export default class FormInput extends React.Component {
                   this.handleinputchange("companyPointOfContact", value)
                 }
                 required={true}
+                value={this.state.companyPointOfContact}
               />
             </div>
           </div>
@@ -104,6 +80,7 @@ export default class FormInput extends React.Component {
                 takeinput={value => this.handleinputchange("companyID", value)}
                 type="number"
                 required={true}
+                value={this.state.companyID}
               />
             </div>
           </div>
@@ -117,6 +94,7 @@ export default class FormInput extends React.Component {
                   this.handleinputchange("streetNumber", value)
                 }
                 required={true}
+                value={this.state.streetNumber}
               />
             </div>
             <label htmlFor="street-name">Street Name</label>
@@ -124,12 +102,14 @@ export default class FormInput extends React.Component {
               <InputField
                 takeinput={value => this.handleinputchange("streetName", value)}
                 required={true}
+                value={this.state.streetName}
               />
             </div>
             <label htmlFor="city">City</label>
             <div className="col-2">
               <InputField
                 takeinput={value => this.handleinputchange("city", value)}
+                value={this.state.city}
               />
             </div>
           </div>
@@ -143,7 +123,7 @@ export default class FormInput extends React.Component {
                   this.handleinputchange("province", event.target.value)
                 }
               >
-                <option value="">Choose...</option>
+                <option value={this.state.province}>Choose...</option>
                 <option value="ON">Ontario</option>
                 <option value="MB">Manitoba</option>
                 <option value="QC">Quebec</option>
@@ -171,7 +151,7 @@ export default class FormInput extends React.Component {
                   this.handleinputchange("country", event.target.value)
                 }
               >
-                <option>Canada</option>
+                <option value={this.state.country}>Canada</option>
               </select>
             </div>
           </div>
@@ -183,6 +163,7 @@ export default class FormInput extends React.Component {
               <InputField
                 takeinput={value => this.handleinputchange("faxNumber", value)}
                 type="number"
+                value={this.state.faxNumber}
               />
             </div>
             <label htmlFor="cell">Cell Number</label>
@@ -193,6 +174,7 @@ export default class FormInput extends React.Component {
                 }
                 type="number"
                 required={true}
+                value={this.state.cellPhoneNumber}
               />
             </div>
             <label htmlFor="work-no">Work phone</label>
@@ -202,13 +184,19 @@ export default class FormInput extends React.Component {
                   this.handleinputchange("workPhoneNumber", value)
                 }
                 type="number"
+                value={this.state.workPhoneNumber}
               />
             </div>
           </div>
           <br />
           <br />
+          <input
+            type="submit"
+            className="btn btn-primary"
+            onClick={this.handleSubmit}
+            value="Submit"
+          />
         </form>
-        <Terms handleSubmit={this.handleSubmit} />
       </div>
     );
   }

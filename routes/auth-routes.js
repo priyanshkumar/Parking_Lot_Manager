@@ -21,20 +21,25 @@ router.get(
 router.get(
   "/redirect",
   passport.authenticate("google", {
-    //successRedirect: "http://localhost:3000/form",
+    //successRedirect: "http://localhost:3000/dashboard",
     failureRedirect: "http://localhost:3000/login"
   }),
   (req, res) => {
-    console.log(req.user.id);
+    console.log(req.user);
     //check if user
     db.User.findOne({ where: { profileID: req.user.id } }).then(user => {
-      console.log(user);
+      const data = req.user._json;
       if (user) {
         console.log("User already in db");
-        res.redirect("http://localhost:3000/dashboard");
+        res.redirect(`http://localhost:3000/dashboard/`);
       } else {
-        res.redirect("http://localhost:3000/form");
-        return req.user;
+        db.User.create({
+          profileID: data.sub,
+          emailId: data.email,
+          displayName: data.name
+        }).then(user => {
+          res.redirect(`http://localhost:3000/dashboard/`);
+        });
       }
     });
   }
@@ -46,20 +51,27 @@ router.get("/github", passport.authenticate("github"));
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    // successRedirect: "http://localhost:3000/form",
+    // successRedirect: "http://localhost:3000/dashboard",
     failureRedirect: "http://localhost:3000/login"
   }),
   (req, res) => {
-    //res.send(console.log("checking" + req.profile));
     console.log(req.user);
+
     //find if user exists
     db.User.findOne({ where: { profileID: req.user.id } }).then(user => {
+      const data = req.user._json;
       if (user) {
         console.log("User already in db");
-        res.redirect("http://localhost:3000/dashboard");
+        res.redirect(`http://localhost:3000/dashboard/`);
       } else {
-        res.redirect("http://localhost:3000/form");
-        return req.user;
+        db.User.create({
+          profileID: data.id,
+          emailId: data.email,
+          displayName: data.name
+        }).then(user => {
+          res.json(user);
+          res.redirect(`http://localhost:3000/dashboard/`);
+        });
       }
     });
   }
