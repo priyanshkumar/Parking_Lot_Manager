@@ -10,22 +10,22 @@ router.post("/createProfile", (req, res) => {
   });
 });
 
+router.post("/api/updateProfile/:userId", (req, res) => {
+  db.Customer.findOne({ where: { userId: req.params.userId } })
+    .then(profile => {
+      return profile.update(req.body);
+    })
+    .then(() => {
+      res.json({ success: 1 });
+    });
+});
 
-  app.post("/api/updateProfile/:userId", (req, res) => {
-    db.Customer.findOne({ where: { userId: req.params.userId } })
-      .then(profile => {
-        return profile.update(req.body);
-      })
-      .then(() => {
-        res.json({ success: 1 });
-      });
+router.get("/api/getParkingSpots", (req, res) => {
+  console.log("Inside get route for parking spots");
+  db.ParkingSpot.findAll({}).then(parkingSpots => {
+    res.status(200).json(parkingSpots);
   });
-
-  app.get("/api/getParkingSpots", (req, res) => {
-    console.log("Inside get route for parking spots");
-    db.ParkingSpot.findAll({})
-      .then(parkingSpots => {
-        res.status(200).json(parkingSpots);
+});
 
 router.get("/api/getProfile/:userId", (req, res) => {
   db.Customer.findOne({
@@ -36,7 +36,6 @@ router.get("/api/getProfile/:userId", (req, res) => {
       db.ParkingSpot.findAll({
         where: { CustomerId: profileResults.id },
         raw: true
-
       })
         .then(parkingSpots => {
           profileResults.parkingSpots = parkingSpots;

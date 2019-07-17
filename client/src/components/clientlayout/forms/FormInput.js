@@ -2,8 +2,6 @@ import React from "react";
 import InputField from "./InputField";
 import Terms from "../terms/Terms";
 import "./Form.css";
-import Terms from "../terms/Terms";
-
 import axios from "axios";
 
 export default class FormInput extends React.Component {
@@ -209,22 +207,6 @@ export default class FormInput extends React.Component {
           </div>
           <br />
           <br />
-
-          <Terms />
-          <input
-            type="checkbox"
-            name="isChecked"
-            checked={this.state.isChecked}
-            onChange={this.agreementCheckbox}
-          />
-          <label>I accept the terms and agreements</label>
-          <input
-            type="submit"
-            className="btn btn-primary"
-            onClick={this.handleSubmit}
-            value="Submit"
-            disabled={this.state.checkSubmit}
-          />
         </form>
         <Terms handleSubmit={this.handleSubmit} />
       </div>
