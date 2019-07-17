@@ -1,27 +1,25 @@
 .hero-image {
   background-image: url("truckmain.jpg");
-  height: 100vh;
+  height: 90.4vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .maintext {
-  background-color: white;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
-.hero-image .content{
-  color:#fff;
+.hero-image .content {
+  color: #fff;
 }
 
-.hero-image .content h1{
-  font-family: Georgia, 'Times New Roman', Times, serif;
+.hero-image .content h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 4rem;
 }
 
-
-.hero-image .content h4{
+.hero-image .content h4 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2rem;
 }

@@ -12,8 +12,8 @@ function Navbar() {
       </div>
       <div className="links">
         <ul className="d-flex align-items-center justify-content-center p-0 m-0">
-          <li className="px-3">Login</li>
-          <li className="px-3">Login</li>
+          {/* <li className="px-3">Login</li>
+          <li className="px-3">Login</li> */}
           <li className="px-3">
             <a href="/login">Login</a>
           </li>
