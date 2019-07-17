@@ -2,29 +2,40 @@ const db = require("../models");
 const router = require("express").Router();
 
 router.post("/createProfile", (req, res) => {
+  console.log(req.body.user);
   db.User.create({
-    profileID: req.user.id,
-    displayName: req.user.displayName
-  }).then(newuser => {
-    console.log(newuser);
-  });
-});
-
-router.post("/api/updateProfile/:userId", (req, res) => {
-  db.Customer.findOne({ where: { userId: req.params.userId } })
-    .then(profile => {
-      return profile.update(req.body);
+    profileID: req.body.user.id,
+    displayName: req.body.user.displayName,
+    isAdmin: req.body.user.isAdmin,
+    emailId: req.body.user.emailId
+  })
+    .then(newUser => {
+      db.Customer.create({
+        companyName: req.body.profile.companyName,
+        companyPointOfContact: req.body.profile.companyPointOfContact,
+        companyID: req.body.profile.companyID,
+        streetNumber: req.body.profile.streetNumber,
+        streetName: req.body.profile.streetName,
+        city: req.body.profile.city,
+        province: req.body.profile.province,
+        zipcode: req.body.profile.zipcode,
+        country: req.body.profile.country,
+        faxNumber: req.body.profile.faxNumber,
+        cellPhoneNumber: req.body.profile.cellPhoneNumber,
+        workPhoneNumber: req.body.profile.workPhoneNumber,
+        UserId: newUser.dataValues.id
+      })
+        .then(newProfile => {
+          res.status(200).json(newProfile);
+        })
+        .catch(error => {
+          res.status(500).json(error);
+        });
     })
-    .then(() => {
-      res.json({ success: 1 });
+    .catch(error => {
+      console.log(error);
+      res.status(500).json(error);
     });
-});
-
-router.get("/api/getParkingSpots", (req, res) => {
-  console.log("Inside get route for parking spots");
-  db.ParkingSpot.findAll({}).then(parkingSpots => {
-    res.status(200).json(parkingSpots);
-  });
 });
 
 router.get("/api/getProfile/:userId", (req, res) => {
@@ -51,21 +62,7 @@ router.get("/api/getProfile/:userId", (req, res) => {
     });
 });
 
-// router.get("/api/getProfile/:userId", (req, res) => {
-//   db.Customer.findOne({
-//     where: { UserId: req.params.userId },
-//     include: [db.ParkingSpot]
-//   })
-//     .then(profileResults => {
-//       res.status(200).json(profileResults);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//       res.status(500).json(error);
-//     });
-// });
-
-router.get("/api/getParkingSpots", (req, res) => {
+router.get("/getParkingSpots", (req, res) => {
   db.ParkingSpot.findAll({
     include: [db.Customer],
     raw: true
