@@ -2,15 +2,43 @@ const db = require("../models");
 const router = require("express").Router();
 
 router.post("/createProfile", (req, res) => {
+  console.log(req.body.user);
   db.User.create({
-    profileID: req.user.id,
-    displayName: req.user.displayName
-  }).then(newuser => {
-    console.log(newuser);
-  });
+    profileID: req.body.user.id,
+    displayName: req.body.user.displayName,
+    isAdmin: req.body.user.isAdmin,
+    emailId: req.body.user.emailId
+  })
+    .then(newUser => {
+      db.Customer.create({
+        companyName: req.body.profile.companyName,
+        companyPointOfContact: req.body.profile.companyPointOfContact,
+        companyID: req.body.profile.companyID,
+        streetNumber: req.body.profile.streetNumber,
+        streetName: req.body.profile.streetName,
+        city: req.body.profile.city,
+        province: req.body.profile.province,
+        zipcode: req.body.profile.zipcode,
+        country: req.body.profile.country,
+        faxNumber: req.body.profile.faxNumber,
+        cellPhoneNumber: req.body.profile.cellPhoneNumber,
+        workPhoneNumber: req.body.profile.workPhoneNumber,
+        UserId: newUser.dataValues.id
+      })
+        .then(newProfile => {
+          res.status(200).json(newProfile);
+        })
+        .catch(error => {
+          res.status(500).json(error);
+        });
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json(error);
+    });
 });
 
-router.get("/api/getProfile/:userId", (req, res) => {
+router.get("/getProfile/:userId", (req, res) => {
   db.Customer.findOne({
     where: { UserId: req.params.userId },
     raw: true
@@ -48,7 +76,7 @@ router.get("/api/getProfile/:userId", (req, res) => {
 //     });
 // });
 
-router.get("/api/getParkingSpots", (req, res) => {
+router.get("/getParkingSpots", (req, res) => {
   db.ParkingSpot.findAll({
     include: [db.Customer],
     raw: true
