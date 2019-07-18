@@ -78,4 +78,36 @@ router.get("/getParkingSpots", (req, res) => {
     });
 });
 
+router.put("/updateProfile", (req, res) => {
+  const profileObj = req.body;
+
+  db.Customer.update(
+    {
+      companyName: profileObj.companyName,
+      companyPointOfContact: profileObj.companyPointOfContact,
+      companyID: profileObj.companyID,
+      streetNumber: profileObj.streetNumber,
+      streetName: profileObj.streetName,
+      city: profileObj.city,
+      province: profileObj.province,
+      zipcode: profileObj.zipcode,
+      country: profileObj.country,
+      faxNumber: profileObj.faxNumber,
+      cellPhoneNumber: profileObj.cellPhoneNumber,
+      workPhoneNumber: profileObj.workPhoneNumber
+    },
+    {
+      where: {
+        UserId: profileObj.UserId
+      }
+    }
+  )
+    .then(updatedProfile => {
+      res.status(200).json(updatedProfile);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+});
+
 module.exports = router;
