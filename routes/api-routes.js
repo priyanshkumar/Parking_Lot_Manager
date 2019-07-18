@@ -2,7 +2,6 @@ const db = require("../models");
 const router = require("express").Router();
 
 router.post("/createProfile", (req, res) => {
-  console.log(req.body.user);
   db.User.create({
     profileID: req.body.user.id,
     displayName: req.body.user.displayName,
@@ -38,7 +37,7 @@ router.post("/createProfile", (req, res) => {
     });
 });
 
-router.get("/api/getProfile/:userId", (req, res) => {
+router.get("/getProfile/:userId", (req, res) => {
   db.Customer.findOne({
     where: { UserId: req.params.userId },
     raw: true
