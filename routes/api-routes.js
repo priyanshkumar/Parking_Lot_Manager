@@ -6,25 +6,25 @@ router.post("/createProfile", (req, res) => {
   const profileObj = req.body.profile;
 
   db.User.create({
-    profileID: req.body.user.id,
-    displayName: req.body.user.displayName,
-    isAdmin: req.body.user.isAdmin,
-    emailId: req.body.user.emailId
+    profileID: userObj.id,
+    displayName: userObj.displayName,
+    isAdmin: userObj.isAdmin,
+    emailId: userObj.emailId
   })
     .then(newUser => {
       db.Customer.create({
-        companyName: req.body.profile.companyName,
-        companyPointOfContact: req.body.profile.companyPointOfContact,
-        companyID: req.body.profile.companyID,
-        streetNumber: req.body.profile.streetNumber,
-        streetName: req.body.profile.streetName,
-        city: req.body.profile.city,
-        province: req.body.profile.province,
-        zipcode: req.body.profile.zipcode,
-        country: req.body.profile.country,
-        faxNumber: req.body.profile.faxNumber,
-        cellPhoneNumber: req.body.profile.cellPhoneNumber,
-        workPhoneNumber: req.body.profile.workPhoneNumber,
+        companyName: profileObj.companyName,
+        companyPointOfContact: profileObj.companyPointOfContact,
+        companyID: profileObj.companyID,
+        streetNumber: profileObj.streetNumber,
+        streetName: profileObj.streetName,
+        city: profileObj.city,
+        province: profileObj.province,
+        zipcode: profileObj.zipcode,
+        country: profileObj.country,
+        faxNumber: profileObj.faxNumber,
+        cellPhoneNumber: profileObj.cellPhoneNumber,
+        workPhoneNumber: profileObj.workPhoneNumber,
         UserId: newUser.dataValues.id
       })
         .then(newProfile => {
