@@ -65,10 +65,11 @@ export default class FormInput extends React.Component {
 
   render() {
     return (
-      <div className="formApplication container">
+      <div className="formApplication container-fluid">
         <form>
           <br />
           <br />
+
           <div className="form-group row">
             <label htmlFor="Name" className="col-sm-2 col-form-label">
               Company Name
@@ -82,6 +83,7 @@ export default class FormInput extends React.Component {
               />
             </div>
           </div>
+
           <div className="form-group row">
             <label htmlFor="OwnerName" className="col-sm-2 col-form-label">
               Owner Name
@@ -95,6 +97,7 @@ export default class FormInput extends React.Component {
               />
             </div>
           </div>
+
           <div className="form-group row">
             <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
               Company ID
@@ -107,6 +110,7 @@ export default class FormInput extends React.Component {
               />
             </div>
           </div>
+
           <div className="form-group row">
             <label htmlFor="street-no" className="col-sm-2 col-form-label">
               Street Number
@@ -133,6 +137,7 @@ export default class FormInput extends React.Component {
               />
             </div>
           </div>
+
           <div className="form-group row">
             <label htmlFor="province" className="col-sm-2 col-form-label">
               Province
@@ -175,6 +180,7 @@ export default class FormInput extends React.Component {
               </select>
             </div>
           </div>
+
           <div className="form-group row">
             <label htmlFor="fax" className="col-sm-2 col-form-label">
               Fax Number
@@ -205,9 +211,11 @@ export default class FormInput extends React.Component {
               />
             </div>
           </div>
+
           <br />
           <br />
         </form>
+
         <Terms handleSubmit={this.handleSubmit} />
       </div>
     );
