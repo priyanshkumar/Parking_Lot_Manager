@@ -2,6 +2,9 @@ const db = require("../models");
 const router = require("express").Router();
 
 router.post("/createProfile", (req, res) => {
+  const userObj = req.body.user;
+  const profileObj = req.body.profile;
+
   db.User.create({
     profileID: req.body.user.id,
     displayName: req.body.user.displayName,
