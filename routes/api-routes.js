@@ -1,5 +1,6 @@
 const db = require("../models");
 const router = require("express").Router();
+const Sequelize = require("sequelize");
 
 router.post("/createProfile", (req, res) => {
   const userObj = req.body.user;
@@ -106,6 +107,30 @@ router.put("/updateProfile", (req, res) => {
       res.status(200).json(updatedProfile);
     })
     .catch(error => {
+      res.status(500).json(error);
+    });
+});
+
+router.put("/allocateParkingSpots", (req, res) => {
+  const Op = Sequelize.Op;
+  db.ParkingSpot.update(
+    {
+      isSpotAllocated: true,
+      CustomerId: req.body.CustomerId
+    },
+    {
+      where: {
+        id: {
+          [Op.in]: req.body.spotId
+        }
+      }
+    }
+  )
+    .then(updatedSpots => {
+      res.status(200).json(updatedSpots);
+    })
+    .catch(error => {
+      console.log(error);
       res.status(500).json(error);
     });
 });
