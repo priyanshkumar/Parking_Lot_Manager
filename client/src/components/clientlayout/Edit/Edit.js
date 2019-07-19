@@ -26,16 +26,17 @@ export default class Edit extends React.Component {
     this.setState(toSet);
   };
   handleSubmit = event => {
-    // event.preventDefault();
+    event.preventDefault();
     console.log(this.state);
-    // axios
-    //   .post("/api/updateProfile/" + this.props.userId, this.state)
-    //   .then(response => {
-    //     console.log(response);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axios
+      .put("/api/updateProfile/" + this.props.userId, this.state)
+      .then(response => {
+        console.log(response);
+        this.props.onFinishEditing();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   render() {
     return (
@@ -71,19 +72,7 @@ export default class Edit extends React.Component {
               />
             </div>
           </div>
-          <div className="form-group row">
-            <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
-              Company ID
-            </label>
-            <div className="col-sm-10">
-              <InputField
-                takeinput={value => this.handleinputchange("companyID", value)}
-                type="number"
-                required={true}
-                value={this.state.companyID}
-              />
-            </div>
-          </div>
+
           <div className="form-group row">
             <label htmlFor="street-no" className="col-sm-2 col-form-label">
               Street Number
