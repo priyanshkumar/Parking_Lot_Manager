@@ -1,24 +1,24 @@
-nav{
-    box-shadow: 0px -4px 36px rgb(0, 0, 0, 0.52);
+nav {
+  box-shadow: 0px -4px 10px rgb(0, 0, 0, 0.3);
 }
 
-.links ul li{
-    list-style-type: none;
-    font-size: 1.1rem;
+.links ul li {
+  list-style-type: none;
+  font-size: 1.1rem;
 }
 
-.links a{
-    color: #333333;
+.links a {
+  color: #333333;
 }
 
-.links a:hover{
-    text-decoration: none;
+.links a:hover {
+  text-decoration: none;
 }
 
 .links .button {
-    color: #0056b3;
+  color: #0056b3;
 }
 
 .links .button:hover {
-    color: #ffffff;
+  color: #ffffff;
 }
