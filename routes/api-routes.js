@@ -1,5 +1,6 @@
 const db = require("../models");
 const router = require("express").Router();
+const Sequelize = require("sequelize");
 
 router.post("/createProfile", (req, res) => {
   const userObj = req.body.user;
@@ -71,6 +72,62 @@ router.get("/getParkingSpots", (req, res) => {
   })
     .then(parkingSpots => {
       res.status(200).json(parkingSpots);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json(error);
+    });
+});
+
+router.put("/updateProfile/:userId", (req, res) => {
+  const profileObj = req.body;
+
+  db.Customer.update(
+    {
+      companyName: profileObj.companyName,
+      companyPointOfContact: profileObj.companyPointOfContact,
+      companyID: profileObj.companyID,
+      streetNumber: profileObj.streetNumber,
+      streetName: profileObj.streetName,
+      city: profileObj.city,
+      province: profileObj.province,
+      zipcode: profileObj.zipcode,
+      country: profileObj.country,
+      faxNumber: profileObj.faxNumber,
+      cellPhoneNumber: profileObj.cellPhoneNumber,
+      workPhoneNumber: profileObj.workPhoneNumber
+    },
+    {
+      where: {
+        UserId: req.params.userId
+      }
+    }
+  )
+    .then(updatedProfile => {
+      res.status(200).json(updatedProfile);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+});
+
+router.put("/allocateParkingSpots", (req, res) => {
+  const Op = Sequelize.Op;
+  db.ParkingSpot.update(
+    {
+      isSpotAllocated: true,
+      CustomerId: req.body.CustomerId
+    },
+    {
+      where: {
+        id: {
+          [Op.in]: req.body.spotId
+        }
+      }
+    }
+  )
+    .then(updatedSpots => {
+      res.status(200).json(updatedSpots);
     })
     .catch(error => {
       console.log(error);

@@ -48,7 +48,7 @@ router.get(
         db.User.create({
           profileID: data.id,
           emailId: data.email,
-          displayName: data.name
+          displayName: data.login
         }).then(user => {
           console.log(user);
           res.json(user);
