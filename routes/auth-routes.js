@@ -27,7 +27,7 @@ router.get(
 );
 
 // GITHUB
-router.get("/github", passport.authenticate("github"));
+/* router.get("/github", passport.authenticate("github"));
 
 router.get(
   "/github/callback",
@@ -56,9 +56,19 @@ router.get(
       }
     });
   }
-);
+); */
 
-router.get("/user", (req, res) => {
+//added here to ensure user is available to access user object on the front end
+const ensureAuthenticated = (req, res, next) => {
+  if (!req.user) {
+    //if user not logged in
+    res.redirect("/login");
+  } else {
+    next();
+  }
+};
+
+router.get("/user", ensureAuthenticated, (req, res) => {
   if (req.user) {
     res.json({
       success: true,

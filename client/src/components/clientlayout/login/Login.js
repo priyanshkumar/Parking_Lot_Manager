@@ -18,10 +18,17 @@ class MainPage extends React.Component {
             </a>
 
             <a
-              className="btn btn-block btn-social btn-github"
-              href="http://localhost:3001/auth/github"
+              className="btn btn-block btn-social btn-twitter"
+              href="http://localhost:3001/auth/twitter"
             >
-              <span className="fab fa-github" /> Sign in with Github
+              <span className="fab fa-twitter" /> Sign in with Twitter
+            </a>
+
+            <a
+              className="btn btn-block btn-social btn-facebook"
+              href="http://localhost:3001/auth/facebook"
+            >
+              <span className="fab fa-facebook" /> Sign in with Facebook
             </a>
           </div>
         </div>
