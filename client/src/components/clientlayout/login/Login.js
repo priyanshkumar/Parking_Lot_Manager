@@ -7,7 +7,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar reload={"true"} />
         <div className="d-flex justify-content-center align-items-center">
           <div className="btn-group-vertical">
             <a

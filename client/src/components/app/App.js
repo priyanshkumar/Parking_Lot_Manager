@@ -5,6 +5,7 @@ import Login from "../clientlayout/login/Login";
 import Signup from "../clientlayout/signup/Signup";
 import Dashboard from "../clientlayout/dashboard/Dashboard";
 import Terms from "../clientlayout/terms/Terms";
+import Axios from "axios";
 
 import "./App.css";
 import ParkingApplication from "../clientlayout/forms/ParkingApplication";
@@ -12,6 +13,18 @@ import Customer from "../clientlayout/customer/customer";
 import Payment from "../clientlayout/payment/Payment";
 
 class App extends Component {
+  state = {
+    isAuthenticated: ""
+  };
+
+  componentDidMount() {
+    Axios.get("/api/isAuthenticated").then(result => {
+      result.data === "true"
+        ? this.setState({ isAuthenticated: true })
+        : this.setState({ isAuthenticated: false });
+      console.log(this.state.authenticated);
+    });
+  }
   render() {
     return (
       <Router>

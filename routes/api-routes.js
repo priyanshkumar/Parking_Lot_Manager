@@ -66,17 +66,20 @@ router.get("/getProfile/:userId", (req, res) => {
 });
 
 router.get("/getParkingSpots", (req, res) => {
-  db.ParkingSpot.findAll({
-    include: [db.Customer],
-    raw: true
-  })
-    .then(parkingSpots => {
-      res.status(200).json(parkingSpots);
+  if (req.user) {
+    console.log(req.user);
+    db.ParkingSpot.findAll({
+      include: [db.Customer],
+      raw: true
     })
-    .catch(error => {
-      console.log(error);
-      res.status(500).json(error);
-    });
+      .then(parkingSpots => {
+        res.status(200).json(parkingSpots);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  }
 });
 
 router.put("/updateProfile/:userId", (req, res) => {
@@ -133,6 +136,12 @@ router.put("/allocateParkingSpots", (req, res) => {
       console.log(error);
       res.status(500).json(error);
     });
+});
+
+router.get("/isAuthenticated", (req, res) => {
+  if (req.user) {
+    res.status(200).json("true");
+  } else res.status(200).json("false");
 });
 
 module.exports = router;

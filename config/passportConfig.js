@@ -1,6 +1,5 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const GitHubStrategy = require("passport-github").Strategy;
 const db = require("../models");
 require("dotenv").config();
 
@@ -13,37 +12,6 @@ passport.deserializeUser((id, done) => {
     done(null, user);
   });
 });
-
-//github oauth
-passport.use(
-  new GitHubStrategy(
-    {
-      callbackURL: "/auth/github/callback",
-      clientID: process.env.github_clientID,
-      clientSecret: process.env.github_clientSecret
-    },
-    (accessToken, refreshToken, profile, done) => {
-      //check if user
-      /*  db.User.findOne({ where: { profileID: req.user.id } }).then(user => {
-      const data = req.user._json;
-      if (user) {
-        console.log("User already in db");
-        done(null,user)
-       
-      } else {
-        db.User.create({
-          profileID: data.sub,
-          emailId: data.email,
-          displayName: data.name
-        }).then(newUser => {
-         done(null,newUser)
-        });
-      }
-    }); */
-      console.log(profile);
-    }
-  )
-);
 
 //google oauth
 passport.use(

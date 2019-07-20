@@ -6,7 +6,7 @@ import Navbar from "../navbar/Navbar";
 function MainPage() {
   return (
     <div>
-      <Navbar />
+      <Navbar reload={"true"} />
       <div className="hero-image d-flex flex-column justify-content-start align-items-start">
         <div className="content w-25 p-5 text-center">
           <h2>Welcome</h2>
