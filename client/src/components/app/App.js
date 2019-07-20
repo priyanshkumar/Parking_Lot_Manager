@@ -9,6 +9,7 @@ import Terms from "../clientlayout/terms/Terms";
 import "./App.css";
 import ParkingApplication from "../clientlayout/forms/ParkingApplication";
 import Customer from "../clientlayout/customer/customer";
+import Payment from "../clientlayout/payment/Payment";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
         <Route exact path="/form" component={ParkingApplication} />
         <Route exact path="/customer" component={Customer} />
         <Route exact path="/terms" component={Terms} />
+        <Route exact path="/payment" component={Payment} />
       </Router>
     );
   }

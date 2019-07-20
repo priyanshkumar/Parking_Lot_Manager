@@ -223,7 +223,9 @@ class Dashboard extends Component {
               </div>
               <div className="row">
                 <div className="col">
-                  <button className="btn btn-primary">CHECKOUT</button>
+                  <a className="btn btn-primary" href="/payment">
+                    CHECKOUT
+                  </a>
                 </div>
               </div>
             </div>
