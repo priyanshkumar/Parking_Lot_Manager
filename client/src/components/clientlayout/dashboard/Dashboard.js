@@ -10,7 +10,8 @@ class Dashboard extends Component {
   state = {
     Selected: [],
     tmpSelected: [],
-    user: {}
+    user: {},
+    authenticated: false
   };
 
   zonesSpot = {
@@ -96,6 +97,16 @@ class Dashboard extends Component {
       .catch(err => {
         console.log(err);
       });
+
+    //to retrieve user info from cookie
+    axios
+      .get("http://localhost:3001/auth/user", { withCredentials: true })
+      .then(response => {
+        //check if user is authenticated and acquire user info
+        const user = response.data.user;
+        console.log(user);
+        this.setState({ user, authenticated: true });
+      });
   }
 
   filterCall = (zoneCall, spot, update) => {
@@ -156,6 +167,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
+        <h1>{this.state.user.emailId}</h1>
         <Navbar />
         <div className="container d-flex justify-content-center">
           <img className="w-75 mt-5" src={Parkingmap} alt="" />

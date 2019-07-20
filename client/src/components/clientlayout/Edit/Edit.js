@@ -1,6 +1,6 @@
 import React from "react";
 import InputField from "../forms/InputField";
-import axios from "axios";
+//import axios from "axios";
 
 export default class Edit extends React.Component {
   constructor(props) {
