@@ -4,7 +4,7 @@ import "./navbar.css";
 
 function Navbar() {
   return (
-    <nav className="navbar sticky-top d-flex justify-content-around px-5">
+    <nav className="navbar bg-light sticky-top d-flex justify-content-around px-5">
       <div className="logo">
         <a href="/">
           <img src={logo} alt="" />
@@ -15,11 +15,8 @@ function Navbar() {
           {/* <li className="px-3">Login</li>
           <li className="px-3">Login</li> */}
           <li className="px-3">
-            <a href="/login">Login</a>
-          </li>
-          <li className="px-3">
-            <a href="/signup" className="btn btn-outline-primary button">
-              Get Started
+            <a href="http://localhost:3001/auth/logout">
+              <small>Logout</small>
             </a>
           </li>
         </ul>
