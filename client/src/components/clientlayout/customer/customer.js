@@ -12,8 +12,11 @@ export default class Customer extends React.Component {
       isEditing: false
     };
 
+    this.refreshCustomerData();
+  }
+  refreshCustomerData() {
     axios
-      .get("/api/getProfile/2")
+      .get("/api/getProfile/1")
       .then(response => {
         console.log(response);
         this.setState({ customerData: response.data });
@@ -31,8 +34,9 @@ export default class Customer extends React.Component {
               customerData={this.state.customerData}
               onFinishEditing={() => {
                 this.setState({ isEditing: false });
+                this.refreshCustomerData();
               }}
-              userId="2"
+              userId="1"
             />
           </div>
         ) : (
