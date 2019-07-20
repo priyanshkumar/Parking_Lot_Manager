@@ -10,15 +10,15 @@ class Dashboard extends Component {
   state = {
     Selected: [],
     tmpSelected: [],
-    user: {}
-  };
-
-  zonesSpot = {
+    user: {},
+    isClicked: false,
     A: [],
     B: [],
     C: [],
     D: [],
-    E: []
+    E: [],
+    closeCkeckerSelected: [],
+    closeSelected: []
   };
 
   zones = [
@@ -66,27 +66,34 @@ class Dashboard extends Component {
 
   populateZone = array => {
     array.data.map(obj => {
-      // console.log(obj.spotZone);
-      obj.isSpotAllocated = false;
       if (obj.spotZone === "A") {
-        this.zonesSpot.A.push(obj);
+        this.setState({
+          A: this.state.A.concat(obj)
+        });
       } else if (obj.spotZone === "B") {
-        this.zonesSpot.B.push(obj);
+        this.setState({
+          B: this.state.B.concat(obj)
+        });
       } else if (obj.spotZone === "C") {
-        this.zonesSpot.C.push(obj);
+        this.setState({
+          C: this.state.C.concat(obj)
+        });
       } else if (obj.spotZone === "D") {
-        this.zonesSpot.D.push(obj);
+        this.setState({
+          D: this.state.D.concat(obj)
+        });
       } else if (obj.spotZone === "E") {
-        this.zonesSpot.E.push(obj);
+        this.setState({
+          E: this.state.E.concat(obj)
+        });
       }
 
-      // console.log(this.zonesSpot.A);
       return "Done";
     });
-    // console.log(this.zonesSpot);
   };
 
   componentDidMount() {
+    this.setState({ tmpSelected: [] });
     axios
       .get("/api/getParkingSpots")
       .then(result => {
@@ -98,61 +105,93 @@ class Dashboard extends Component {
       });
   }
 
-  filterCall = (zoneCall, spot, update) => {
-    console.log(spot);
+  filterCall = (zoneCall, spot, zone) => {
     let index = zoneCall.findIndex(ele => {
       return ele.spotName === spot;
     });
-    console.log(index);
-    zoneCall[index].isPending = update;
-    // console.log(zoneCall[index]);
+    if (zoneCall[index].isPending) {
+      this.setState(
+        {
+          tmpSelected: this.state.tmpSelected.filter(e => {
+            return e.spot !== spot;
+          }),
+          closeCkeckerSelected: this.state.closeCkeckerSelected.filter(e => {
+            return e.spot !== spot;
+          })
+        },
+        () => {
+          this.setState({ isClicked: false });
+        }
+      );
+      zoneCall[index].isPending = false;
+    } else if (!zoneCall[index].isPending) {
+      this.setState(
+        {
+          tmpSelected: this.state.tmpSelected.concat({ spot, zone }),
+          closeCkeckerSelected: this.state.closeCkeckerSelected.concat({
+            spot,
+            zone
+          }) 
+        },
+        () => {
+          this.setState({ isClicked: false });
+        }
+      );
+      console.log(this.state.tmpSelected);
+      zoneCall[index].isPending = true;
+    }
   };
 
   spotClick = (spot, zone) => {
     if (zone === "A") {
-      this.filterCall(this.zonesSpot.A, spot, true);
+      this.filterCall(this.state.A, spot, zone);
     } else if (zone === "B") {
-      this.filterCall(this.zonesSpot.B, spot, true);
+      this.filterCall(this.state.B, spot, zone);
     } else if (zone === "C") {
-      this.filterCall(this.zonesSpot.C, spot, true);
+      this.filterCall(this.state.C, spot, zone);
     } else if (zone === "D") {
-      this.filterCall(this.zonesSpot.D, spot, true);
+      this.filterCall(this.state.D, spot, zone);
     } else if (zone === "E") {
-      this.filterCall(this.zonesSpot.E, spot, true);
+      this.filterCall(this.state.E, spot, zone);
     }
-    this.setState({ tmpSelected: this.state.tmpSelected.concat({ spot }) });
+
+    this.setState({ isClicked: true });
   };
 
   selectModalClick = () => {
     this.setState({
-      Selected: this.state.Selected.concat(this.state.tmpSelected)
-    });
-
-    this.setState({
-      tmpSelected: []
+      Selected: this.state.tmpSelected,
+      closeCkeckerSelected: []
     });
   };
 
   closeModalClick = zone => {
-    this.state.tmpSelected.map(spot => {
+    this.state.closeCkeckerSelected.map(spot => {
       if (zone === "A") {
-        this.filterCall(this.zonesSpot.A, spot.spot, false);
+        this.filterCall(this.state.A, spot.spot, zone);
       } else if (zone === "B") {
-        this.filterCall(this.zonesSpot.B, spot.spot, false);
+        this.filterCall(this.state.B, spot.spot, zone);
       } else if (zone === "C") {
-        this.filterCall(this.zonesSpot.C, spot.spot, false);
+        this.filterCall(this.state.C, spot.spot, zone);
       } else if (zone === "D") {
-        this.filterCall(this.zonesSpot.D, spot.spot, false);
+        this.filterCall(this.state.D, spot.spot, zone);
       } else if (zone === "E") {
-        this.filterCall(this.zonesSpot.E, spot.spot, false);
+        this.filterCall(this.state.E, spot.spot, zone);
       }
       return "done";
     });
-    this.setState({
-      tmpSelected: []
-    });
+    this.setState({ closeCkeckerSelected: [] });
   };
 
+  deleteItemSelected = (e, spot) => {
+    if (e) {
+      this.setState({
+        Selected: this.state.Selected.filter(item => {
+          return item.spot !== spot.spot;
+        }, this.spotClick(spot.spot, spot.zone))
+      });
+    }
+  };
   render() {
     return (
       <div>
@@ -174,7 +213,11 @@ class Dashboard extends Component {
               <div className="row mb-2">
                 <div className="col-12 d-flex">
                   {this.state.Selected.map(select => (
-                    <Selected spot={select.spot} key={select.spot} />
+                    <Selected
+                      spot={select}
+                      key={select.spot}
+                      deleteItemSelected={this.deleteItemSelected}
+                    />
                   ))}
                 </div>
               </div>
@@ -188,35 +231,36 @@ class Dashboard extends Component {
 
           {/* Spots arrangement */}
           <Modal
-            spot={this.zonesSpot.A}
+            spot={this.state.A}
             id={"A"}
             spotClick={this.spotClick}
             selectModal={this.selectModalClick}
             closeModal={this.closeModalClick}
+            isclicked={this.state.isClicked}
           />
           <Modal
-            spot={this.zonesSpot.B}
+            spot={this.state.B}
             id={"B"}
             spotClick={this.spotClick}
             selectModal={this.selectModalClick}
             closeModal={this.closeModalClick}
           />
           <Modal
-            spot={this.zonesSpot.C}
+            spot={this.state.C}
             id={"C"}
             spotClick={this.spotClick}
             selectModal={this.selectModalClick}
             closeModal={this.closeModalClick}
           />
           <Modal
-            spot={this.zonesSpot.D}
+            spot={this.state.D}
             id={"D"}
             spotClick={this.spotClick}
             selectModal={this.selectModalClick}
             closeModal={this.closeModalClick}
           />
           <Modal
-            spot={this.zonesSpot.E}
+            spot={this.state.E}
             id={"E"}
             spotClick={this.spotClick}
             selectModal={this.selectModalClick}

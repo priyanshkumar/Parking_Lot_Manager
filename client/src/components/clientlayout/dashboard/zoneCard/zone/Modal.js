@@ -1,7 +1,7 @@
 import React from "react";
 import Spot from "./Spot";
 
-function Modal({ spot, id, spotClick, selectModal, closeModal }) {
+function Modal({ spot, id, spotClick, selectModal, closeModal, isclicked }) {
   return (
     <div
       className="modal fade"
@@ -44,7 +44,7 @@ function Modal({ spot, id, spotClick, selectModal, closeModal }) {
                 }
                 status={
                   (spot.isSpotAllocated && "disabled") ||
-                  (spot.isPending && "disabled")
+                  (isclicked && "disabled")
                 }
                 spotClick={spotClick}
               />
