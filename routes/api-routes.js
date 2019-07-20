@@ -79,7 +79,7 @@ router.get("/getParkingSpots", (req, res) => {
     });
 });
 
-router.put("/updateProfile", (req, res) => {
+router.put("/updateProfile/:userId", (req, res) => {
   const profileObj = req.body;
 
   db.Customer.update(
@@ -99,7 +99,7 @@ router.put("/updateProfile", (req, res) => {
     },
     {
       where: {
-        UserId: profileObj.UserId
+        UserId: req.params.userId
       }
     }
   )

@@ -67,7 +67,7 @@ router.get(
         db.User.create({
           profileID: data.id,
           emailId: data.email,
-          displayName: data.name
+          displayName: data.login
         }).then(user => {
           res.json(user);
           res.redirect(`http://localhost:3000/dashboard/`);
