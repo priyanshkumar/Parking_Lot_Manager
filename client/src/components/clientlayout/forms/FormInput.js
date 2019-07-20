@@ -34,7 +34,6 @@ export default class FormInput extends React.Component {
 
   handleSubmit = event => {
     // event.preventDefault();
-    console.log();
     console.log(this.state);
     axios
       .post("http://localhost:3001/api/createProfile", this.state)
@@ -44,23 +43,6 @@ export default class FormInput extends React.Component {
       .catch(err => {
         console.log(err);
       });
-  };
-
-  agreementCheckbox = event => {
-    //to check state of agreement checkbox
-    //and adjust submit button
-
-    const value =
-      event.target.type === "checkbox"
-        ? event.target.checked
-        : event.target.value;
-    this.setState({ isChecked: value });
-
-    if (!this.state.isChecked) {
-      this.setState({ checkSubmit: false });
-    } else {
-      this.setState({ checkSubmit: true });
-    }
   };
 
   render() {

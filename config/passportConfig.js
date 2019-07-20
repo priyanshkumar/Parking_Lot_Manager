@@ -23,7 +23,24 @@ passport.use(
       clientSecret: process.env.github_clientSecret
     },
     (accessToken, refreshToken, profile, done) => {
-      return done(null, profile);
+      //check if user
+      /*  db.User.findOne({ where: { profileID: req.user.id } }).then(user => {
+      const data = req.user._json;
+      if (user) {
+        console.log("User already in db");
+        done(null,user)
+       
+      } else {
+        db.User.create({
+          profileID: data.sub,
+          emailId: data.email,
+          displayName: data.name
+        }).then(newUser => {
+         done(null,newUser)
+        });
+      }
+    }); */
+      console.log(profile);
     }
   )
 );
@@ -37,7 +54,25 @@ passport.use(
       clientSecret: process.env.google_clientSecret
     },
     (accessToken, refreshToken, profile, done) => {
-      return done(null, profile);
+      //check if user exists
+      db.User.findOne({ where: { profileID: profile._json.sub } }).then(
+        user => {
+          const data = profile._json;
+          if (user) {
+            console.log("User already in db");
+            done(null, user);
+          } else {
+            //create new user
+            db.User.create({
+              profileID: data.sub,
+              emailId: data.email,
+              displayName: data.name
+            }).then(newUser => {
+              done(null, newUser);
+            });
+          }
+        }
+      );
     }
   )
 );
