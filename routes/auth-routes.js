@@ -21,11 +21,25 @@ router.get(
 router.get(
   "/redirect",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/dashboard",
+    successRedirect: "/auth/profileCheck",
     failureRedirect: "http://localhost:3000/login"
   })
 );
 
+router.get("/profileCheck", (req, res) => {
+  if (req.user) {
+    console.log(req.user.dataValues.id);
+    db.Customer.findOne({ where: { UserId: req.user.dataValues.id } }).then(
+      result => {
+        if (result) {
+          res.redirect("http://localhost:3000/");
+        } else {
+          res.redirect("http://localhost:3000/profileForm");
+        }
+      }
+    );
+  }
+});
 
 router.get("/user", (req, res) => {
   if (req.user) {

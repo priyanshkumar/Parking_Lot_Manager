@@ -2,9 +2,7 @@ table {
   margin-left: 100px;
   /* width: 400px; */
 }
-h3 {
-  margin-left: 300px;
-}
+
 table.table-striped {
   width: 700px;
 }

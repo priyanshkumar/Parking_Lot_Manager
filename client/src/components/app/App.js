@@ -5,10 +5,10 @@ import Login from "../clientlayout/login/Login";
 import Signup from "../clientlayout/signup/Signup";
 import Dashboard from "../clientlayout/dashboard/Dashboard";
 import Terms from "../clientlayout/terms/Terms";
-import Axios from "axios";
+// import Axios from "axios";
 
 import "./App.css";
-import ParkingApplication from "../clientlayout/forms/ParkingApplication";
+import ProfileForm from "../clientlayout/profileForm/ProfileForm";
 import Customer from "../clientlayout/customer/customer";
 import Payment from "../clientlayout/payment/Payment";
 
@@ -30,7 +30,7 @@ class App extends Component {
       <Router>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/form" component={ParkingApplication} />
+        <Route exact path="/profileform" component={ProfileForm} />
         <Route exact path="/customer" component={Customer} />
         <Route exact path="/terms" component={Terms} />
         <Route exact path="/payment" component={Payment} />

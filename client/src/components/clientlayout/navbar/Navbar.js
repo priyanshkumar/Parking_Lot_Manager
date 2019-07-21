@@ -27,7 +27,10 @@ class Navbar extends React.Component {
             {this.state.authenticated ? (
               <div className="d-flex align-items-center justify-content-center">
                 <li className="px-3">
-                  <a href="/login">Profile</a>
+                  <a href="/profile">Profile</a>
+                </li>
+                <li className="px-3">
+                  <a href="/dashboard">Dashboard</a>
                 </li>
                 <li className="px-3">
                   <a

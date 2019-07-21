@@ -3,42 +3,41 @@ const router = require("express").Router();
 const Sequelize = require("sequelize");
 
 router.post("/createProfile", (req, res) => {
-  const userObj = req.body.user;
-  const profileObj = req.body.profile;
-
-  db.User.create({
-    profileID: userObj.id,
-    displayName: userObj.displayName,
-    isAdmin: userObj.isAdmin,
-    emailId: userObj.emailId
-  })
-    .then(newUser => {
-      db.Customer.create({
-        companyName: profileObj.companyName,
-        companyPointOfContact: profileObj.companyPointOfContact,
-        companyID: profileObj.companyID,
-        streetNumber: profileObj.streetNumber,
-        streetName: profileObj.streetName,
-        city: profileObj.city,
-        province: profileObj.province,
-        zipcode: profileObj.zipcode,
-        country: profileObj.country,
-        faxNumber: profileObj.faxNumber,
-        cellPhoneNumber: profileObj.cellPhoneNumber,
-        workPhoneNumber: profileObj.workPhoneNumber,
-        UserId: newUser.dataValues.id
-      })
-        .then(newProfile => {
-          res.status(200).json(newProfile);
-        })
-        .catch(error => {
-          res.status(500).json(error);
-        });
+  if (req.user) {
+    console.log(req.user);
+    db.Customer.create({
+      companyName: req.body.companyName,
+      companyPointOfContact: req.body.companyPointOfContact,
+      companyID: req.body.companyID,
+      streetNumber: req.body.streetNumber,
+      streetName: req.body.streetName,
+      city: req.body.city,
+      province: req.body.province,
+      zipcode: req.body.zipcode,
+      country: req.body.country,
+      faxNumber: req.body.faxNumber,
+      cellPhoneNumber: req.body.cellPhoneNumber,
+      workPhoneNumber: req.body.workPhoneNumber,
+      UserId: req.user.dataValues.id
     })
-    .catch(error => {
-      console.log(error);
-      res.status(500).json(error);
+      .then(result => {
+        if (result) {
+          res.status(200).json({
+            redirecturl: "dashboard"
+          });
+        }
+      })
+      .catch(error => {
+        res.status(200).json({error
+        });
+      });
+  } else {
+    // console.log("hello");
+    // window.location("http://localhost:3000/login");
+    res.status(200).json({
+      redirecturl: "login"
     });
+  }
 });
 
 router.get("/getProfile/:userId", (req, res) => {
@@ -67,7 +66,6 @@ router.get("/getProfile/:userId", (req, res) => {
 
 router.get("/getParkingSpots", (req, res) => {
   if (req.user) {
-    console.log(req.user);
     db.ParkingSpot.findAll({
       include: [db.Customer],
       raw: true

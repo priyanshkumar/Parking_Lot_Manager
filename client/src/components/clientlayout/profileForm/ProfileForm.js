@@ -1,10 +1,9 @@
 import React from "react";
 import InputField from "./InputField";
-import Terms from "../terms/Terms";
 import "./Form.css";
 import axios from "axios";
 
-export default class FormInput extends React.Component {
+export default class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,13 +31,18 @@ export default class FormInput extends React.Component {
     this.setState(toSet);
   };
 
-  handleSubmit = event => {
-    // event.preventDefault();
+  handleSubmit = () => {
     console.log(this.state);
     axios
-      .post("http://localhost:3001/api/createProfile", this.state)
+      .post("/api/createProfile", this.state)
       .then(response => {
-        console.log(response);
+        if (response.data.redirecturl === "login") {
+          this.props.history.push("/login");
+        } else if (response.data.redirecturl === "dashboard") {
+          this.props.history.push("/dashboard");
+        } else {
+          console.log(response);
+        }
       })
       .catch(err => {
         console.log(err);
@@ -47,11 +51,11 @@ export default class FormInput extends React.Component {
 
   render() {
     return (
-      <div className="formApplication container-fluid">
-        <form>
-          <br />
-          <br />
-
+      <div className="profileForm container p-5">
+        <div className="d-flex justify-content-center">
+          <h3>Company Profile</h3>
+        </div>
+        <form className="mt-5">
           <div className="form-group row">
             <label htmlFor="Name" className="col-sm-2 col-form-label">
               Company Name
@@ -65,7 +69,6 @@ export default class FormInput extends React.Component {
               />
             </div>
           </div>
-
           <div className="form-group row">
             <label htmlFor="OwnerName" className="col-sm-2 col-form-label">
               Owner Name
@@ -79,7 +82,6 @@ export default class FormInput extends React.Component {
               />
             </div>
           </div>
-
           <div className="form-group row">
             <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
               Company ID
@@ -92,9 +94,8 @@ export default class FormInput extends React.Component {
               />
             </div>
           </div>
-
           <div className="form-group row">
-            <label htmlFor="street-no" className="col-sm-2 col-form-label">
+            <label htmlFor="street-no" className="col-2 col-form-label">
               Street Number
             </label>
             <div className="col-2">
@@ -105,14 +106,18 @@ export default class FormInput extends React.Component {
                 required={true}
               />
             </div>
-            <label htmlFor="street-name">Street Name</label>
+            <label className="col-2" htmlFor="street-name">
+              Street Name
+            </label>
             <div className="col-2">
               <InputField
                 takeinput={value => this.handleinputchange("streetName", value)}
                 required={true}
               />
             </div>
-            <label htmlFor="city">City</label>
+            <label className="col-2" htmlFor="city">
+              City
+            </label>
             <div className="col-2">
               <InputField
                 takeinput={value => this.handleinputchange("city", value)}
@@ -144,21 +149,27 @@ export default class FormInput extends React.Component {
               </select>
             </div>
 
-            <label htmlFor="zip">Zip code</label>
+            <label className="col-2" htmlFor="zip">
+              Zip code
+            </label>
             <div className="col-2">
               <InputField
                 takeinput={value => this.handleinputchange("zipcode", value)}
               />
             </div>
 
-            <label htmlFor="country">Country</label>
+            <label className="col-2" htmlFor="country">
+              Country
+            </label>
             <div className="col-2">
               <select
                 onChange={event =>
                   this.handleinputchange("country", event.target.value)
                 }
               >
-                <option>Canada</option>
+                <option value="">Choose...</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
               </select>
             </div>
           </div>
@@ -173,7 +184,9 @@ export default class FormInput extends React.Component {
                 type="number"
               />
             </div>
-            <label htmlFor="cell">Cell Number</label>
+            <label className="col-2" htmlFor="cell">
+              Cell Number
+            </label>
             <div className="col-2">
               <InputField
                 takeinput={value =>
@@ -183,7 +196,9 @@ export default class FormInput extends React.Component {
                 required={true}
               />
             </div>
-            <label htmlFor="work-no">Work phone</label>
+            <label className="col-2" htmlFor="work-no">
+              Work phone
+            </label>
             <div className="col-2">
               <InputField
                 takeinput={value =>
@@ -193,12 +208,14 @@ export default class FormInput extends React.Component {
               />
             </div>
           </div>
-
-          <br />
-          <br />
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={this.handleSubmit}
+          >
+            Submit
+          </button>
         </form>
-
-        <Terms handleSubmit={this.handleSubmit} />
       </div>
     );
   }
