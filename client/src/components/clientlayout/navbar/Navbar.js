@@ -4,6 +4,15 @@ import "./navbar.css";
 import Axios from "axios";
 
 class Navbar extends React.Component {
+  state = {
+    authenticated: ""
+  };
+
+  componentDidMount() {
+    Axios.get("/api/isAuthenticated").then(result => {
+      this.setState({ authenticated: result.data });
+    });
+  }
 
   render() {
     return (

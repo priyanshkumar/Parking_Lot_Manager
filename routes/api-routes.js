@@ -140,8 +140,69 @@ router.put("/allocateParkingSpots", (req, res) => {
 
 router.get("/isAuthenticated", (req, res) => {
   if (req.user) {
-    res.status(200).json("true");
-  } else res.status(200).json("false");
+    res.status(200).json(true);
+  } else res.status(200).json(false);
 });
 
 module.exports = router;
+
+// import React, { Component } from "react";
+// import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+// import MainPage from "../clientlayout/mainpage/MainPage";
+// import Login from "../clientlayout/login/Login";
+// import Signup from "../clientlayout/signup/Signup";
+// import Dashboard from "../clientlayout/dashboard/Dashboard";
+// import Terms from "../clientlayout/terms/Terms";
+// import Axios from "axios";
+// import "./App.css";
+// import ParkingApplication from "../clientlayout/forms/ParkingApplication";
+// import Customer from "../clientlayout/customer/customer";
+// import Payment from "../clientlayout/payment/Payment";
+
+// // const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
+// //   <Route
+// //     {...rest}
+// //     render={() =>
+// //       isAuthenticated === true ? <Component /> : <Redirect to="/" />
+// //     }
+// //   />
+// // );
+
+// class App extends Component {
+//   state = {
+//     isAuthenticated: false
+//   };
+
+//   componentDidMount() {
+//     Axios.get("/api/isAuthenticated")
+//       .then(result => {
+//         console.log(result.data);
+//         this.setState({ isAuthenticated: true });
+//       })
+//       .then(() => {
+//         console.log(this.state.isAuthenticated);
+//       });
+//       console.log(this.state.isAuthenticated);
+//   }
+
+//   render() {
+//     return (
+//       <Router>
+//         {/* <PrivateRoute
+//           exact
+//           path="/dashboard"
+//           isAuthenticated={this.state.isAuthenticated}
+//           component={Dashboard}
+//         />
+//         <PrivateRoute exact path="/form" component={ParkingApplication} />
+//         <PrivateRoute exact path="/customer" component={Customer} />
+//         <PrivateRoute exact path="/terms" component={Terms} />
+//         <PrivateRoute exact path="/payment" component={Payment} /> */}
+//         <Route exact path="/" component={MainPage} />
+//         <Route exact path="/signup" component={Signup} />
+//         <Route exact path="/login" component={Login} />
+//       </Router>
+//     );
+//   }
+// }
+// export default App;
