@@ -7,17 +7,18 @@ function MainPage() {
   return (
     <div>
       <Navbar />
-      <div className="hero-image d-flex flex-column justify-content-start align-items-start">
-        <div className="content w-25 p-5 text-center">
-          <h2>Welcome</h2>
-          <p className="text-white bg-dark p-3 maintext rounded">
+      <div className="hero-image d-flex justify-content-start align-items-center">
+        <div className="content w-50 p-5 text-center">
+          <h1>Welcome</h1>
+          <h5 className="text-white">
             Our parking lot manages over 600 spots in a convenient location in
-            Brampton. If you park regularly at the same location, our discounted
-            monthly parking rates may be right for you.
-            <a href="/signup" className="btn btn-success button btn-block mt-2">
+            Brampton. <br /> If you park regularly at the same location, our
+            discounted monthly parking rates may be right for you.
+            <br />
+            <a href="/login" className="btn btn-success button btn-lg mt-2">
               Get Started
             </a>
-          </p>
+          </h5>
         </div>
       </div>
     </div>

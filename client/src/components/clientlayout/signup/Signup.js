@@ -6,7 +6,7 @@ function MainPage() {
   return (
     <div>
       <Navbar />
-      <div className="d-flex justify-content-center align-items-center">
+      <div className="full-spread d-flex justify-content-center align-items-center">
         <h1>Sign up</h1>
       </div>
     </div>
