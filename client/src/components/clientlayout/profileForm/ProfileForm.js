@@ -23,7 +23,32 @@ export default class ProfileForm extends React.Component {
       checkSubmit: true,
       isChecked: false
     };
+
+    this.reloadRefresh();
   }
+
+  reloadRefresh = () => {
+    axios.get("/api/getProfile").then(response => {
+      if (response.data.redirecturl === "login") {
+        this.props.history.push("/login");
+      } else {
+        this.setState({
+          companyName: response.data.companyName,
+          companyPointOfContact: response.data.companyPointOfContact,
+          companyID: response.data.companyID,
+          streetNumber: response.data.streetNumber,
+          streetName: response.data.streetName,
+          city: response.data.city,
+          province: response.data.province,
+          zipcode: response.data.zipcode,
+          country: response.data.country,
+          faxNumber: response.data.faxNumber,
+          cellPhoneNumber: response.data.cellPhoneNumber,
+          workPhoneNumber: response.data.workPhoneNumber
+        });
+      }
+    });
+  };
 
   handleinputchange = (name, value) => {
     var toSet = {};
@@ -32,7 +57,6 @@ export default class ProfileForm extends React.Component {
   };
 
   handleSubmit = () => {
-    console.log(this.state);
     axios
       .post("/api/createProfile", this.state)
       .then(response => {
@@ -41,7 +65,7 @@ export default class ProfileForm extends React.Component {
         } else if (response.data.redirecturl === "dashboard") {
           this.props.history.push("/dashboard");
         } else {
-          console.log(response);
+          console.log("There is error checkout your terminal");
         }
       })
       .catch(err => {
@@ -65,6 +89,7 @@ export default class ProfileForm extends React.Component {
                 takeinput={value =>
                   this.handleinputchange("companyName", value)
                 }
+                value={this.state.companyName}
                 required={true}
               />
             </div>
@@ -78,6 +103,7 @@ export default class ProfileForm extends React.Component {
                 takeinput={value =>
                   this.handleinputchange("companyPointOfContact", value)
                 }
+                value={this.state.companyPointOfContact}
                 required={true}
               />
             </div>
@@ -90,6 +116,7 @@ export default class ProfileForm extends React.Component {
               <InputField
                 takeinput={value => this.handleinputchange("companyID", value)}
                 type="number"
+                value={this.state.companyID}
                 required={true}
               />
             </div>
@@ -103,6 +130,7 @@ export default class ProfileForm extends React.Component {
                 takeinput={value =>
                   this.handleinputchange("streetNumber", value)
                 }
+                value={this.state.streetNumber}
                 required={true}
               />
             </div>
@@ -112,6 +140,7 @@ export default class ProfileForm extends React.Component {
             <div className="col-2">
               <InputField
                 takeinput={value => this.handleinputchange("streetName", value)}
+                value={this.state.streetName}
                 required={true}
               />
             </div>
@@ -121,6 +150,7 @@ export default class ProfileForm extends React.Component {
             <div className="col-2">
               <InputField
                 takeinput={value => this.handleinputchange("city", value)}
+                value={this.state.city}
               />
             </div>
           </div>
@@ -135,7 +165,9 @@ export default class ProfileForm extends React.Component {
                   this.handleinputchange("province", event.target.value)
                 }
               >
-                <option value="">Choose...</option>
+                <option value={this.state.province}>
+                  {this.state.province ? this.state.province : "Choose..."}
+                </option>
                 <option value="ON">Ontario</option>
                 <option value="MB">Manitoba</option>
                 <option value="QC">Quebec</option>
@@ -155,6 +187,7 @@ export default class ProfileForm extends React.Component {
             <div className="col-2">
               <InputField
                 takeinput={value => this.handleinputchange("zipcode", value)}
+                value={this.state.zipcode}
               />
             </div>
 
@@ -167,7 +200,9 @@ export default class ProfileForm extends React.Component {
                   this.handleinputchange("country", event.target.value)
                 }
               >
-                <option value="">Choose...</option>
+                <option value={this.state.country}>
+                  {this.state.country ? this.state.country : "Choose..."}
+                </option>
                 <option value="USA">USA</option>
                 <option value="Canada">Canada</option>
               </select>
@@ -182,6 +217,7 @@ export default class ProfileForm extends React.Component {
               <InputField
                 takeinput={value => this.handleinputchange("faxNumber", value)}
                 type="number"
+                value={this.state.faxNumber}
               />
             </div>
             <label className="col-2" htmlFor="cell">
@@ -193,6 +229,7 @@ export default class ProfileForm extends React.Component {
                   this.handleinputchange("cellPhoneNumber", value)
                 }
                 type="number"
+                value={this.state.cellPhoneNumber}
                 required={true}
               />
             </div>
@@ -204,6 +241,7 @@ export default class ProfileForm extends React.Component {
                 takeinput={value =>
                   this.handleinputchange("workPhoneNumber", value)
                 }
+                value={this.state.workPhoneNumber}
                 type="number"
               />
             </div>

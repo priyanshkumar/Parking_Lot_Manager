@@ -28,7 +28,6 @@ router.get(
 
 router.get("/profileCheck", (req, res) => {
   if (req.user) {
-    console.log(req.user.dataValues.id);
     db.Customer.findOne({ where: { UserId: req.user.dataValues.id } }).then(
       result => {
         if (result) {
