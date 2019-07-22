@@ -9,7 +9,7 @@ import Terms from "../clientlayout/terms/Terms";
 
 import "./App.css";
 import ProfileForm from "../clientlayout/profileForm/ProfileForm";
-import Customer from "../clientlayout/customer/customer";
+import Profile from "../clientlayout/profile/profile";
 import Payment from "../clientlayout/payment/Payment";
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
         <Route exact path="/" component={MainPage} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/profileform" component={ProfileForm} />
-        <Route exact path="/customer" component={Customer} />
+        <Route exact path="/profile" component={Profile} />
         <Route exact path="/terms" component={Terms} />
         <Route exact path="/payment" component={Payment} />
         {/* </Router>
