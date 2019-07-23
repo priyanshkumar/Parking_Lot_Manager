@@ -2,7 +2,6 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const TwitterStrategy = require("passport-twitter").Strategy;
-//const GitHubStrategy = require("passport-github").Strategy; need to remove
 const db = require("../models");
 require("dotenv").config();
 
@@ -16,42 +15,11 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-//github oauth
-/* passport.use(
-  new GitHubStrategy(
-    {
-      callbackURL: "/auth/github/callback",
-      clientID: process.env.github_clientID,
-      clientSecret: process.env.github_clientSecret
-    },
-    (accessToken, refreshToken, profile, done) => {
-      //check if user
-      /*  db.User.findOne({ where: { profileID: req.user.id } }).then(user => {
-      const data = req.user._json;
-      if (user) {
-        console.log("User already in db");
-        done(null,user)
-       
-      } else {
-        db.User.create({
-          profileID: data.sub,
-          emailId: data.email,
-          displayName: data.name
-        }).then(newUser => {
-         done(null,newUser)
-        });
-      }
-    }); 
-      console.log(profile);
-    }
-  )
-); */
-
 //google oauth
 passport.use(
   new GoogleStrategy(
     {
-      callbackURL: "/auth/redirect",
+      callbackURL: "/auth/google/redirect",
       clientID: process.env.google_clientID,
       clientSecret: process.env.google_clientSecret
     },
@@ -83,14 +51,14 @@ passport.use(
 passport.use(
   new FacebookStrategy(
     {
-      callbackURL: "/auth/facebook/callback",
-      clientID: process.env.facebook_clientID,
-      clientSecret: process.env.facebook_clientSecret
+      callbackURL: "/auth/facebook/redirect",
+      clientID: process.env.facebook_AppID,
+      clientSecret: process.env.facebook_AppSecret
     },
     (accessToken, refreshToken, profile, done) => {
       //add db methods here
       console.log(profile);
-      done(null, user);
+      return done(null, profile);
     }
   )
 );
@@ -99,14 +67,14 @@ passport.use(
 passport.use(
   new TwitterStrategy(
     {
-      callbackURL: "/auth/twitter/callback",
-      clientID: process.env.twitter_clientID,
-      clientSecret: process.env.twitter_clientSecret
+      callbackURL: "/auth/twitter/redirect",
+      consumerKey: process.env.twitter_ConsumerKey,
+      consumerSecret: process.env.twitter_ConsumerSecret
     },
     (accessToken, refreshToken, profile, done) => {
       //add db methods here
       console.log(profile);
-      done(null, user);
+      done(null, profile);
     }
   )
 );

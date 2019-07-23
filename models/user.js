@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     displayName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     emailId: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     }
   });
 
