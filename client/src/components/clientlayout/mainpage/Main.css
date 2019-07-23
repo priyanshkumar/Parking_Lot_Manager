@@ -1,13 +1,9 @@
 .hero-image {
-  background-image: url("truckmain.jpg");
+  background-image: url("truck.jpg");
   height: 90.4vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-}
-
-.maintext {
-  opacity: 0.7;
 }
 
 .hero-image .content {
@@ -22,4 +18,8 @@
 .hero-image .content h4 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2rem;
+}
+
+h1 {
+  font-family: "Russo One", sans-serif;
 }

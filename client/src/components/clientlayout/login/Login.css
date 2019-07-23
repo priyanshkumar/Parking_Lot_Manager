@@ -1,7 +1,11 @@
 .full-spread {
-  background-image: radial-gradient(white, gray);
-  height: 100vh;
+  background-image: url(./login-image.jpg);
+  height: 90vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.signupbox {
+  background-color: #ffffff30;
 }
