@@ -3,11 +3,10 @@ const router = express.Router();
 const passport = require("passport");
 const db = require("../models");
 
-//redirect is not logged on otherwise send to dashboard
-
+// logout user
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("http://localhost:3000/");
+  res.redirect("/");
 });
 
 // GOOGLE
@@ -19,46 +18,47 @@ router.get(
 );
 
 router.get(
-  "/redirect",
+  "/google/redirect",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/dashboard",
-    failureRedirect: "http://localhost:3000/login"
+    successRedirect: "/dashboard",
+    failureRedirect: "/login"
   })
 );
 
-// GITHUB
-router.get("/github", passport.authenticate("github"));
+// FACEBOOK
+router.get("/facebook", passport.authenticate("facebook"));
 
 router.get(
-  "/github/callback",
-  passport.authenticate("github", {
-    successRedirect: "http://localhost:3000/dashboard",
-    failureRedirect: "http://localhost:3000/login"
-  }),
-  (req, res) => {
-    //find if user exists
-    db.User.findOne({ where: { profileID: req.user.id } }).then(user => {
-      const data = req.user._json;
-      if (user) {
-        console.log("User already in db");
-        console.log(user);
-        res.json(user);
-        res.redirect("http://localhost:3000/dashboard");
-      } else {
-        db.User.create({
-          profileID: data.id,
-          emailId: data.email,
-          displayName: data.login
-        }).then(user => {
-          console.log(user);
-          res.json(user);
-        });
-      }
-    });
-  }
+  "/facebook/redirect",
+  passport.authenticate("facebook", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/login"
+  })
 );
 
-router.get("/user", (req, res) => {
+// TWITTER
+router.get("/twitter", passport.authenticate("twitter"));
+
+router.get(
+  "/twitter/redirect",
+  passport.authenticate("twitter", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/login"
+  })
+);
+
+// added here to ensure user is available to access user object on the frontend
+const ensureAuthenticated = (req, res, next) => {
+  if (!req.user) {
+    //if user not logged in
+    res.redirect("/login");
+  } else {
+    next();
+  }
+};
+
+// used to acquire user object
+router.get("/user", ensureAuthenticated, (req, res) => {
   if (req.user) {
     res.json({
       success: true,

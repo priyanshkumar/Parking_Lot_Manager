@@ -12,16 +12,23 @@ class MainPage extends React.Component {
           <div className="btn-group-vertical">
             <a
               className="btn btn-block btn-social btn-google"
-              href="http://localhost:3001/auth/google"
+              href="/auth/google"
             >
               <span className="fab fa-google" /> Sign in with Google
             </a>
 
             <a
-              className="btn btn-block btn-social btn-github"
-              href="http://localhost:3001/auth/github"
+              className="btn btn-block btn-social btn-twitter"
+              href="/auth/twitter"
             >
-              <span className="fab fa-github" /> Sign in with Github
+              <span className="fab fa-twitter" /> Sign in with Twitter
+            </a>
+
+            <a
+              className="btn btn-block btn-social btn-facebook"
+              href="/auth/facebook"
+            >
+              <span className="fab fa-facebook" /> Sign in with Facebook
             </a>
           </div>
         </div>
