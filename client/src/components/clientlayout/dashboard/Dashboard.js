@@ -22,8 +22,6 @@ class Dashboard extends Component {
     closeSelected: []
   };
 
-  // parkingSpots = [{A:[]} ,{B:[]}, {}]
-
   zones = [
     {
       title: "Parking A",
@@ -76,7 +74,6 @@ class Dashboard extends Component {
       } else if (obj.spotZone === "B") {
         this.setState({
           B: this.state.B.concat(obj)
-          //  B: [ ...this.state.B, ...obj]
         });
       } else if (obj.spotZone === "C") {
         this.setState({
