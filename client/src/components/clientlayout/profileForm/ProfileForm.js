@@ -18,10 +18,7 @@ export default class ProfileForm extends React.Component {
       country: "",
       faxNumber: "",
       cellPhoneNumber: "",
-      workPhoneNumber: "",
-      //added to check form submission
-      checkSubmit: true,
-      isChecked: false
+      workPhoneNumber: ""
     };
 
     this.reloadRefresh();
@@ -29,23 +26,25 @@ export default class ProfileForm extends React.Component {
 
   reloadRefresh = () => {
     axios.get("/api/getProfile").then(response => {
-      if (response.data.redirecturl === "login") {
-        this.props.history.push("/login");
-      } else {
-        this.setState({
-          companyName: response.data.companyName,
-          companyPointOfContact: response.data.companyPointOfContact,
-          companyID: response.data.companyID,
-          streetNumber: response.data.streetNumber,
-          streetName: response.data.streetName,
-          city: response.data.city,
-          province: response.data.province,
-          zipcode: response.data.zipcode,
-          country: response.data.country,
-          faxNumber: response.data.faxNumber,
-          cellPhoneNumber: response.data.cellPhoneNumber,
-          workPhoneNumber: response.data.workPhoneNumber
-        });
+      if (response.data) {
+        if (response.data.redirecturl) {
+          this.setState({
+            companyName: response.data.companyName,
+            companyPointOfContact: response.data.companyPointOfContact,
+            companyID: response.data.companyID,
+            streetNumber: response.data.streetNumber,
+            streetName: response.data.streetName,
+            city: response.data.city,
+            province: response.data.province,
+            zipcode: response.data.zipcode,
+            country: response.data.country,
+            faxNumber: response.data.faxNumber,
+            cellPhoneNumber: response.data.cellPhoneNumber,
+            workPhoneNumber: response.data.workPhoneNumber
+          });
+        } else if (response.data.redirecturl === "login") {
+          this.props.history.push("/login");
+        }
       }
     });
   };

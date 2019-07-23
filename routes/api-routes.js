@@ -99,26 +99,42 @@ router.get("/getParkingSpots", authenticated, (req, res) => {
   }
 });
 
-router.put("/allocateParkingSpots", (req, res) => {
-  const Op = Sequelize.Op;
-  db.ParkingSpot.update(
-    {
-      isSpotAllocated: true,
-      CustomerId: req.body.CustomerId
-    },
-    {
-      where: {
-        id: {
-          [Op.in]: req.body.spotId
+router.put("/checkout", authenticated, (req, res) => {
+  spotsBulk = req.body.map(spot => {
+    return spot.spot;
+  });
+  db.Customer.findOne({
+    where: { UserId: req.user.dataValues.id }
+  })
+    .then(response => {
+      const Op = Sequelize.Op;
+      db.ParkingSpot.update(
+        {
+          isCheckout: true,
+          CustomerId: response.dataValues.id
+        },
+        {
+          where: {
+            spotName: {
+              [Op.in]: spotsBulk
+            }
+          }
         }
-      }
-    }
-  )
-    .then(updatedSpots => {
-      res.status(200).json(updatedSpots);
+      )
+        .then(updatedSpots => {
+          if(updatedSpots){
+            res.status(200).json({ redirecturl: "payment" });
+          }
+          else{
+            res.status(200).json({ redirecturl: "dashboard" });
+          }
+          
+        })
+        .catch(error => {
+          res.status(500).json(error);
+        });
     })
     .catch(error => {
-      console.log(error);
       res.status(500).json(error);
     });
 });

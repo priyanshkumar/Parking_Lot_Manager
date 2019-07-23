@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     spotPrice: {
       type: DataTypes.DOUBLE,
       allowNull: false
+    },
+    isCheckout: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false
     }
   });
 
