@@ -4,7 +4,6 @@ import MainPage from "../clientlayout/mainpage/MainPage";
 import Login from "../clientlayout/login/Login";
 import Signup from "../clientlayout/signup/Signup";
 import Dashboard from "../clientlayout/dashboard/Dashboard";
-import Terms from "../clientlayout/terms/Terms";
 // import Axios from "axios";
 
 import "./App.css";
@@ -32,7 +31,6 @@ class App extends Component {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/profileform" component={ProfileForm} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/terms" component={Terms} />
         <Route exact path="/payment" component={Payment} />
         {/* </Router>
       );

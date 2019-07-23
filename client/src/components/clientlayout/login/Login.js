@@ -13,7 +13,7 @@ class MainPage extends React.Component {
             <h5 className="text-center text-white">
               Sign in with your Google or Github account
             </h5>
-            <hr class="bg-light" />
+            <hr className="bg-light" />
             <div className="d-flex justify-content-center mb-3">
               <a
                 className="btn btn-social btn-google mx-1"

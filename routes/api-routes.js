@@ -85,18 +85,38 @@ router.get("/getProfile", authenticated, (req, res) => {
 
 router.get("/getParkingSpots", authenticated, (req, res) => {
   if (req.user) {
-    db.ParkingSpot.findAll({
-      include: [db.Customer],
-      raw: true
-    })
+    db.ParkingSpot.findAll()
       .then(parkingSpots => {
         res.status(200).json(parkingSpots);
       })
       .catch(error => {
         console.log(error);
-        res.status(500).json(error);
       });
   }
+});
+
+router.get("/getcheckoutspots", (req, res) => {
+  db.Customer.findOne({
+    where: { UserId: req.user.dataValues.id }
+  })
+    .then(response => {
+      db.ParkingSpots.findAll({
+        where: {
+          CustomerId: response.dataValues.id,
+          isCheckout: true
+        }
+      })
+        .then(result => {
+          console.log(result);
+          res.status(200).json(result);
+        })
+        .catch(error => {
+          res.status(500).json(error);
+        });
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 });
 
 router.put("/checkout", authenticated, (req, res) => {
@@ -122,13 +142,11 @@ router.put("/checkout", authenticated, (req, res) => {
         }
       )
         .then(updatedSpots => {
-          if(updatedSpots){
+          if (updatedSpots) {
             res.status(200).json({ redirecturl: "payment" });
-          }
-          else{
+          } else {
             res.status(200).json({ redirecturl: "dashboard" });
           }
-          
         })
         .catch(error => {
           res.status(500).json(error);

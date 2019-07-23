@@ -16,11 +16,11 @@ export default class Terms extends React.Component {
         <h2>Terms and Conditions</h2>
         <ol>
           <li>
-            Tenant Agrees to pay $_____(prop)/month plus tax for
-            _(prop)____parking space(s) at the above selected property. The
-            amount shall be due and payable in advance on the first day of each
-            month. Upon signing of this contract, you are providing payment for
-            the first and last month.{" "}
+            Tenant Agrees to pay ${this.props.price} /month plus tax for $
+            {this.props.spot} parking space(s) at the above selected property.
+            The amount shall be due and payable in advance on the first day of
+            each month. Upon signing of this contract, you are providing payment
+            for the first and last month.{" "}
           </li>
           <li>
             In order to protect the parking rights of all tenants at this
@@ -107,28 +107,6 @@ export default class Terms extends React.Component {
             of Ontario
           </li>
         </ol>
-
-        <div className="form-check" id="termsCheck">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="termsCheckBox"
-            onChange={e => {
-              this.setState({ accepted: e.target.checked });
-            }}
-          />
-          <label className="form-check-label" htmlFor="termsCheckBox">
-            Accept Terms and Conditions
-          </label>
-        </div>
-        <br />
-        <input
-          type="submit"
-          className="btn btn-primary"
-          onClick={this.props.handleSubmit}
-          disabled={this.state.accepted === false}
-          value="Submit"
-        />
       </div>
     );
   }

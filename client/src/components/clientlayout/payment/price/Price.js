@@ -3,19 +3,43 @@ import "./Price.css";
 
 function Price() {
   return (
-    <div className="row m-3 p-4 pricesec">
-      <div className="col-3 text-center">
-        <h2>SpotName</h2>
-      </div>
-      <div className="col-3 d-flex align-items-center justify-content-center">
-        Zone
-      </div>
-      <div className="col-3 d-flex align-items-center justify-content-center">
-        Cars
-      </div>
-      <div className="col-3 d-flex align-items-center justify-content-center">
-        Price
-      </div>
+    <div className="row m-3 p-4">
+      <table className="table table-hover border border-dark">
+        <thead className="thead-dark">
+          <tr>
+            <th>Spot Selected</th>
+            <th>Zone</th>
+            <th>Vehicle type</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">A1</th>
+            <td>A</td>
+            <td>Trailers Only</td>
+            <td>$400</td>
+          </tr>
+          <tr>
+            <th scope="row">A2</th>
+            <td>A</td>
+            <td>Trailers Only</td>
+            <td>$400</td>
+          </tr>
+          <tr>
+            <th scope="row">B1</th>
+            <td>B</td>
+            <td>Trucks Only</td>
+            <td>$500</td>
+          </tr>
+          <tr>
+            <td />
+            <td />
+            <th scope="row"> Total </th>
+            <th scope="row">$1300</th>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
