@@ -47,16 +47,6 @@ router.get(
   })
 );
 
-// added here to ensure user is available to access user object on the frontend
-const ensureAuthenticated = (req, res, next) => {
-  if (!req.user) {
-    //if user not logged in
-    res.redirect("/login");
-  } else {
-    next();
-  }
-};
-
 // used to acquire user object
 router.get("/user", ensureAuthenticated, (req, res) => {
   if (req.user) {
