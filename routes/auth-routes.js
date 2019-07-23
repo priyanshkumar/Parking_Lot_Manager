@@ -40,6 +40,27 @@ router.get("/profileCheck", (req, res) => {
   }
 });
 
+// FACEBOOK
+router.get("/facebook", passport.authenticate("facebook"));
+
+router.get(
+  "/facebook/redirect",
+  passport.authenticate("facebook", {
+    failureRedirect: "http://localhost:3000/login"
+  })
+);
+
+// TWITTER
+router.get("/twitter", passport.authenticate("twitter"));
+
+router.get(
+  "/twitter/redirect",
+  passport.authenticate("twitter", {
+    successRedirect: "/auth/profileCheck",
+    failureRedirect: "http://localhost:3000/login"
+  })
+);
+
 router.get("/user", (req, res) => {
   if (req.user) {
     res.json({
