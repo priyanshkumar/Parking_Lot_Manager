@@ -16,7 +16,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar sticky-top d-flex justify-content-around px-5">
+      <nav className="navbar sticky-top bg-white d-flex justify-content-around px-5">
         <div className="logo">
           <a href="/">
             <img src={logo} alt="" />
