@@ -15,10 +15,7 @@ class MainPage extends React.Component {
             </h5>
             <hr className="bg-light" />
             <div className="d-flex justify-content-center mb-3">
-              <a
-                className="btn btn-social btn-google"
-                href="/auth/google"
-              >
+              <a className="btn btn-social btn-google" href="/auth/google">
                 <span className="fab fa-google" /> Sign in with Google
               </a>
               <br />

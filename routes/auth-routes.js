@@ -25,6 +25,7 @@ router.get(
   })
 );
 
+<<<<<<< HEAD
 router.get("/profileCheck", (req, res) => {
   if (req.user) {
     db.Customer.findOne({ where: { UserId: req.user.dataValues.id } }).then(
@@ -39,6 +40,8 @@ router.get("/profileCheck", (req, res) => {
   }
 });
 
+=======
+>>>>>>> ed0bf46bf9d5f7dbcdd8470d3210870882101315
 // FACEBOOK
 router.get("/facebook", passport.authenticate("facebook"));
 
@@ -85,6 +88,20 @@ router.get("/user", ensureAuthenticated, (req, res) => {
       success: false,
       message: "user is not authenticated"
     });
+  }
+});
+
+router.get("/profileCheck", (req, res) => {
+  if (req.user) {
+    db.Customer.findOne({ where: { UserId: req.user.dataValues.id } }).then(
+      result => {
+        if (result) {
+          res.redirect("/");
+        } else {
+          res.redirect("/profileForm");
+        }
+      }
+    );
   }
 });
 
