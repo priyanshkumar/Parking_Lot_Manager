@@ -17,7 +17,7 @@ function Modal({ spot, id, spotClick, selectModal, closeModal, isclicked }) {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              Modal title
+              Select your spots
             </h5>
             <button
               type="button"
@@ -55,7 +55,7 @@ function Modal({ spot, id, spotClick, selectModal, closeModal, isclicked }) {
             ))}
           </div>
           <div className="modal-footer">
-            <button
+            {/* <button
               type="button"
               className="btn btn-secondary"
               data-dismiss="modal"
@@ -64,7 +64,7 @@ function Modal({ spot, id, spotClick, selectModal, closeModal, isclicked }) {
               }}
             >
               Close
-            </button>
+            </button> */}
             <button
               type="button"
               className="btn btn-primary"
@@ -73,7 +73,7 @@ function Modal({ spot, id, spotClick, selectModal, closeModal, isclicked }) {
               }}
               data-dismiss="modal"
             >
-              Save changes
+              Book Spots
             </button>
           </div>
         </div>

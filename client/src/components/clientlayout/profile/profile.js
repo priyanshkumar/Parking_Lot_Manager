@@ -29,12 +29,18 @@ export default class Profile extends React.Component {
         <Navbar />
         <div className="container my-5">
           <div className="mb-4 d-flex justify-content-between">
-            <h3>My Profile</h3>
-            <a href="/profileform" className="btn btn-primary">
-              Edit
+            <h3>
+              My Profile{" "}
+              <small>
+                <i class="fas fa-chevron-down" />
+              </small>
+            </h3>
+
+            <a href="/profileform" className="btn btn-success py-2">
+              <i class="fas fa-edit" /> Edit Profile
             </a>
           </div>
-            <UserInfo customerData={this.state.customerData} />
+          <UserInfo customerData={this.state.customerData} />
         </div>
       </div>
     );

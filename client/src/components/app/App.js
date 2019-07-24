@@ -39,7 +39,6 @@ class App extends Component {
     } else {
       return (
         <Router> */}
-        <Route exact path="/" component={MainPage} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
       </Router>
