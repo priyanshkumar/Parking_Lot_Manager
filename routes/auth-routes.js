@@ -20,7 +20,7 @@ router.get(
 router.get(
   "/google/redirect",
   passport.authenticate("google", {
-    successRedirect: "/dashboard",
+    successRedirect: "http://localhost:3000/dashboard",
     failureRedirect: "/login"
   })
 );
@@ -31,7 +31,7 @@ router.get("/facebook", passport.authenticate("facebook"));
 router.get(
   "/facebook/redirect",
   passport.authenticate("facebook", {
-    successRedirect: "/dashboard",
+    successRedirect: "http//localhost3000/dashboard",
     failureRedirect: "/login"
   })
 );

@@ -40,7 +40,7 @@ function MainPage() {
                   <div className="btn-group-vertical">
                     <a
                       className="btn btn-block btn-social btn-google"
-                      href="/auth/google"
+                      href="http://localhost:3001/auth/google"
                     >
                       <span className="fab fa-google" /> Sign in with Google
                     </a>
@@ -54,7 +54,7 @@ function MainPage() {
 
                     <a
                       className="btn btn-block btn-social btn-facebook"
-                      href="/auth/facebook"
+                      href="http://localhost:3001/auth/facebook"
                     >
                       <span className="fab fa-facebook" /> Sign in with Facebook
                     </a>
