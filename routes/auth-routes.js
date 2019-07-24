@@ -6,7 +6,7 @@ const db = require("../models");
 // logout user
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect("http://localhost:3000/");
 });
 
 // GOOGLE
@@ -21,7 +21,7 @@ router.get(
   "/google/redirect",
   passport.authenticate("google", {
     successRedirect: "/auth/profileCheck",
-    failureRedirect: "/login"
+    failureRedirect: "http://localhost:3000/login"
   })
 );
 
@@ -30,9 +30,9 @@ router.get("/profileCheck", (req, res) => {
     db.Customer.findOne({ where: { UserId: req.user.dataValues.id } }).then(
       result => {
         if (result) {
-          res.redirect("/");
+          res.redirect("http://localhost:3000/");
         } else {
-          res.redirect("/profileForm");
+          res.redirect("http://localhost:3000/profileForm");
         }
       }
     );
@@ -46,7 +46,7 @@ router.get(
   "/facebook/redirect",
   passport.authenticate("facebook", {
     successRedirect: "/auth/profileCheck",
-    failureRedirect: "/login"
+    failureRedirect: "http://localhost:3000/login"
   })
 );
 
@@ -57,7 +57,7 @@ router.get(
   "/twitter/redirect",
   passport.authenticate("twitter", {
     successRedirect: "/auth/profileCheck",
-    failureRedirect: "/login"
+    failureRedirect: "http://localhost:3000/login"
   })
 );
 

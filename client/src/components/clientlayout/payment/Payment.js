@@ -10,29 +10,51 @@ class Payment extends React.Component {
     super(props);
     this.state = {
       customerData: {},
+      checkoutData: [],
       accepted: false,
-      termsPrice: 0,
+      totalPrice: 0,
       termsTax: 0
     };
-    this.reloadRefresh();
   }
 
-  reloadRefresh = () => {
+  componentDidMount = () => {
     axios.get("/api/getProfile").then(response => {
       if (response.data.redirecturl === "login") {
         this.props.history.push("/login");
       } else {
-        axios
-          .get("/api/getcheckoutspots")
-          .then(result => {
-            console.log(result);
-          })
-          .catch(err => {
-            console.log(err);
-          });
         this.setState({ customerData: response.data });
       }
     });
+
+    axios
+      .get("/api/getCheckoutSpots")
+      .then(response => {
+        if (response.data.redirecturl === "login") {
+          this.props.history.push("/login");
+        } else {
+          response.data.map(obj => {
+            return this.setState({
+              checkoutData: this.state.checkoutData.concat(obj),
+              totalPrice: this.state.totalPrice + obj.spotPrice
+            });
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  purchaseSubmit = () => {
+    axios
+      .post("/api/purchaseSubmit", this.state.checkoutData)
+      .then(response => {
+        if (response.data.redirecturl === "login") {
+          this.props.history.push("/login");
+        } else if (response.data.redirecturl === "order") {
+          this.props.history.push("/order");
+        }
+      });
   };
 
   render() {
@@ -45,9 +67,12 @@ class Payment extends React.Component {
           </div>
           <UserInfo customerData={this.state.customerData} />
           <div className="container">
-            <Price />
+            <Price
+              checkoutData={this.state.checkoutData}
+              totalPrice={this.state.totalPrice}
+            />
           </div>
-          <Terms price={this.state.termsPrice} tax={this.state.termsTax} />
+          <Terms price={this.state.totalPrice} tax={this.state.termsTax} />
           <div className="form-check" id="termsCheck">
             <input
               className="form-check-input"
@@ -62,13 +87,13 @@ class Payment extends React.Component {
             </label>
           </div>
           <br />
-          <input
-            type="submit"
+          <button
             className="btn btn-success"
-            onClick={this.props.handleSubmit}
+            onClick={this.purchaseSubmit}
             disabled={this.state.accepted === false}
-            value="Confirm Checkout"
-          />
+          >
+            Confirm Purchase
+          </button>
         </div>
       </Fragment>
     );

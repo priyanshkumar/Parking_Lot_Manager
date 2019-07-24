@@ -1,7 +1,7 @@
 import React from "react";
 import "./Price.css";
-
-function Price() {
+import TRow from "./tRow/TRow";
+function Price({ checkoutData, totalPrice }) {
   return (
     <div className="row m-3 p-4">
       <table className="table table-hover border border-dark">
@@ -14,29 +14,14 @@ function Price() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">A1</th>
-            <td>A</td>
-            <td>Trailers Only</td>
-            <td>$400</td>
-          </tr>
-          <tr>
-            <th scope="row">A2</th>
-            <td>A</td>
-            <td>Trailers Only</td>
-            <td>$400</td>
-          </tr>
-          <tr>
-            <th scope="row">B1</th>
-            <td>B</td>
-            <td>Trucks Only</td>
-            <td>$500</td>
-          </tr>
+          {checkoutData.map(data => {
+            return <TRow data={data} key={data.id} />;
+          })}
           <tr>
             <td />
             <td />
             <th scope="row"> Total </th>
-            <th scope="row">$1300</th>
+            <th scope="row">${totalPrice}</th>
           </tr>
         </tbody>
       </table>

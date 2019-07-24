@@ -5,7 +5,7 @@ import Login from "../clientlayout/login/Login";
 import Signup from "../clientlayout/signup/Signup";
 import Dashboard from "../clientlayout/dashboard/Dashboard";
 // import Axios from "axios";
-
+import Order from '../clientlayout/order/Order'
 import "./App.css";
 import ProfileForm from "../clientlayout/profileForm/ProfileForm";
 import Profile from "../clientlayout/profile/profile";
@@ -32,6 +32,8 @@ class App extends Component {
         <Route exact path="/profileform" component={ProfileForm} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/payment" component={Payment} />
+        <Route exact path="/order" component={Order} />
+
         {/* </Router>
       );
     } else {

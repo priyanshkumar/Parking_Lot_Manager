@@ -17,7 +17,7 @@ class MainPage extends React.Component {
             <div className="d-flex justify-content-center mb-3">
               <a
                 className="btn btn-social btn-google"
-                href="/auth/google"
+                href="http://localhost:3001/auth/google"
               >
                 <span className="fab fa-google" /> Sign in with Google
               </a>

@@ -27,7 +27,7 @@ export default class ProfileForm extends React.Component {
   reloadRefresh = () => {
     axios.get("/api/getProfile").then(response => {
       if (response.data) {
-        if (response.data.redirecturl) {
+        if (response.data) {
           this.setState({
             companyName: response.data.companyName,
             companyPointOfContact: response.data.companyPointOfContact,
