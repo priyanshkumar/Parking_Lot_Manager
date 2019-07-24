@@ -27,7 +27,7 @@ export default class ProfileForm extends React.Component {
   reloadRefresh = () => {
     axios.get("/api/getProfile").then(response => {
       if (response.data) {
-        if (response.data.redirecturl) {
+        if (response.data) {
           this.setState({
             companyName: response.data.companyName,
             companyPointOfContact: response.data.companyPointOfContact,
@@ -59,6 +59,7 @@ export default class ProfileForm extends React.Component {
     axios
       .post("/api/createProfile", this.state)
       .then(response => {
+        console.log(response);
         if (response.data.redirecturl === "login") {
           this.props.history.push("/login");
         } else if (response.data.redirecturl === "dashboard") {
