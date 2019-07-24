@@ -22,6 +22,9 @@ function Modal({ spot, id, spotClick, selectModal, closeModal, isclicked }) {
             <button
               type="button"
               className="close"
+              onClick={() => {
+                closeModal(id);
+              }}
               data-dismiss="modal"
               aria-label="Close"
             >
@@ -44,7 +47,8 @@ function Modal({ spot, id, spotClick, selectModal, closeModal, isclicked }) {
                 }
                 status={
                   (spot.isSpotAllocated && "disabled") ||
-                  (isclicked && "disabled")
+                  (isclicked && "disabled") ||
+                  (spot.isCheckout && "disabled")
                 }
                 spotClick={spotClick}
               />
