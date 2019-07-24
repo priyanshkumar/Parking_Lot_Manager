@@ -12,8 +12,8 @@ export default class Terms extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Terms and Conditions</h2>
+      <div className="container">
+        <h4>Terms and Conditions</h4>
         <ol>
           <li>
             Tenant Agrees to pay ${this.props.price} /month plus tax for $
