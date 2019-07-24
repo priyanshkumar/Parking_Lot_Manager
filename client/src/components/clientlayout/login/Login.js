@@ -16,24 +16,20 @@ class MainPage extends React.Component {
             <hr className="bg-light" />
             <div className="d-flex justify-content-center mb-3">
               <a
-                className="btn btn-social btn-google mx-1"
+                className="btn btn-social btn-google"
                 href="http://localhost:3001/auth/google"
               >
                 <span className="fab fa-google" /> Sign in with Google
               </a>
               <br />
-
               <a
-                className="btn btn-block btn-social btn-twitter"
-                href="http://localhost:3001/auth/twitter"
+                className="btn btn-social btn-twitter mx-3"
+                href="/auth/twitter"
               >
                 <span className="fab fa-twitter" /> Sign in with Twitter
               </a>
 
-              <a
-                className="btn btn-block btn-social btn-facebook"
-                href="http://localhost:3001/auth/facebook"
-              >
+              <a className="btn btn-social btn-facebook" href="/auth/facebook">
                 <span className="fab fa-facebook" /> Sign in with Facebook
               </a>
             </div>

@@ -19,7 +19,7 @@ router.get(
 );
 
 router.get(
-  "/redirect",
+  "/google/redirect",
   passport.authenticate("google", {
     successRedirect: "/auth/profileCheck",
     failureRedirect: "http://localhost:3000/login"

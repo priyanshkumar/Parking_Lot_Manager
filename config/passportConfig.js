@@ -19,7 +19,7 @@ passport.deserializeUser((id, done) => {
 passport.use(
   new GoogleStrategy(
     {
-      callbackURL: "/auth/redirect",
+      callbackURL: "/auth/google/redirect",
       clientID: process.env.google_clientID,
       clientSecret: process.env.google_clientSecret
     },
@@ -46,7 +46,6 @@ passport.use(
     }
   )
 );
-
 
 //facebook oauth
 passport.use(
