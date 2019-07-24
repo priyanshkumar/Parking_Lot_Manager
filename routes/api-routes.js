@@ -187,6 +187,31 @@ router.post("/purchaseSubmit", authenticated, (req, res) => {
     });
 });
 
+router.get("/getUserSpots", authenticated, (req, res) => {
+  db.Customer.findOne({
+    where: {
+      UserId: req.user.dataValues.id
+    }
+  })
+    .then(response => {
+      console.log(response);
+      db.ParkingSpot.findAll({
+        where: {
+          CustomerId: response.dataValues.id,
+          isSpotAllocated: true
+        }
+      })
+        .then(result => {
+          res.status(200).json(result);
+        })
+        .catch(err => {
+          res.status(500).json(err);
+        });
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
 module.exports = router;
 
 // import React, { Component } from "react";

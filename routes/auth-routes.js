@@ -79,9 +79,9 @@ router.get("/profileCheck", (req, res) => {
     db.Customer.findOne({ where: { UserId: req.user.dataValues.id } }).then(
       result => {
         if (result) {
-          res.redirect("/");
+          res.redirect("http://localhost:3000/");
         } else {
-          res.redirect("/profileForm");
+          res.redirect("http://localhost:3000/profileForm");
         }
       }
     );

@@ -4,8 +4,8 @@ import MainPage from "../clientlayout/mainpage/MainPage";
 import Login from "../clientlayout/login/Login";
 import Signup from "../clientlayout/signup/Signup";
 import Dashboard from "../clientlayout/dashboard/Dashboard";
-// import Axios from "axios";
-import Order from '../clientlayout/order/Order'
+import purchasedSpots from "../clientlayout/purchasedSpots/purchasedSpot";
+import Order from "../clientlayout/order/Order";
 import "./App.css";
 import ProfileForm from "../clientlayout/profileForm/ProfileForm";
 import Profile from "../clientlayout/profile/profile";
@@ -33,6 +33,7 @@ class App extends Component {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/payment" component={Payment} />
         <Route exact path="/order" component={Order} />
+        <Route exact path="/userSpots" component={purchasedSpots} />
 
         {/* </Router>
       );

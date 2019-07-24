@@ -5,7 +5,7 @@ function TRow({ data }) {
     <tr>
       <th scope="row">{data.spotName}</th>
       <td>{data.spotZone}</td>
-      <td>Trailers Only</td>
+      <td>{data.spotType}</td>
       <td>{data.spotPrice}</td>
     </tr>
   );
