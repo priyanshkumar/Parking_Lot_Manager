@@ -40,9 +40,6 @@ function Price() {
           </tr>
         </tbody>
       </table>
-      <button className="btn btn-success d-flex mx-auto align-self-center">
-        Confirm Checkout
-      </button>
     </div>
   );
 }

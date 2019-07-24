@@ -18,8 +18,7 @@ class Dashboard extends Component {
     C: [],
     D: [],
     E: [],
-    closeCkeckerSelected: [],
-    closeSelected: []
+    closeCkeckerSelected: []
   };
 
   zones = [
@@ -94,26 +93,22 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.setState({ tmpSelected: [] });
     axios
       .get("/api/getParkingSpots")
       .then(result => {
-        console.log(result.data);
-        this.populateZone(result);
+        if (result.data) {
+          if (result.data.redirecturl === "login") {
+            this.props.history.push("/login");
+          } else {
+            this.populateZone(result);
+          }
+        }
       })
       .catch(err => {
         console.log(err);
       });
 
-    //to retrieve user info from cookie
-    axios
-      .get("http://localhost:3001/auth/user", { withCredentials: true })
-      .then(response => {
-        //check if user is authenticated and acquire user info
-        const user = response.data.user;
-        console.log(user);
-        this.setState({ user, authenticated: true });
-      });
+    this.setState({ tmpSelected: [] });
   }
 
   filterCall = (zoneCall, spot, zone) => {
@@ -169,7 +164,32 @@ class Dashboard extends Component {
     this.setState({ isClicked: true });
   };
 
+  search = (spotzone, spot, calling) => {
+    let index = spotzone.findIndex(ele => {
+      return ele.spotName === spot;
+    });
+    if (calling === true) {
+      spotzone[index].isCheckout = true;
+    } else {
+      spotzone[index].isCheckout = false;
+    }
+  };
+
   selectModalClick = () => {
+    this.state.tmpSelected.map(spot => {
+      if (spot.zone === "A") {
+        this.search(this.state.A, spot.spot, true);
+      } else if (spot.zone === "B") {
+        this.search(this.state.B, spot.spot, true);
+      } else if (spot.zone === "C") {
+        this.search(this.state.C, spot.spot, true);
+      } else if (spot.zone === "D") {
+        this.search(this.state.D, spot.spot, true);
+      } else if (spot.zone === "E") {
+        this.search(this.state.E, spot.spot, true);
+      }
+      return "done";
+    });
     this.setState({
       Selected: this.state.tmpSelected,
       closeCkeckerSelected: []
@@ -196,6 +216,17 @@ class Dashboard extends Component {
 
   deleteItemSelected = (e, spot) => {
     if (e) {
+      if (spot.zone === "A") {
+        this.search(this.state.A, spot.spot, false);
+      } else if (spot.zone === "B") {
+        this.search(this.state.B, spot.spot, false);
+      } else if (spot.zone === "C") {
+        this.search(this.state.C, spot.spot, false);
+      } else if (spot.zone === "D") {
+        this.search(this.state.D, spot.spot, false);
+      } else if (spot.zone === "E") {
+        this.search(this.state.E, spot.spot, false);
+      }
       this.setState({
         Selected: this.state.Selected.filter(item => {
           return item.spot !== spot.spot;
@@ -203,11 +234,26 @@ class Dashboard extends Component {
       });
     }
   };
+
+  checkout = () => {
+    axios
+      .put("/api/checkout", this.state.Selected)
+      .then(result => {
+        console.log(result.data);
+        if (result.data.redirecturl === "payment") {
+          this.props.history.push("/payment");
+        } else if (result.data.redirecturl === "dashboard") {
+          this.props.history.push("/dashboard");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   render() {
     return (
       <div>
-        <h1>{this.state.user.emailId}</h1>
-        <Navbar />
+        <Navbar reload={"true"} />
         <div className="container d-flex justify-content-center">
           <img className="w-75 mt-5" src={Parkingmap} alt="" />
         </div>
@@ -235,9 +281,14 @@ class Dashboard extends Component {
               </div>
               <div className="row">
                 <div className="col">
-                  <a className="btn btn-primary" href="/payment">
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      this.checkout();
+                    }}
+                  >
                     CHECKOUT
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

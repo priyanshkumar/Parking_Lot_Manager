@@ -25,24 +25,24 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       //check if user exists
-      db.User.findOne({ where: { profileID: profile.id } }).then(user => {
-        console.log(profile);
-        const data = profile._json;
-
-        if (!user) {
-          //create new user
-          return db.User.create({
-            profileID: data.sub,
-            emailId: data.email,
-            displayName: data.name,
-            isAdmin: false
-          }).then(newUser => {
-            done(null, newUser);
-          });
+      db.User.findOne({ where: { profileID: profile._json.sub } }).then(
+        user => {
+          const data = profile._json;
+          if (user) {
+            console.log("User already in db");
+            done(null, user);
+          } else {
+            //create new user
+            db.User.create({
+              profileID: data.sub,
+              emailId: data.email,
+              displayName: data.name
+            }).then(newUser => {
+              done(null, newUser);
+            });
+          }
         }
-        console.log("User already in db");
-        return done(null, user);
-      });
+      );
     }
   )
 );
@@ -56,9 +56,24 @@ passport.use(
       clientSecret: process.env.facebook_AppSecret
     },
     (accessToken, refreshToken, profile, done) => {
-      //add db methods here
-      console.log(profile);
-      return done(null, profile);
+      db.User.findOne({ where: { profileID: profile._json.sub } }).then(
+        user => {
+          const data = profile._json;
+          if (user) {
+            console.log("User already in db");
+            done(null, user);
+          } else {
+            //create new user
+            db.User.create({
+              profileID: data.sub,
+              emailId: data.email,
+              displayName: data.name
+            }).then(newUser => {
+              done(null, newUser);
+            });
+          }
+        }
+      );
     }
   )
 );
@@ -72,9 +87,24 @@ passport.use(
       consumerSecret: process.env.twitter_ConsumerSecret
     },
     (accessToken, refreshToken, profile, done) => {
-      //add db methods here
-      console.log(profile);
-      done(null, profile);
+      db.User.findOne({ where: { profileID: profile._json.sub } }).then(
+        user => {
+          const data = profile._json;
+          if (user) {
+            console.log("User already in db");
+            done(null, user);
+          } else {
+            //create new user
+            db.User.create({
+              profileID: data.sub,
+              emailId: data.email,
+              displayName: data.name
+            }).then(newUser => {
+              done(null, newUser);
+            });
+          }
+        }
+      );
     }
   )
 );

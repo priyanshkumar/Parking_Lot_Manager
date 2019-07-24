@@ -22,8 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DOUBLE,
       allowNull: false
     },
-    isCheckedOut: {
-      type: DataTypes.BOOLEAN
+    isCheckout: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false
     }
   });
 
