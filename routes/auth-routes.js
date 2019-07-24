@@ -31,7 +31,7 @@ router.get("/facebook", passport.authenticate("facebook"));
 router.get(
   "/facebook/redirect",
   passport.authenticate("facebook", {
-    successRedirect: "/dashboard",
+    successRedirect: "http://locahost:3000/dashboard",
     failureRedirect: "/login"
   })
 );
@@ -48,7 +48,7 @@ router.get(
 );
 
 // used to acquire user object
-router.get("/user", ensureAuthenticated, (req, res) => {
+router.get("/user", (req, res) => {
   if (req.user) {
     res.json({
       success: true,
