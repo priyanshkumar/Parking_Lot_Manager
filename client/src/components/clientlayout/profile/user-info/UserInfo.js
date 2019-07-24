@@ -2,7 +2,7 @@ import React from "react";
 
 function UserInfo({ customerData }) {
   return (
-    <table className="table table-striped">
+    <table className="container table table-hover mx-auto">
       <tbody>
         <tr>
           <th>Company Name</th>

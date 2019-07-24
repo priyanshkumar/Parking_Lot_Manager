@@ -39,12 +39,17 @@ class Payment extends React.Component {
     return (
       <Fragment>
         <Navbar />
-        <div className="container my-5">
-          <div className="">
-            <h2>Payment Information</h2>
+        <div className="container w-75 my-5">
+          <div className="w-75">
+            <h2>
+              Payment Information{" "}
+              <small>
+                <i class="fas fa-chevron-down" />{" "}
+              </small>
+            </h2>
           </div>
           <UserInfo customerData={this.state.customerData} />
-          <div className="container">
+          <div class="w-100">
             <Price />
           </div>
           <Terms price={this.state.termsPrice} tax={this.state.termsTax} />

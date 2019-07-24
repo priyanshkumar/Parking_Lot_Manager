@@ -12,7 +12,7 @@ export default class Terms extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container w-75">
         <h4>Terms and Conditions</h4>
         <ol>
           <li>
