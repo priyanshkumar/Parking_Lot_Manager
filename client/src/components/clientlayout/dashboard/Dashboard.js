@@ -23,41 +23,41 @@ class Dashboard extends Component {
 
   zones = [
     {
-      title: "Parking A",
-      price: "200$",
-      subTitle: "Cars Only",
+      title: "Cars Only",
+      price: "$200/mth",
+      subTitle: "Zone A",
       content:
         "With supporting text below as a natural lead-in to additional content.",
       buttonID: "#A"
     },
     {
-      title: "Parking B",
-      price: "400$",
-      subTitle: "Trucks Only",
+      title: "Trucks Only",
+      price: "$400/mth",
+      subTitle: "Zone B",
       content:
         "With supporting text below as a natural lead-in to additional content.",
       buttonID: "#B"
     },
     {
-      title: "Parking C",
-      price: "500$",
-      subTitle: "Trailors Only",
+      title: "Trailors Only",
+      price: "$350/mth",
+      subTitle: "Zone C",
       content:
         "With supporting text below as a natural lead-in to additional content.",
       buttonID: "#C"
     },
     {
-      title: "Parking D",
-      price: "500$",
-      subTitle: "Trucks with Trailors",
+      title: "Trucks with Trailors",
+      price: "$520/mth",
+      subTitle: "Zone D",
       content:
         "With supporting text below as a natural lead-in to additional content.",
       buttonID: "#D"
     },
     {
-      title: "Parking E",
-      price: "500$",
-      subTitle: "Others",
+      title: "Others",
+      price: "$275/mth",
+      subTitle: "Zone E",
       content:
         "With supporting text below as a natural lead-in to additional content.",
       buttonID: "#E"
