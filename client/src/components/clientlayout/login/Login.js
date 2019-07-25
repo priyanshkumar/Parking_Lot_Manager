@@ -7,7 +7,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar reload={"true"} />
+        <Navbar />
         <div className="full-spread d-flex justify-content-center align-items-center">
           <div className="signupbox border rounded p-5">
             <h5 className="text-center text-white">
