@@ -17,7 +17,7 @@ function Order() {
         <Link to="/dashboard">
           <p className="badge badge-success p-2 mt-2">
             {" "}
-            <i class="far fa-check-circle" /> Back to dashboard
+            <i className="far fa-check-circle" /> Back to dashboard
           </p>{" "}
         </Link>
       </div>
