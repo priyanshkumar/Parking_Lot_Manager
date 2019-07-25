@@ -33,6 +33,9 @@ class Navbar extends React.Component {
                   <a href="/dashboard">Dashboard</a>
                 </li>
                 <li className="px-3">
+                  <a href="/userSpots">Your Spot</a>
+                </li>
+                <li className="px-3">
                   <a
                     href="http://localhost:3001/auth/logout"
                     className="btn btn-outline-primary button"
