@@ -81,7 +81,7 @@ router.get("/profileCheck", (req, res) => {
         if (result) {
           res.redirect("/");
         } else {
-          res.redirect("/profileForm");
+          res.redirect("/profileform");
         }
       }
     );
