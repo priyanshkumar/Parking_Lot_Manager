@@ -32,12 +32,12 @@ export default class Profile extends React.Component {
             <h3>
               My Profile{" "}
               <small>
-                <i class="fas fa-chevron-down" />
+                <i className="fas fa-chevron-down" />
               </small>
             </h3>
 
             <a href="/profileform" className="btn btn-success py-2">
-              <i class="fas fa-edit" /> Edit Profile
+              <i className="fas fa-edit" /> Edit Profile
             </a>
           </div>
           <UserInfo customerData={this.state.customerData} />

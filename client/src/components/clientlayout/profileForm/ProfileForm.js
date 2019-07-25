@@ -82,7 +82,7 @@ export default class ProfileForm extends React.Component {
           <div className="d-flex justify-content-center">
             <h3>Company Profile</h3>
           </div>
-          <hr class="bg-light" />
+          <hr className="bg-light" />
           <form className="mt-5">
             <div className="form-group row">
               <label htmlFor="Name" className="col-sm-2 col-form-label">
@@ -169,7 +169,7 @@ export default class ProfileForm extends React.Component {
               </label>
               <div className="col-2">
                 <select
-                  class="form-control w-100"
+                  className="form-control w-100"
                   onChange={event =>
                     this.handleinputchange("province", event.target.value)
                   }
@@ -177,7 +177,9 @@ export default class ProfileForm extends React.Component {
                   <option value={this.state.province}>
                     {this.state.province ? this.state.province : "Choose..."}
                   </option>
-                  <option value="ON">Ontario</option>
+                  <option value="ON" selected>
+                    Ontario
+                  </option>
                   <option value="MB">Manitoba</option>
                   <option value="QC">Quebec</option>
                   <option value="AB">Alberta</option>
@@ -205,7 +207,7 @@ export default class ProfileForm extends React.Component {
               </label>
               <div className="col-2">
                 <select
-                  class="form-control w-100"
+                  className="form-control w-100"
                   onChange={event =>
                     this.handleinputchange("country", event.target.value)
                   }
@@ -214,7 +216,7 @@ export default class ProfileForm extends React.Component {
                     {this.state.country ? this.state.country : "Choose..."}
                   </option>
                   <option value="USA">USA</option>
-                  <option selected value="Canada">
+                  <option value="Canada" selected>
                     Canada
                   </option>
                 </select>
