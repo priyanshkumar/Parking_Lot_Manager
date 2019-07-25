@@ -6,7 +6,7 @@ const db = require("../models");
 // logout user
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect("https://parking-lot-manage.herokuapp.com/");
 });
 
 // GOOGLE
