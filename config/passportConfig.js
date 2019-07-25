@@ -29,7 +29,6 @@ passport.use(
         user => {
           const data = profile._json;
           if (user) {
-            console.log("User already in db");
             done(null, user);
           } else {
             //create new user
@@ -60,7 +59,6 @@ passport.use(
         user => {
           const data = profile._json;
           if (user) {
-            console.log("User already in db");
             done(null, user);
           } else {
             //create new user
@@ -91,7 +89,6 @@ passport.use(
         user => {
           const data = profile._json;
           if (user) {
-            console.log("User already in db");
             done(null, user);
           } else {
             //create new user
