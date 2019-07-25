@@ -38,7 +38,7 @@ class Navbar extends React.Component {
                 </li>
                 <li className="px-3">
                   <Link
-                    to="http://localhost:3001/auth/logout"
+                    to="/auth/logout"
                     className="btn btn-outline-primary button"
                   >
                     Log Out
