@@ -84,30 +84,27 @@ router.get("/getProfile", authenticated, (req, res) => {
 });
 
 router.get("/getParkingSpots", authenticated, (req, res) => {
-  if (req.user) {
-    db.ParkingSpot.findAll()
-      .then(parkingSpots => {
-        res.status(200).json(parkingSpots);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  db.ParkingSpot.findAll()
+    .then(parkingSpots => {
+      res.status(200).json(parkingSpots);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 });
 
-router.get("/getcheckoutspots", (req, res) => {
+router.get("/getCheckoutSpots", authenticated, (req, res) => {
   db.Customer.findOne({
     where: { UserId: req.user.dataValues.id }
   })
     .then(response => {
-      db.ParkingSpots.findAll({
+      db.ParkingSpot.findAll({
         where: {
           CustomerId: response.dataValues.id,
           isCheckout: true
         }
       })
         .then(result => {
-          console.log(result);
           res.status(200).json(result);
         })
         .catch(error => {
@@ -163,6 +160,58 @@ router.get("/isAuthenticated", (req, res) => {
   } else res.status(200).json(false);
 });
 
+router.post("/purchaseSubmit", authenticated, (req, res) => {
+  updateData = req.body.map(data => {
+    return data.id;
+  });
+
+  const Op = Sequelize.Op;
+  db.ParkingSpot.update(
+    {
+      isSpotAllocated: true,
+      isCheckout: false
+    },
+    {
+      where: {
+        id: {
+          [Op.in]: updateData
+        }
+      }
+    }
+  )
+    .then(() => {
+      res.status(200).json({ redirecturl: "order" });
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
+router.get("/getUserSpots", authenticated, (req, res) => {
+  db.Customer.findOne({
+    where: {
+      UserId: req.user.dataValues.id
+    }
+  })
+    .then(response => {
+      console.log(response);
+      db.ParkingSpot.findAll({
+        where: {
+          CustomerId: response.dataValues.id,
+          isSpotAllocated: true
+        }
+      })
+        .then(result => {
+          res.status(200).json(result);
+        })
+        .catch(err => {
+          res.status(500).json(err);
+        });
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
 module.exports = router;
 
 // import React, { Component } from "react";

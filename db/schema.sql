@@ -3,18 +3,19 @@ DROP DATABASE IF EXISTS parking_lot_manager;
 -- Creates the "blogger" database --
 CREATE DATABASE parking_lot_manager;
 
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice, isCheckout,createdAt, updatedAt, isPendingApproval) values ('A1', 'A', false, 300,false, sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,  isCheckout,createdAt, updatedAt, isPendingApproval) values ('A2', 'A', false, 300,false, sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,  isCheckout,createdAt, updatedAt, isPendingApproval) values ('A3', 'A', false, 300, false,sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,  isCheckout,createdAt, updatedAt, isPendingApproval) values ('B1', 'B', false, 300, false,sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,  isCheckout,createdAt, updatedAt, isPendingApproval) values ('B2', 'B', false, 300,false,sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,  isCheckout,createdAt, updatedAt, isPendingApproval) values ('B3', 'B', false, 300,false, sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,isCheckout, createdAt, updatedAt, isPendingApproval) values ('C1', 'C', false, 300,false, sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,isCheckout createdAt, updatedAt, isPendingApproval) values ('C2', 'C', false, 300,false, sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,isCheckout createdAt, updatedAt, isPendingApproval) values ('C3', 'C', false, 300,false, sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,isCheckoutcreatedAt, updatedAt, isPendingApproval) values ('D1', 'D', false, 300,false,sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,isCheckout createdAt, updatedAt, isPendingApproval) values ('D2', 'D', false, 300,false, sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,isCheckout createdAt, updatedAt, isPendingApproval) values ('D3', 'D', false, 300, false,sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,isCheckout createdAt, updatedAt, isPendingApproval) values ('E1', 'E', false, 300,false, sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,isCheckout createdAt, updatedAt, isPendingApproval) values ('E2', 'E', false, 300, false,sysdate(), sysdate(), false);
-insert into ParkingSpots (spotName, spotZone, isSpotAllocated, spotPrice,isCheckout createdAt, updatedAt, isPendingApproval) values ('E3', 'E', false, 300, false,sysdate(), sysdate(), false);
+insert into ParkingSpots (spotName, spotZone, spotType, isSpotAllocated, spotPrice, isCheckout,createdAt, updatedAt, isPendingApproval) values 
+('A1', 'A', 'Cars', false, 300,false, sysdate(), sysdate(), false),
+('A2', 'A', 'Cars', false, 300,false, sysdate(), sysdate(), false),
+('A3', 'A', 'Cars', false, 300, false,sysdate(), sysdate(), false),
+('B1', 'B', 'Trucks', false, 300, false,sysdate(), sysdate(), false),
+('B2', 'B', 'Trucks', false, 300, false,sysdate(), sysdate(), false),
+('B3', 'B', 'Trucks', false, 300, false, sysdate(), sysdate(), false),
+('C1', 'C','Trailers', false, 300, false, sysdate(), sysdate(), false),
+('C2', 'C', 'Trailers', false, 300, false, sysdate(), sysdate(), false),
+('C3', 'C', 'Trailers', false, 300, false, sysdate(), sysdate(), false),
+('D1', 'D', 'Trucks & Trailers', false, 300,false,sysdate(), sysdate(), false),
+('D2', 'D', 'Trucks & Trailers', false, 300,false, sysdate(), sysdate(), false),
+('D3', 'D', 'Trucks & Trailers', false, 300, false,sysdate(), sysdate(), false),
+('E1', 'E', 'Any', false, 300, false, sysdate(), sysdate(), false),
+('E2', 'E', 'Any', false, 300, false, sysdate(), sysdate(), false),
+('E3', 'E', 'Any', false, 300, false, sysdate(), sysdate(), false);
