@@ -25,23 +25,6 @@ router.get(
   })
 );
 
-<<<<<<< HEAD
-router.get("/profileCheck", (req, res) => {
-  if (req.user) {
-    db.Customer.findOne({ where: { UserId: req.user.dataValues.id } }).then(
-      result => {
-        if (result) {
-          res.redirect("/");
-        } else {
-          res.redirect("/profileForm");
-        }
-      }
-    );
-  }
-});
-
-=======
->>>>>>> ed0bf46bf9d5f7dbcdd8470d3210870882101315
 // FACEBOOK
 router.get("/facebook", passport.authenticate("facebook"));
 
