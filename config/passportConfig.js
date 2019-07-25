@@ -50,7 +50,8 @@ passport.use(
 passport.use(
   new FacebookStrategy(
     {
-      callbackURL: "/auth/facebook/redirect",
+      callbackURL:
+        "https://parking-lot-manage.herokuapp.com/auth/facebook/redirect",
       clientID: process.env.facebook_AppID,
       clientSecret: process.env.facebook_AppSecret
     },
