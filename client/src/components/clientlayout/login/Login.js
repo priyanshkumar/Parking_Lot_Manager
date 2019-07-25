@@ -11,14 +11,11 @@ class MainPage extends React.Component {
         <div className="full-spread d-flex justify-content-center align-items-center">
           <div className="signupbox border rounded p-5">
             <h5 className="text-center text-white">
-              Sign in with your Google or Github account
+              Sign in with your Google/Twitter/Facebook Account
             </h5>
             <hr className="bg-light" />
             <div className="d-flex justify-content-center mb-3">
-              <a
-                className="btn btn-social btn-google"
-                href="/auth/google"
-              >
+              <a className="btn btn-social btn-google" href="/auth/google">
                 <span className="fab fa-google" /> Sign in with Google
               </a>
               <br />
