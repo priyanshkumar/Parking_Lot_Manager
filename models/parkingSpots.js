@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    spotType: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     isSpotAllocated: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
