@@ -50,7 +50,8 @@ passport.use(
 passport.use(
   new FacebookStrategy(
     {
-      callbackURL: "/auth/facebook/redirect",
+      callbackURL:
+        "https://parking-lot-manage.herokuapp.com/auth/facebook/redirect",
       clientID: process.env.facebook_AppID,
       clientSecret: process.env.facebook_AppSecret
     },
@@ -77,7 +78,8 @@ passport.use(
 passport.use(
   new TwitterStrategy(
     {
-      callbackURL: "/auth/twitter/redirect",
+      callbackURL:
+        "https://parking-lot-manage.herokuapp.com/auth/twitter/redirect",
       consumerKey: process.env.twitter_ConsumerKey,
       consumerSecret: process.env.twitter_ConsumerSecret
     },
