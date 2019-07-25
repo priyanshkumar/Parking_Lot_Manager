@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "./logo.png";
 import "./navbar.css";
 import Axios from "axios";
@@ -18,41 +19,41 @@ class Navbar extends React.Component {
     return (
       <nav className="navbar sticky-top bg-white d-flex justify-content-around px-5">
         <div className="logo">
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="" />
-          </a>
+          </Link>
         </div>
         <div className="links">
           <ul className="d-flex align-items-center justify-content-center p-0 m-0">
             {this.state.authenticated ? (
               <div className="d-flex align-items-center justify-content-center">
                 <li className="px-3">
-                  <a href="/profile">Profile</a>
+                  <Link to="/profile">Profile</Link>
                 </li>
                 <li className="px-3">
-                  <a href="/dashboard">Dashboard</a>
+                  <Link to="/dashboard">Dashboard</Link>
                 </li>
                 <li className="px-3">
-                  <a href="/userSpots">Your Spot</a>
+                  <Link to="/userSpots">Your Spot</Link>
                 </li>
                 <li className="px-3">
-                  <a
-                    href="http://localhost:3001/auth/logout"
+                  <Link
+                    to="http://localhost:3001/auth/logout"
                     className="btn btn-outline-primary button"
                   >
                     Log Out
-                  </a>
+                  </Link>
                 </li>
               </div>
             ) : (
               <div className="d-flex align-items-center justify-content-center">
                 <li className="px-3">
-                  <a href="/login">Login</a>
+                  <Link to="/login">Login</Link>
                 </li>
                 <li className="px-3">
-                  <a href="/signup" className="btn btn-outline-primary button">
+                  <Link to="/signup" className="btn btn-outline-primary button">
                     Get Started
-                  </a>
+                  </Link>
                 </li>
               </div>
             )}
