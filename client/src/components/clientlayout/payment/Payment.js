@@ -66,16 +66,18 @@ class Payment extends React.Component {
             <h2>
               Payment Information{" "}
               <small>
-                <i class="fas fa-chevron-down" />{" "}
+                <i className="fas fa-chevron-down" />{" "}
               </small>
             </h2>
           </div>
           <UserInfo customerData={this.state.customerData} />
+
           <div className="container">
             <Price
               checkoutData={this.state.checkoutData}
               totalPrice={this.state.totalPrice}
             />
+
           </div>
           <Terms price={this.state.totalPrice} tax={this.state.termsTax} />
           <div className="form-check" id="termsCheck">
