@@ -29,7 +29,6 @@ passport.use(
         user => {
           const data = profile._json;
           if (user) {
-            console.log("User already in db");
             done(null, user);
           } else {
             //create new user
@@ -56,24 +55,20 @@ passport.use(
       clientSecret: process.env.facebook_AppSecret
     },
     (accessToken, refreshToken, profile, done) => {
-      db.User.findOne({ where: { profileID: profile._json.sub } }).then(
-        user => {
-          const data = profile._json;
-          if (user) {
-            console.log("User already in db");
-            done(null, user);
-          } else {
-            //create new user
-            db.User.create({
-              profileID: data.sub,
-              emailId: data.email,
-              displayName: data.name
-            }).then(newUser => {
-              done(null, newUser);
-            });
-          }
+      db.User.findOne({ where: { profileID: profile.id } }).then(user => {
+        if (user) {
+          done(null, user);
+        } else {
+          //create new user
+          db.User.create({
+            profileID: profile.id,
+            emailId: "",
+            displayName: ""
+          }).then(newUser => {
+            done(null, newUser);
+          });
         }
-      );
+      });
     }
   )
 );
@@ -87,24 +82,20 @@ passport.use(
       consumerSecret: process.env.twitter_ConsumerSecret
     },
     (accessToken, refreshToken, profile, done) => {
-      db.User.findOne({ where: { profileID: profile._json.sub } }).then(
-        user => {
-          const data = profile._json;
-          if (user) {
-            console.log("User already in db");
-            done(null, user);
-          } else {
-            //create new user
-            db.User.create({
-              profileID: data.sub,
-              emailId: data.email,
-              displayName: data.name
-            }).then(newUser => {
-              done(null, newUser);
-            });
-          }
+      db.User.findOne({ where: { profileID: profile.id } }).then(user => {
+        if (user) {
+          done(null, user);
+        } else {
+          //create new user
+          db.User.create({
+            profileID: profile.id,
+            emailId: "",
+            displayName: ""
+          }).then(newUser => {
+            done(null, newUser);
+          });
         }
-      );
+      });
     }
   )
 );
