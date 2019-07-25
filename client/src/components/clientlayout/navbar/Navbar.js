@@ -37,12 +37,12 @@ class Navbar extends React.Component {
                   <Link to="/userSpots">Your Spot</Link>
                 </li>
                 <li className="px-3">
-                  <Link
-                    to="/auth/logout"
+                  <a
+                    href="/auth/logout"
                     className="btn btn-outline-primary button"
                   >
                     Log Out
-                  </Link>
+                  </a>
                 </li>
               </div>
             ) : (
