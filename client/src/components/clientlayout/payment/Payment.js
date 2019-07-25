@@ -44,12 +44,12 @@ class Payment extends React.Component {
             <h2>
               Payment Information{" "}
               <small>
-                <i class="fas fa-chevron-down" />{" "}
+                <i className="fas fa-chevron-down" />{" "}
               </small>
             </h2>
           </div>
           <UserInfo customerData={this.state.customerData} />
-          <div class="w-100">
+          <div className="w-100">
             <Price />
           </div>
           <Terms price={this.state.termsPrice} tax={this.state.termsTax} />
