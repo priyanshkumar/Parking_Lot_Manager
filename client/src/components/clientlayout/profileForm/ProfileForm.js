@@ -177,9 +177,7 @@ export default class ProfileForm extends React.Component {
                   <option value={this.state.province}>
                     {this.state.province ? this.state.province : "Choose..."}
                   </option>
-                  <option value="ON" selected>
-                    Ontario
-                  </option>
+                  <option value="ON">Ontario</option>
                   <option value="MB">Manitoba</option>
                   <option value="QC">Quebec</option>
                   <option value="AB">Alberta</option>
@@ -215,10 +213,7 @@ export default class ProfileForm extends React.Component {
                   <option value={this.state.country}>
                     {this.state.country ? this.state.country : "Choose..."}
                   </option>
-                  <option value="USA">USA</option>
-                  <option value="Canada" selected>
-                    Canada
-                  </option>
+                  <option value="Canada">Canada</option>
                 </select>
               </div>
             </div>

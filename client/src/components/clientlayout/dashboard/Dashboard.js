@@ -143,7 +143,6 @@ class Dashboard extends Component {
           this.setState({ isClicked: false });
         }
       );
-      console.log(this.state.tmpSelected);
       zoneCall[index].isPending = true;
     }
   };
@@ -239,7 +238,6 @@ class Dashboard extends Component {
     axios
       .put("/api/checkout", this.state.Selected)
       .then(result => {
-        console.log(result.data);
         if (result.data.redirecturl === "payment") {
           this.props.history.push("/payment");
         } else if (result.data.redirecturl === "dashboard") {
@@ -253,7 +251,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <Navbar reload={"true"} />
+        <Navbar />
         <div className="container d-flex justify-content-center">
           <img className="w-75 mt-5" src={Parkingmap} alt="" />
         </div>
