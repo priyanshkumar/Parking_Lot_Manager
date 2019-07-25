@@ -3,6 +3,7 @@ import axios from "axios";
 import "./profile.css";
 import UserInfo from "./user-info/UserInfo";
 import Navbar from "../navbar/Navbar";
+import { Link } from "react-router-dom";
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -36,9 +37,9 @@ export default class Profile extends React.Component {
               </small>
             </h3>
 
-            <a href="/profileform" className="btn btn-success py-2">
+            <Link to="/profileform" className="btn btn-success py-2">
               <i className="fas fa-edit" /> Edit Profile
-            </a>
+            </Link>
           </div>
           <UserInfo customerData={this.state.customerData} />
         </div>
