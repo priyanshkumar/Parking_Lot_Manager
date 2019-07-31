@@ -26,40 +26,35 @@ class Dashboard extends Component {
       title: "Cars Only",
       price: "$200/mth",
       subTitle: "Zone A",
-      content:
-        "With supporting text below as a natural lead-in to additional content.",
+      content: "Parking allocated for cars",
       buttonID: "#A"
     },
     {
       title: "Trucks Only",
       price: "$400/mth",
       subTitle: "Zone B",
-      content:
-        "With supporting text below as a natural lead-in to additional content.",
+      content: "Parking for trucks up to 25ft long",
       buttonID: "#B"
     },
     {
       title: "Trailors Only",
       price: "$350/mth",
       subTitle: "Zone C",
-      content:
-        "With supporting text below as a natural lead-in to additional content.",
+      content: "Parking for trailers up to 53ft long",
       buttonID: "#C"
     },
     {
       title: "Trucks with Trailors",
       price: "$520/mth",
       subTitle: "Zone D",
-      content:
-        "With supporting text below as a natural lead-in to additional content.",
+      content: "Parking for trucks and trailers up to 75ft long",
       buttonID: "#D"
     },
     {
       title: "Others",
       price: "$275/mth",
       subTitle: "Zone E",
-      content:
-        "With supporting text below as a natural lead-in to additional content.",
+      content: "Storage for equipment up to 20ft long",
       buttonID: "#E"
     }
   ];
