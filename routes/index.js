@@ -13,8 +13,8 @@ const ensureAuthenticated = (req, res, next) => {
   }
 };
 
-router.use("/", htmlRoutes);
-router.use("/api", ensureAuthenticated, apiRoutes);
 router.use("/auth", authRoutes);
+router.use("/api", ensureAuthenticated, apiRoutes);
+router.use("/", htmlRoutes);
 
 module.exports = router;

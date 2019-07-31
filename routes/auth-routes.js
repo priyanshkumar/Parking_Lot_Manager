@@ -81,7 +81,7 @@ router.get("/profileCheck", (req, res) => {
         if (result) {
           res.redirect("/");
         } else {
-          res.redirect("https://parking-lot-manage.herokuapp.com/profileform");
+          res.redirect("/profileform");
         }
       }
     );
