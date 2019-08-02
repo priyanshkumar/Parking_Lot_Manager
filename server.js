@@ -44,6 +44,10 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes);
 
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
 db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log("App listening on PORT " + PORT);

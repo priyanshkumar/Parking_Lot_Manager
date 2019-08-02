@@ -25,23 +25,21 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       //check if user exists
-      db.User.findOne({ where: { profileID: profile._json.sub } }).then(
-        user => {
-          const data = profile._json;
-          if (user) {
-            done(null, user);
-          } else {
-            //create new user
-            db.User.create({
-              profileID: data.sub,
-              emailId: data.email,
-              displayName: data.name
-            }).then(newUser => {
-              done(null, newUser);
-            });
-          }
+      db.User.findOne({ where: { profileID: profile.id } }).then(user => {
+        const data = profile._json;
+        if (user) {
+          done(null, user);
+        } else {
+          //create new user
+          db.User.create({
+            profileID: profile.id,
+            emailId: data.email,
+            displayName: data.name
+          }).then(newUser => {
+            done(null, newUser);
+          });
         }
-      );
+      });
     }
   )
 );
