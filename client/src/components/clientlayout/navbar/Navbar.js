@@ -6,12 +6,13 @@ import Axios from "axios";
 
 class Navbar extends React.Component {
   state = {
-    authenticated: ""
+    authenticated: false
   };
 
   componentDidMount() {
     Axios.get("/api/isAuthenticated").then(result => {
       this.setState({ authenticated: result.data });
+      console.log(result.data);
     });
   }
 
