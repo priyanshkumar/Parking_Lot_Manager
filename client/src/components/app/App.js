@@ -16,35 +16,34 @@ class App extends Component {
     isAuthenticated: ""
   };
 
-  // componentDidMount() {
-  //   Axios.get("/api/isAuthenticated").then(result => {
-  //     this.setState({ isAuthenticated: result.data });
-  //     console.log(this.state.isAuthenticated);
-  //   });
-  // }
+  componentDidMount() {
+    Axios.get("/api/isAuthenticated").then(result => {
+      this.setState({ isAuthenticated: result.data });
+      console.log(this.state.isAuthenticated);
+    });
+  }
 
   render() {
-    //   if (this.state.isAuthenticated) {
-    return (
-      <Router>
-        <Route exact path="/" component={MainPage} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/profileform" component={ProfileForm} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/payment" component={Payment} />
-        <Route exact path="/order" component={Order} />
-        <Route exact path="/userSpots" component={purchasedSpots} />
-
-        {/* </Router>
+    if (this.state.isAuthenticated) {
+      return (
+        <Router>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/profileform" component={ProfileForm} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/payment" component={Payment} />
+          <Route exact path="/order" component={Order} />
+          <Route exact path="/userSpots" component={purchasedSpots} />
+        </Router>
       );
     } else {
       return (
-        <Router> */}
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/login" component={Login} />
-      </Router>
-    );
+        <Router>
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
+        </Router>
+      );
+    }
   }
-  // }
 }
 export default App;
