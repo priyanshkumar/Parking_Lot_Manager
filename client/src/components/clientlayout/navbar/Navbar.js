@@ -12,7 +12,6 @@ class Navbar extends React.Component {
   componentDidMount() {
     Axios.get("/api/isAuthenticated").then(result => {
       this.setState({ authenticated: result.data });
-      console.log(result.data);
     });
   }
 
