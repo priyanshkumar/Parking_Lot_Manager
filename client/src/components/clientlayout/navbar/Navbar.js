@@ -6,7 +6,7 @@ import Axios from "axios";
 
 class Navbar extends React.Component {
   state = {
-    authenticated: ""
+    authenticated: false
   };
 
   componentDidMount() {

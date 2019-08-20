@@ -32,7 +32,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: "https://parking-lot-manage.herokuapp.com", // allow to server to accept request from different origin
+    origin: "https://localhost:3000", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true // allow session cookie from browser to pass through
   })
@@ -43,10 +43,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use(routes);
-
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
 
 db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
