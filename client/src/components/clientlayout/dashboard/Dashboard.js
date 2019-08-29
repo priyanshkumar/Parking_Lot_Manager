@@ -91,6 +91,7 @@ class Dashboard extends Component {
     axios
       .get("/api/getParkingSpots")
       .then(result => {
+        console.log(result);
         if (result.data) {
           if (result.data.redirecturl === "login") {
             this.props.history.push("/login");

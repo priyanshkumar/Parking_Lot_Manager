@@ -2,6 +2,7 @@
 
 ## About 
 
+Picture a truck driver coming home after a week on the road but is unable to find a safe and adequate parking space for his truck and expensive cargo in their trailer. ParkEZ allows truckers and trucking companies to reserve parking spaces for heavy equipment eg., trucks, trailers, and construction vehicles at a safe location. By using this application that same driver can worry less about their equipment and spend more time with their families by quickly booking their spot ahead of their arrival.
 
 
 ## Starting the app locally
