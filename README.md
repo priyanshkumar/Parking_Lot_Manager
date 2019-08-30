@@ -37,24 +37,15 @@ Picture a truck driver coming home after a week on the road but is unable to fin
 - Checkout Page
     - There will be billing option at the first which is same as your profile info.
     - If you want to change it you required to edit your profile first.
-    -
+    - All selected parking slots will be described as per the price and total to pay with tax.
+    - You require to agree the terms and condition.
+    - Then you can purchase spots for that particular month.
+- Purchased page
+    - We are not going to procced with transaction and all because it is just a prototype for the project by University purpose.
+- Your Spots
+    - It will show how many spot you have purchased till date.
+
+## Technologie Used
+    React, Node, Express, Sequelize, MySql, Passport, Axios, Bootstrap.
 
 
-
-```
-npm install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
