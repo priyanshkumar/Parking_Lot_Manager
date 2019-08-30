@@ -47,5 +47,3 @@ Picture a truck driver coming home after a week on the road but is unable to fin
 
 ## Technologie Used
     React, Node, Express, Sequelize, MySql, Passport, Axios, Bootstrap.
-
-
