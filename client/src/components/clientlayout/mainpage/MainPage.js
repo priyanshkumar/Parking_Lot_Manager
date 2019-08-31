@@ -8,8 +8,7 @@ function MainPage() {
       <Navbar />
       <div className="hero-image d-flex justify-content-center align-items-center">
         <div className="w-50 p-5 text-center">
-          <h1 className="display-4 text-light">Welcome</h1>
-          <h5 className="text-white">
+          <h5>
             Our parking lot manages over 600 spots in a convenient location in
             Brampton. If you park regularly at the same location, our discounted
             monthly parking rates may be right for you.
