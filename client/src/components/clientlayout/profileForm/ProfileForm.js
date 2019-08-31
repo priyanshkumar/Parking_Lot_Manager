@@ -78,17 +78,18 @@ export default class ProfileForm extends React.Component {
     return (
       <Fragment>
         <Navbar />
-        <div className="profileForm container border rounded bg-secondary text-light mt-4 p-3">
+        <div className="profileForm container border rounded mt-4 p-3">
           <div className="d-flex justify-content-center">
-            <h3>Company Profile</h3>
+            <h3 className="m-0">Company Profile</h3>
           </div>
           <hr className="bg-light" />
           <form className="mt-5">
             <div className="form-group row">
-              <label htmlFor="Name" className="col-sm-2 col-form-label">
+              <span className="col-1 mr-5" />
+              <label htmlFor="Name" className="col-sm-1 p-0 col-form-label">
                 Company Name
               </label>
-              <div className="col-sm-10">
+              <div className="col-sm-8">
                 <InputField
                   takeinput={value =>
                     this.handleinputchange("companyName", value)
@@ -99,10 +100,14 @@ export default class ProfileForm extends React.Component {
               </div>
             </div>
             <div className="form-group row">
-              <label htmlFor="OwnerName" className="col-sm-2 col-form-label">
+              <span className="col-1 mr-5" />
+              <label
+                htmlFor="OwnerName"
+                className="col-sm-1 p-0 col-form-label"
+              >
                 Owner Name
               </label>
-              <div className="col-sm-10">
+              <div className="col-sm-8">
                 <InputField
                   takeinput={value =>
                     this.handleinputchange("companyPointOfContact", value)
@@ -113,10 +118,14 @@ export default class ProfileForm extends React.Component {
               </div>
             </div>
             <div className="form-group row">
-              <label htmlFor="CompanyID" className="col-sm-2 col-form-label">
+              <span className="col-1 mr-5" />
+              <label
+                htmlFor="CompanyID"
+                className="col-sm-1 p-0 col-form-label"
+              >
                 Company ID
               </label>
-              <div className="col-sm-10">
+              <div className="col-sm-8">
                 <InputField
                   takeinput={value =>
                     this.handleinputchange("companyID", value)
@@ -128,7 +137,8 @@ export default class ProfileForm extends React.Component {
               </div>
             </div>
             <div className="form-group row">
-              <label htmlFor="street-no" className="col-2 col-form-label">
+              <span className="col-1 mr-5" />
+              <label htmlFor="street-no" className="col-1 p-0 col-form-label">
                 Street Number
               </label>
               <div className="col-2">
@@ -140,7 +150,7 @@ export default class ProfileForm extends React.Component {
                   required={true}
                 />
               </div>
-              <label className="col-2" htmlFor="street-name">
+              <label className="col-1 p-0" htmlFor="street-name">
                 Street Name
               </label>
               <div className="col-2">
@@ -152,7 +162,7 @@ export default class ProfileForm extends React.Component {
                   required={true}
                 />
               </div>
-              <label className="col-2" htmlFor="city">
+              <label className="col-1 p-0" htmlFor="city">
                 City
               </label>
               <div className="col-2">
@@ -164,7 +174,8 @@ export default class ProfileForm extends React.Component {
             </div>
 
             <div className="form-group row">
-              <label htmlFor="province" className="col-sm-2 col-form-label">
+              <span className="col-1 mr-5" />
+              <label htmlFor="province" className="col-1 p-0 col-form-label">
                 Province
               </label>
               <div className="col-2">
@@ -190,7 +201,7 @@ export default class ProfileForm extends React.Component {
                 </select>
               </div>
 
-              <label className="col-2" htmlFor="zip">
+              <label className="col-1 p-0" htmlFor="zip">
                 Zip code
               </label>
               <div className="col-2">
@@ -200,7 +211,7 @@ export default class ProfileForm extends React.Component {
                 />
               </div>
 
-              <label className="col-2" htmlFor="country">
+              <label className="col-1 p-0" htmlFor="country">
                 Country
               </label>
               <div className="col-2">
@@ -219,7 +230,8 @@ export default class ProfileForm extends React.Component {
             </div>
 
             <div className="form-group row">
-              <label htmlFor="fax" className="col-sm-2 col-form-label">
+              <span className="col-1 mr-5" />
+              <label htmlFor="fax" className="col-1 p-0 col-form-label">
                 Fax Number
               </label>
               <div className="col-2">
@@ -231,7 +243,7 @@ export default class ProfileForm extends React.Component {
                   value={this.state.faxNumber}
                 />
               </div>
-              <label className="col-2" htmlFor="cell">
+              <label className="col-1 p-0" htmlFor="cell">
                 Cell Number
               </label>
               <div className="col-2">
@@ -244,7 +256,7 @@ export default class ProfileForm extends React.Component {
                   required={true}
                 />
               </div>
-              <label className="col-2" htmlFor="work-no">
+              <label className="col-1 p-0" htmlFor="work-no">
                 Work phone
               </label>
               <div className="col-2">
@@ -259,7 +271,7 @@ export default class ProfileForm extends React.Component {
             </div>
             <button
               type="button"
-              className="btn btn-danger btn-large btn-block w-25 mx-auto mt-4"
+              className="btn btn-primary btn-large btn-block w-25 mx-auto mt-4"
               onClick={this.handleSubmit}
             >
               Create Company Profile

@@ -28,7 +28,7 @@ export default class Profile extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="container my-5">
+        <div className="container profileCSS my-5">
           <div className="mb-4 d-flex justify-content-between">
             <h3>
               My Profile{" "}
