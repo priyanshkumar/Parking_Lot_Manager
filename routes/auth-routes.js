@@ -11,7 +11,7 @@ router.get("/logout", (req, res) => {
 
 // GOOGLE
 router.get(
-  "http://loachost:3000//google",
+  "/google",
   passport.authenticate("google", {
     scope: ["profile", "email"]
   })
@@ -20,7 +20,7 @@ router.get(
 router.get(
   "/google/redirect",
   passport.authenticate("google", {
-    successRedirect: "http://loachost:3000/auth/profileCheck",
+    successRedirect: "/auth/profileCheck",
     failureRedirect: "/login"
   })
 );
@@ -79,7 +79,7 @@ router.get("/profileCheck", (req, res) => {
     db.Customer.findOne({ where: { UserId: req.user.dataValues.id } }).then(
       result => {
         if (result) {
-          res.redirect("http:/localhost:3000/");
+          res.redirect("/");
         } else {
           res.redirect("/profileform");
         }
