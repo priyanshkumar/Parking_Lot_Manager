@@ -17,13 +17,13 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar sticky-top bg-white d-flex justify-content-around px-5">
-        <div className="logo">
+      <nav className="navbar sticky-top bg-white d-flex justify-content-between px-5">
+        <div className="logo ml-5">
           <Link to="/">
             <img src={logo} alt="" />
           </Link>
         </div>
-        <div className="links">
+        <div className="links mr-5">
           <ul className="d-flex align-items-center justify-content-center p-0 m-0">
             {this.state.authenticated ? (
               <div className="d-flex align-items-center justify-content-center">

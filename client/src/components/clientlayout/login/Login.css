@@ -1,11 +1,26 @@
 .full-spread {
   background-image: url(./login-image.jpg);
-  height: 90vh;
+  height: 91vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .signupbox {
-  background-color: #ffffff30;
+  color: #333333;
+  background-color: #f9f9f9f5;
+  width: 15rem;
+  font-family: 'Bitter', serif;
+}
+
+.signupbox h5{
+  line-height: 20px;
+  font-size: 0.9rem;
+}
+.signupbox a{
+  width: 12rem;
+  font-size: 0.8rem;
+}
+.signupbox hr{
+  background-color: #333333;
 }

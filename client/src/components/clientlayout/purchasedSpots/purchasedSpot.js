@@ -35,6 +35,7 @@ class purchasedSpots extends Component {
       <div>
         <Navbar />
         <div className="container my-5">
+          <h2>Your booked spots</h2>
           <table className="table table-hover border border-dark">
             <thead className="thead-dark">
               <tr>
