@@ -36,7 +36,8 @@ Picture a truck driver coming home after a week on the road but is unable to fin
   - Select Spot
     - You can select as many spot as you like from different categories and once you hit selected you will get option for checkout
     - once you slected it and if you go back you wont able to remove it from zone as it will be disabled you have to remove it from checkout area.
-      ![selectspot](/images/selectspot.jpg 'selectspot')
+    
+    ![selectspot](/images/selectspot.jpg 'selectspot')
   - procced to checkout.
     - You will abel to see all selected spots.
     - if you want to delete parking slots from checkout you just require to click on the slot button and it will be removed from checkout option.
