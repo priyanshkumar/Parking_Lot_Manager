@@ -19,12 +19,12 @@ function MainPage() {
             <a className="btn btn-social btn-twitter mb-2" href="/auth/twitter">
               <span className="fab fa-twitter" /> Sign in with Twitter
             </a>
-            <a
+            {/* <a
               className="btn btn-social btn-facebook mb-2"
               href="/auth/facebook"
             >
               <span className="fab fa-facebook" /> Sign in with Facebook
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
-import React from "react";
-import "./Login.css";
-import "bootstrap-social";
-import Navbar from "../navbar/Navbar";
+import React from 'react';
+import './Login.css';
+import 'bootstrap-social';
+import Navbar from '../navbar/Navbar';
 
 class MainPage extends React.Component {
   render() {
@@ -24,12 +24,12 @@ class MainPage extends React.Component {
               >
                 <span className="fab fa-twitter" /> Sign in with Twitter
               </a>
-              <a
+              {/* <a
                 className="btn btn-social btn-facebook mb-2"
                 href="/auth/facebook"
               >
                 <span className="fab fa-facebook" /> Sign in with Facebook
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
