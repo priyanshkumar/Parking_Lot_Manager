@@ -9,11 +9,12 @@ Picture a truck driver coming home after a week on the road but is unable to fin
 - Authentication
 
   - ParkEZ has 3 authentication startegy `Goggle|Facebook|Twiter`
+  ![auth](/images/authentication.jpg  "profile")
 
 - Profile
 
   - Profile could be `Edit` once created account and this profile is going to be used for all the purchase of spot.
-  ![profile](https://github.com/priyanshkumar/Parking_Lot_Manager/tree/master/images/profile.jpg  "profile")
+  ![profile](/images/profile.jpg?s=100 "profile")
 
 - Dashboard have lots of features.
   - Parking layout
