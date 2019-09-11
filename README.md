@@ -13,6 +13,7 @@ Picture a truck driver coming home after a week on the road but is unable to fin
 - Profile
 
   - Profile could be `Edit` once created account and this profile is going to be used for all the purchase of spot.
+  ![profile](https://github.com/priyanshkumar/Parking_Lot_Manager/tree/master/images/profile.jpg  "profile")
 
 - Dashboard have lots of features.
   - Parking layout
@@ -49,4 +50,4 @@ Picture a truck driver coming home after a week on the road but is unable to fin
 
 ## Technologie Used
 
-    React, Node, Express, Sequelize, MySql, Passport, Axios, Bootstrap.
+    React, Node, Express, JavaScript, Sequelize, MySql, Passport, Axios, Rest API, Bootstrap.
