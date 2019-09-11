@@ -9,7 +9,7 @@ function MainPage() {
       <div className="full-spread d-flex justify-content-center align-items-center">
         <div className="signupbox border rounded px-3 py-4 m-5">
           <h5 className="text-center">
-            Join ParkEZ with your Google/Twitter/Facebook Account
+            Join ParkEZ with your Google/Twitter Account
           </h5>
           <hr />
           <div className="d-flex flex-column align-items-center">
