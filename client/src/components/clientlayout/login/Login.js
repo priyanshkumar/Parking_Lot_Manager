@@ -1,7 +1,7 @@
-import React from "react";
-import "./Login.css";
-import "bootstrap-social";
-import Navbar from "../navbar/Navbar";
+import React from 'react';
+import './Login.css';
+import 'bootstrap-social';
+import Navbar from '../navbar/Navbar';
 
 class MainPage extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class MainPage extends React.Component {
         <div className="full-spread d-flex justify-content-center align-items-center">
           <div className="signupbox border rounded px-3 py-4 m-5">
             <h5 className="text-center">
-              Sign in with your Google/Twitter/Facebook Account
+              Sign in with your Google/Twitter Account
             </h5>
             <hr />
             <div className="d-flex flex-column align-items-center">
@@ -24,12 +24,12 @@ class MainPage extends React.Component {
               >
                 <span className="fab fa-twitter" /> Sign in with Twitter
               </a>
-              <a
+              {/* <a
                 className="btn btn-social btn-facebook mb-2"
                 href="/auth/facebook"
               >
                 <span className="fab fa-facebook" /> Sign in with Facebook
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ function MainPage() {
       <div className="full-spread d-flex justify-content-center align-items-center">
         <div className="signupbox border rounded px-3 py-4 m-5">
           <h5 className="text-center">
-            Join ParkEZ with your Google/Twitter/Facebook Account
+            Join ParkEZ with your Google/Twitter Account
           </h5>
           <hr />
           <div className="d-flex flex-column align-items-center">
@@ -19,12 +19,12 @@ function MainPage() {
             <a className="btn btn-social btn-twitter mb-2" href="/auth/twitter">
               <span className="fab fa-twitter" /> Sign in with Twitter
             </a>
-            <a
+            {/* <a
               className="btn btn-social btn-facebook mb-2"
               href="/auth/facebook"
             >
               <span className="fab fa-facebook" /> Sign in with Facebook
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
